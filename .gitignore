@@ -1,0 +1,9 @@
+.idea
+.nuxt
+.yarn/cache
+node_modules
+dist
+lib
+
+.DS_Store
+sw.*
