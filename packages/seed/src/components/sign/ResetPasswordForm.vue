@@ -3,7 +3,7 @@
     <form :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
       <input v-model="form.access" type="text" placeholder="手机号" auto-complete="off" />
       <input v-model="form.secret" type="text" placeholder="新密码" auto-complete="off" />
-      <button type="primary" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block>
+      <button type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block>
         {{ submitBtnText }}
         <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
       </button>

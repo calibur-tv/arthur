@@ -4,10 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "lint": "vue-cli-service lint --fix",
-    "test": "echo 1"
-  },
   "workspaces": [
     "packages/*"
   ],

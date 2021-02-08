@@ -4,7 +4,7 @@
       <input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" auto-complete="off" />
       <input v-model="form.secret" type="password" placeholder="密码（6-16个字符组成，区分大小写）" auto-complete="off" />
       <input v-model="form.inviteCode" :disabled="!!inviteCode" placeholder="邀请码（可为空）" auto-complete="off" />
-      <button type="primary" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block @click="submitForm">
+      <button type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block @click="submitForm">
         {{ submitBtnText }}
         <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
       </button>
