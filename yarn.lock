@@ -1388,7 +1388,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/json-schema@npm:^7.0.5":
+"@types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.6":
   version: 7.0.7
   resolution: "@types/json-schema@npm:7.0.7"
   checksum: b9d2c509fa4e0b82f58e73f5e6ab76c60ff1884ba41bb82f37fb1cece226d4a3e5a62fedf78a43da0005373a6713d9abe61c1e592906402c41c08ad6ab26d52b
@@ -2301,7 +2301,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ajv@npm:^6.1.0, ajv@npm:^6.10.0, ajv@npm:^6.10.2, ajv@npm:^6.12.3, ajv@npm:^6.12.4":
+"ajv@npm:^6.1.0, ajv@npm:^6.10.0, ajv@npm:^6.10.2, ajv@npm:^6.12.3, ajv@npm:^6.12.4, ajv@npm:^6.12.5":
   version: 6.12.6
   resolution: "ajv@npm:6.12.6"
   dependencies:
@@ -2555,9 +2555,11 @@ __metadata:
     eslint-plugin-prettier: ^3.1.3
     eslint-plugin-vue: ^7.0.0-0
     lint-staged: ^9.5.0
+    mitt: ^2.1.0
     prettier: ^1.19.1
     sass: ^1.26.5
     sass-loader: ^8.0.2
+    style-resources-loader: ^1.4.1
     vue: ^3.0.0
   languageName: unknown
   linkType: soft
@@ -5882,7 +5884,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.3, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4":
+"glob@npm:^7.0.3, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.1.6
   resolution: "glob@npm:7.1.6"
   dependencies:
@@ -7996,6 +7998,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"mitt@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "mitt@npm:2.1.0"
+  checksum: 549fd125e961ca7265e4d1a7c04b9b56787ac2c2093c594528a8afa3003fd3a17ddf55ae346ddf3e1c05084d441f198d6a55bd770915f4578d5843c9e4b6df16
+  languageName: node
+  linkType: hard
+
 "mixin-deep@npm:^1.2.0":
   version: 1.3.2
   resolution: "mixin-deep@npm:1.3.2"
@@ -8315,6 +8324,13 @@ fsevents@~2.3.1:
   version: 3.3.0
   resolution: "normalize-url@npm:3.3.0"
   checksum: 5704115f74833cf157a5f104477d9c8e8b4e2c00275624159bcd3c65dbdac93db4f6f008f91364d0f20f93655bd2b643afa9e8875c67b4ab8673cd1dd0fb7a5c
+  languageName: node
+  linkType: hard
+
+"normalize.css@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "normalize.css@npm:8.0.1"
+  checksum: de6c137a14291c00fee60a1e9e9ab4b78f93d48dd7ab5baa2783dd62bf19b456403bf0585ad201bb84ed184348fd49b467ccfc707068bf342123d00d31801e98
   languageName: node
   linkType: hard
 
@@ -9851,13 +9867,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"register-service-worker@npm:^1.7.1":
-  version: 1.7.2
-  resolution: "register-service-worker@npm:1.7.2"
-  checksum: 811cbcc88ef7174231b5fb397fd47ef8a9847451a64e6fcf572f05893e29fbfca42141d89135812fa8e40a1d1bfa7b1618942a68d4fa6bfd97d4720d897a7995
-  languageName: node
-  linkType: hard
-
 "regjsgen@npm:^0.5.1":
   version: 0.5.2
   resolution: "regjsgen@npm:0.5.2"
@@ -10241,12 +10250,23 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"schema-utils@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "schema-utils@npm:3.0.0"
+  dependencies:
+    "@types/json-schema": ^7.0.6
+    ajv: ^6.12.5
+    ajv-keywords: ^3.5.2
+  checksum: a084f593f222560c412a4d8f40c92386c01c1c709f27c0672c2f02927a4d4d475f57f8b8e91198d0defb452add160476a03f07a05b26200a64b5124fa874e158
+  languageName: node
+  linkType: hard
+
 "seed@workspace:packages/seed":
   version: 0.0.0-use.local
   resolution: "seed@workspace:packages/seed"
   dependencies:
     "@vue/cli-service": ^4.5.11
-    register-service-worker: ^1.7.1
+    normalize.css: ^8.0.1
     vue-router: ^4.0.0-0
     vuex: ^4.0.0-0
   languageName: unknown
@@ -11032,6 +11052,19 @@ fsevents@~2.3.1:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: f16719ce25abc58a55ef82b1c27f541dcfa5d544f17158f62d10be21ff9bd22fde45a53c592b29d80ad3c97ccb67b7451c4833913fdaeadb508a40f5e0a9c206
+  languageName: node
+  linkType: hard
+
+"style-resources-loader@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "style-resources-loader@npm:1.4.1"
+  dependencies:
+    glob: ^7.1.6
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^3.0.0 || ^4.0.0 || ^5.0.0
+  checksum: 1d81df30c2ed42535edce757abee459a3e998e5196317d7c8fcc03480dab71b66c7ffd23311bf0f43e619fa94e4490a68db5f9b00802fa48991f774cd3c93f51
   languageName: node
   linkType: hard
 

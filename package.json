@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "mitt": "^2.1.0",
+    "style-resources-loader": "^1.4.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
