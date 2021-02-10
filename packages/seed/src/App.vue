@@ -1,5 +1,7 @@
 <template>
   <AppHeader />
+  <router-link to="/">home</router-link>
+  <router-link to="/about">about</router-link>
   <RouterView />
   <SignDialog />
   <AppFooter />
