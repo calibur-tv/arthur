@@ -1,6 +1,7 @@
+const { name } = require('./package.json')
 const baseConf = require('../../project.conf')
 
 module.exports = baseConf({
-  entry: true,
-  publicPath: 'https://www.calibur.tv/'
+  name,
+  port: 7101
 })

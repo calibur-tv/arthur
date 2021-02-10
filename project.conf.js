@@ -1,5 +1,7 @@
 const path = require('path')
 
+const isDev = process.env.NODE_ENV === 'development'
+
 function addStyleResource(rule) {
   rule
     .use('style-resource')
@@ -9,9 +11,31 @@ function addStyleResource(rule) {
     })
 }
 
-// eslint-disable-next-line
 module.exports = (conf) => {
   return {
+    devServer: {
+      port: conf.port || 3000,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    },
+    publicPath: isDev ? '/' : conf.publicPath || '/',
+    configureWebpack: {
+      externals:
+        isDev && conf.entry
+          ? {}
+          : {
+              vue: 'Vue'
+            },
+      output: conf.entry
+        ? {}
+        : {
+            // 把子应用打包成 umd 库格式
+            library: `${conf.name}-[name]`,
+            libraryTarget: 'umd',
+            jsonpFunction: `webpackJsonp_${conf.name}`
+          }
+    },
     chainWebpack: (config) => {
       const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
       types.forEach((type) => addStyleResource(config.module.rule('scss').oneOf(type)))

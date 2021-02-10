@@ -7,7 +7,7 @@ import store from '@/store'
 import mitt from 'mitt'
 import api from '@/api'
 import Cookies from 'js-cookie'
-import imageResize from './assets/js/imageResize'
+import imageResize from '@/assets/js/imageResize'
 
 const app = createApp(App)
 
@@ -19,4 +19,4 @@ app.config.globalProperties.$axios = api
 app.config.globalProperties.$cookie = Cookies
 app.config.globalProperties.$resize = imageResize
 
-app.mount('#app')
+app.mount('#calibur')

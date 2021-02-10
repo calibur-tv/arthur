@@ -10,6 +10,7 @@ import AppHeader from '@/components/app/AppHeader'
 import AppFooter from '@/components/app/AppFooter'
 import SignDialog from '@/components/sign/SignDialog'
 import useSign from '@/mixins/useSign'
+import { bootstrap } from '@/assets/js/qiankun'
 
 export default {
   components: {
@@ -17,12 +18,15 @@ export default {
     AppFooter,
     SignDialog
   },
-  mixins: [useSign]
+  mixins: [useSign],
+  mounted() {
+    bootstrap()
+  }
 }
 </script>
 
 <style lang="scss">
-#app {
+#calibur {
   width: 100vw;
   height: 100vh;
   display: flex;

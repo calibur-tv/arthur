@@ -95,11 +95,13 @@
             </RouterLink>
           </li>
         </template>
+        <!--
         <template v-else>
           <li>
             <button class="nav-link" @click="handleSignIn">登录</button>
           </li>
         </template>
+        -->
       </ul>
     </div>
   </nav>
