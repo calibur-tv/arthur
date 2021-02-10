@@ -13,13 +13,13 @@ function addStyleResource(rule) {
 
 module.exports = (conf) => {
   return {
+    publicPath: conf.entry ? '/' : `//web.calibur.tv/${conf.name}/`,
     devServer: {
       port: conf.port || 3000,
       headers: {
         'Access-Control-Allow-Origin': '*'
       }
     },
-    publicPath: isDev ? '/' : conf.publicPath || '/',
     configureWebpack: {
       externals:
         isDev && conf.entry
