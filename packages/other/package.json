@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=production vue-cli-service serve",
-    "build": "vue-cli-service build --modern",
+    "build": "cross-env RUN_TYPE=build vue-cli-service build --modern",
     "upload": "ossutil cp -r ./dist oss://calibur-arthur/other/ -f",
     "deploy": "npm run build && npm run upload"
   },
