@@ -1,8 +1,6 @@
 <template>
-  <div class="about">
-    <p>This is an about page</p>
-    <div id="about-01">vue-01 loading...</div>
-    <div id="about-02">vue-02 loading...</div>
+  <div style="text-align: center">
+    <div id="vue-01">vue-01 loading...</div>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 import { loadMicroApp } from 'qiankun'
 
-export const homePage = () => {
+export const aboutPage = () => {
   const res1 = loadMicroApp({
     name: 'vue-page-01',
     entry: '//localhost:7102',
@@ -10,7 +10,7 @@ export const homePage = () => {
   return [res1]
 }
 
-export const aboutPage = () => {
+export const homePage = () => {
   const res1 = loadMicroApp({
     name: 'vue-page-02',
     entry: '//localhost:7101',

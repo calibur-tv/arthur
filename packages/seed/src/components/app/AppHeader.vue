@@ -9,7 +9,12 @@
         <li>
           <RouterLink class="nav-link home-link" to="/">
             <i class="iconfont ic-calibur" />
-            <span>主站</span>
+            <span>首页</span>
+          </RouterLink>
+        </li>
+        <li>
+          <RouterLink class="nav-link home-link" to="/about">
+            <span>关于</span>
           </RouterLink>
         </li>
         <!--
