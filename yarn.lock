@@ -8671,6 +8671,17 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"other@workspace:packages/other":
+  version: 0.0.0-use.local
+  resolution: "other@workspace:packages/other"
+  dependencies:
+    "@vue/cli-service": ~4.5.0
+    "@vue/compiler-sfc": ^3.0.0
+    cross-env: ^7.0.3
+    vue: ^3.0.0
+  languageName: unknown
+  linkType: soft
+
 "p-finally@npm:^1.0.0":
   version: 1.0.0
   resolution: "p-finally@npm:1.0.0"

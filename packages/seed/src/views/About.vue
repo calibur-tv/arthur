@@ -7,15 +7,19 @@
 </template>
 
 <script>
-import { start } from 'qiankun'
+import { aboutPage } from '@/assets/js/qiankun'
 
 export default {
-  mounted() {
-    console.log('mounted')
-    if (!window.qiankunStarted) {
-      window.qiankunStarted = true
-      start()
+  data() {
+    return {
+      app: null
     }
+  },
+  mounted() {
+    this.app = aboutPage()
+  },
+  beforeUnmount() {
+    this.app.forEach((item) => item.unmount())
   }
 }
 </script>

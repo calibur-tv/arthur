@@ -1,24 +1,27 @@
-import { registerMicroApps } from 'qiankun'
+import { loadMicroApp } from 'qiankun'
 
-export const bootstrap = () => {
-  registerMicroApps([
-    {
-      name: 'vue-page-01',
-      entry: '//localhost:7101',
-      container: '#vue-01',
-      activeRule: (location) => location.pathname === '/'
-    },
-    {
-      name: 'vue-page-02',
-      entry: '//localhost:7101',
-      container: '#about-01',
-      activeRule: '/about'
-    },
-    {
-      name: 'vue-page-03',
-      entry: '//localhost:7101',
-      container: '#about-02',
-      activeRule: '/about'
-    }
-  ])
+export const homePage = () => {
+  const res1 = loadMicroApp({
+    name: 'vue-page-01',
+    entry: '//localhost:7102',
+    container: '#vue-01'
+  })
+
+  return [res1]
+}
+
+export const aboutPage = () => {
+  const res1 = loadMicroApp({
+    name: 'vue-page-02',
+    entry: '//localhost:7101',
+    container: '#about-01'
+  })
+
+  const res2 = loadMicroApp({
+    name: 'vue-page-03',
+    entry: '//localhost:7102',
+    container: '#about-02'
+  })
+
+  return [res1, res2]
 }

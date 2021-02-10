@@ -1,7 +1,7 @@
 <template>
   <AppHeader />
-  <router-link to="/">home</router-link>
-  <router-link to="/about">about</router-link>
+  <RouterLink to="/">home</RouterLink>
+  <RouterLink to="/about">about</RouterLink>
   <RouterView />
   <SignDialog />
   <AppFooter />
@@ -12,7 +12,6 @@ import AppHeader from '@/components/app/AppHeader'
 import AppFooter from '@/components/app/AppFooter'
 import SignDialog from '@/components/sign/SignDialog'
 import useSign from '@/mixins/useSign'
-import { bootstrap } from '@/assets/js/qiankun'
 
 export default {
   components: {
@@ -20,10 +19,7 @@ export default {
     AppFooter,
     SignDialog
   },
-  mixins: [useSign],
-  mounted() {
-    bootstrap()
-  }
+  mixins: [useSign]
 }
 </script>
 
