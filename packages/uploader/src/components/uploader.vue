@@ -23,7 +23,7 @@ onMounted(() => {
     allowMultiple: false,
     allowRevert: false
   })
-  fetch('http://localhost:9000/v1/upload/token')
+  fetch('https://fc.calibur.tv/v1/upload/token')
     .then((response) => {
       return response.json()
     })
