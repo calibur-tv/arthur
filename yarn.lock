@@ -5463,6 +5463,49 @@ __metadata:
   languageName: node
   linkType: hard
 
+"filepond-plugin-file-validate-size@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "filepond-plugin-file-validate-size@npm:2.2.2"
+  peerDependencies:
+    filepond: ">=3.1.2 <5.x"
+  checksum: 01755fbe87ccdc78c363264837cd9e70d2c2911a096e308007ecac54100004296bdd55f7fc6fb971b95e6c2d2cda3ef688d29008ca6b4b1e68ddaf36da508f67
+  languageName: node
+  linkType: hard
+
+"filepond-plugin-file-validate-type@npm:^1.2.5":
+  version: 1.2.5
+  resolution: "filepond-plugin-file-validate-type@npm:1.2.5"
+  peerDependencies:
+    filepond: ">=1.x <5.x"
+  checksum: 7a7fd982d807d684faaed670594716d04ffbb020473e64bf0168fd4a1c2ad98d3e1fcf5ff562ad3f4176ed78d4cfd87efee19f131ff071a68f66e9f537d46ae7
+  languageName: node
+  linkType: hard
+
+"filepond-plugin-image-exif-orientation@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "filepond-plugin-image-exif-orientation@npm:1.0.9"
+  peerDependencies:
+    filepond: ">=3.x <5.x"
+  checksum: 2d9229e8d980e479db96f2d1e81c60de060313526e9f8c3cdfb26aca330f58e8fee1dfd632671887b4ed2e159a239370a8afee0f529400fb3a5a76f7b0d3af42
+  languageName: node
+  linkType: hard
+
+"filepond-plugin-image-preview@npm:^4.6.5":
+  version: 4.6.5
+  resolution: "filepond-plugin-image-preview@npm:4.6.5"
+  peerDependencies:
+    filepond: ">=4.x <5.x"
+  checksum: 05569ed45092df417836cf34f43f472d5efb990e07408c9b6ab1fd3ced0251e2dcaf7f0f29a101391875ae71f3e076777284edffc8a3841e2beec96f0f0fa7be
+  languageName: node
+  linkType: hard
+
+"filepond@npm:^4.25.1":
+  version: 4.25.1
+  resolution: "filepond@npm:4.25.1"
+  checksum: 596d8dc38b73f5f7760b03cfb9421a30e6266467a37dbcd471830c188d87d60a509e63e379bd4b19c6f3f86a262849d956bcfd411851d47302e7d33fd1595bc0
+  languageName: node
+  linkType: hard
+
 "filesize@npm:^3.6.1":
   version: 3.6.1
   resolution: "filesize@npm:3.6.1"
@@ -11631,6 +11674,11 @@ fsevents@~2.3.1:
     "@vue/cli-service": ~4.5.0
     "@vue/compiler-sfc": ^3.0.0
     cross-env: ^7.0.3
+    filepond: ^4.25.1
+    filepond-plugin-file-validate-size: ^2.2.2
+    filepond-plugin-file-validate-type: ^1.2.5
+    filepond-plugin-image-exif-orientation: ^1.0.9
+    filepond-plugin-image-preview: ^4.6.5
     vue: ^3.0.0
   languageName: unknown
   linkType: soft

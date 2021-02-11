@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld msg="Welcome to calibur.tv" />
+  <uploader />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import uploader from './components/uploader.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    uploader
   }
 }
 </script>
