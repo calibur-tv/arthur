@@ -10,11 +10,18 @@ import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size'
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginFileRename from 'filepond-plugin-file-rename'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 import lang from 'filepond/locale/zh-cn.js'
 
 FilePond.setOptions(lang)
-FilePond.registerPlugin(FilePondPluginFileValidateSize, FilePondPluginFileValidateType, FilePondPluginImageExifOrientation, FilePondPluginImagePreview)
+FilePond.registerPlugin(
+    FilePondPluginFileValidateSize,
+    FilePondPluginFileValidateType,
+    FilePondPluginImageExifOrientation,
+    FilePondPluginImagePreview,
+    FilePondPluginFileRename
+)
 
 const elRef = ref(null)
 
@@ -23,17 +30,15 @@ onMounted(() => {
     allowMultiple: false,
     allowRevert: false
   })
-  fetch('https://fc.calibur.tv/v1/upload/token')
-    .then((response) => {
-      return response.json()
-    })
+  $axios.get('http://localhost:9000/v1/upload/token')
     .then((res) => {
       const data = res.data
       pond.setOptions({
+        fileRenameFunction: (file) => {
+          return `${Date.now()}-${Math.random().toString(36).substring(3, 6)}${file.extension}`
+        },
         server: {
           process: (fieldName, file, metadata, load, error, progress, abort, transfer, options) => {
-            console.log('transfer', transfer)
-            console.log('options', options)
             // fieldName is the name of the input field
             // file is the actual file object to send
             const formData = new FormData()

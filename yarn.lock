@@ -5463,6 +5463,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"filepond-plugin-file-rename@npm:^1.1.6":
+  version: 1.1.6
+  resolution: "filepond-plugin-file-rename@npm:1.1.6"
+  peerDependencies:
+    filepond: ">=1.8.x <5.x"
+  checksum: ba8d16e003e2a3edc142a31024a667008a0232597ae865c40f7918ee0f1534b93f32da697435215982dcc0bb3c21a579000742269e013fc6ef820bfd0f3dd706
+  languageName: node
+  linkType: hard
+
 "filepond-plugin-file-validate-size@npm:^2.2.2":
   version: 2.2.2
   resolution: "filepond-plugin-file-validate-size@npm:2.2.2"
@@ -11675,6 +11684,7 @@ fsevents@~2.3.1:
     "@vue/compiler-sfc": ^3.0.0
     cross-env: ^7.0.3
     filepond: ^4.25.1
+    filepond-plugin-file-rename: ^1.1.6
     filepond-plugin-file-validate-size: ^2.2.2
     filepond-plugin-file-validate-type: ^1.2.5
     filepond-plugin-image-exif-orientation: ^1.0.9
