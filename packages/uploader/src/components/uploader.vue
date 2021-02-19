@@ -30,7 +30,7 @@ onMounted(() => {
     allowMultiple: false,
     allowRevert: false
   })
-  $axios.get('http://localhost:9000/v1/upload/token')
+  $axios.get(`${BASE_URL}v1/upload/token`)
     .then((res) => {
       const data = res.data
       pond.setOptions({
