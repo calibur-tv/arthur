@@ -7,9 +7,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "installConfig": {
-    "hoistingLimits": []
-  },
   "dependencies": {
     "core-js": "^3.6.5",
     "mitt": "^2.1.0",

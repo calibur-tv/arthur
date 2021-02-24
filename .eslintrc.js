@@ -7,5 +7,9 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
-  rules: {}
+  rules: {},
+  globals:  {
+    '$axios': true,
+    'BASE_URL': true
+  }
 }
