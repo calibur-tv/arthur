@@ -8,8 +8,8 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {},
-  globals:  {
-    '$axios': true,
-    'BASE_URL': true
+  globals: {
+    $axios: true,
+    BASE_URL: true
   }
 }
