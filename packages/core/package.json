@@ -3,18 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite-ssg build",
-    "serve": "vite preview"
+    "build": "vite-ssg build --modern"
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "axios": "^0.21.1",
+    "js-cookie": "^2.2.1",
+    "normalize.css": "^8.0.1",
+    "qiankun": "^2.4.0",
+    "vue-router": "4.0.4",
+    "vuex": "4.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/server-renderer": "^3.0.5",
     "vite": "^2.0.1",
-    "vite-ssg": "^0.8.10",
-    "vue-router": "4.0.4"
+    "vite-ssg": "^0.8.10"
   }
 }

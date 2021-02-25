@@ -1,37 +1,33 @@
 <template>
-  <h1>Hello App!</h1>
-  <p>
-    <!--使用 router-link 组件进行导航 -->
-    <!--通过传递 `to` 来指定链接 -->
-    <!--`<router-link>` 将呈现一个带有正确 `href` 属性的 `<a>` 标签-->
-    <router-link to="/">Go to Home</router-link>
-    <router-link to="/about">Go to About</router-link>
-  </p>
-  <!-- 路由出口 -->
-  <!-- 路由匹配到的组件将渲染在这里 -->
-  <router-view></router-view>
+  <AppHeader />
+  <RouterView />
+  <SignDialog />
+  <AppFooter />
 </template>
 
 <script>
-import { useRouter, useRoute } from 'vue-router'
+import AppHeader from '@/components/app/AppHeader.vue'
+import AppFooter from '@/components/app/AppFooter.vue'
+import SignDialog from '@/components/sign/SignDialog.vue'
+import useSign from '@/mixins/useSign'
 
 export default {
-  setup() {
-    const router = useRouter()
-    const route = useRoute()
-    console.log(route)
-    console.log(router)
-  }
+  components: {
+    AppHeader,
+    AppFooter,
+    SignDialog
+  },
+  mixins: [useSign]
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

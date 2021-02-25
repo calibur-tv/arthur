@@ -1151,6 +1151,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.10.5, @babel/runtime@npm:^7.7.2":
+  version: 7.13.7
+  resolution: "@babel/runtime@npm:7.13.7"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 8be9fd44bb684ad42069170ca1bce9e225af7bc13861f5ac9c2517b6f1c585fb167cedb54f1a0c5b3f26a8391a9e1afef874829df494d945398d3f67b39e6116
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.0.0, @babel/template@npm:^7.12.13":
   version: 7.12.13
   resolution: "@babel/template@npm:7.12.13"
@@ -2633,7 +2642,7 @@ __metadata:
     sass: ^1.26.5
     sass-loader: ^8.0.2
     style-resources-loader: ^1.4.1
-    vue: ^3.0.0
+    vue: ^3.0.5
   languageName: unknown
   linkType: soft
 
@@ -2763,6 +2772,15 @@ __metadata:
   version: 1.11.0
   resolution: "aws4@npm:1.11.0"
   checksum: d30dce2b73839974894d8283a06c53e8374b74d643d3b08340d84c364e01158be011fcfd1a88f8462be946d69055313a3038202f2eafd155b039aaab3549ba21
+  languageName: node
+  linkType: hard
+
+"axios@npm:^0.21.1":
+  version: 0.21.1
+  resolution: "axios@npm:0.21.1"
+  dependencies:
+    follow-redirects: ^1.10.0
+  checksum: 864fb7b5d077d236737f10adca53bf451a93f35a15271f56fba8da07265a02d26b7d881b935a6697dc6adb0549ea3e56d2eecb403edaa3bb78f6479901c10f69
   languageName: node
   linkType: hard
 
@@ -4053,10 +4071,14 @@ __metadata:
     "@vitejs/plugin-vue": ^1.1.4
     "@vue/compiler-sfc": ^3.0.5
     "@vue/server-renderer": ^3.0.5
+    axios: ^0.21.1
+    js-cookie: ^2.2.1
+    normalize.css: ^8.0.1
+    qiankun: ^2.4.0
     vite: ^2.0.1
     vite-ssg: ^0.8.10
-    vue: ^3.0.5
     vue-router: 4.0.4
+    vuex: 4.0.0
   languageName: unknown
   linkType: soft
 
@@ -5862,7 +5884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.10.0":
   version: 1.13.2
   resolution: "follow-redirects@npm:1.13.2"
   peerDependenciesMeta:
@@ -6799,6 +6821,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"import-html-entry@npm:^1.9.0":
+  version: 1.11.1
+  resolution: "import-html-entry@npm:1.11.1"
+  dependencies:
+    "@babel/runtime": ^7.7.2
+  checksum: 309deab13d5a5e4ee04fdd831fcaf57fe18cea33a0d174082b31024ff9bf0fd6743e92a1352a48162bd54f8cc1cfcad2b0d9dea60f31cb30d82e942244a57146
+  languageName: node
+  linkType: hard
+
 "import-local@npm:^2.0.0":
   version: 2.0.0
   resolution: "import-local@npm:2.0.0"
@@ -7422,6 +7453,13 @@ fsevents@~2.3.1:
     merge-stream: ^2.0.0
     supports-color: ^7.0.0
   checksum: 20ae005c58f9db5be0f9bced0df6aeca340c64e7e0c7c27264b5f5964c94013e98ccd678df935d629889136ce45594d230e547624ccce73de581a05d4a8e6315
+  languageName: node
+  linkType: hard
+
+"js-cookie@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "js-cookie@npm:2.2.1"
+  checksum: c110f78427cb7715f67c69df0b3430f7cf9dafb5ddb13014df171d4fb61ccda0b1caf9767412cde63cab4bad697a5d4ce83b0c2e7ec650ec9929ed70750d20ae
   languageName: node
   linkType: hard
 
@@ -8723,6 +8761,13 @@ fsevents@~2.3.1:
   version: 3.3.0
   resolution: "normalize-url@npm:3.3.0"
   checksum: 5704115f74833cf157a5f104477d9c8e8b4e2c00275624159bcd3c65dbdac93db4f6f008f91364d0f20f93655bd2b643afa9e8875c67b4ab8673cd1dd0fb7a5c
+  languageName: node
+  linkType: hard
+
+"normalize.css@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "normalize.css@npm:8.0.1"
+  checksum: de6c137a14291c00fee60a1e9e9ab4b78f93d48dd7ab5baa2783dd62bf19b456403bf0585ad201bb84ed184348fd49b467ccfc707068bf342123d00d31801e98
   languageName: node
   linkType: hard
 
@@ -10076,6 +10121,19 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"qiankun@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "qiankun@npm:2.4.0"
+  dependencies:
+    "@babel/runtime": ^7.10.5
+    import-html-entry: ^1.9.0
+    lodash: ^4.17.11
+    single-spa: 5.8.1
+    tslib: ^1.10.0
+  checksum: f218bc766cd006e9c32057ae97d8f185d0b5765f3546a6dfd38baf69a5a2893194dc00fc42d0c376badb17a1b84853dfde3b2748efb38a56a4043d9af3366cd2
+  languageName: node
+  linkType: hard
+
 "qs@npm:6.7.0":
   version: 6.7.0
   resolution: "qs@npm:6.7.0"
@@ -10978,6 +11036,13 @@ fsevents@~2.3.1:
   dependencies:
     is-arrayish: ^0.3.1
   checksum: a5a2c1c86cea94f42ab843508e7c68b5bbfd15acb08056d600ac2e9c7f7c41bc417e71160ea3034a5411d3cce186c801f7a56badfb3a854906ce163120318875
+  languageName: node
+  linkType: hard
+
+"single-spa@npm:5.8.1":
+  version: 5.8.1
+  resolution: "single-spa@npm:5.8.1"
+  checksum: 221994664165e0064d7cac509e4c93114cf082d2ed72a2c9cf2633aa685b78d8c525e79eafd9cbc97a75ecebc289441e2e8386accd3ad82f9445eeb1fff843bb
   languageName: node
   linkType: hard
 
@@ -11925,7 +11990,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"tslib@npm:^1.9.0":
+"tslib@npm:^1.10.0, tslib@npm:^1.9.0":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
   checksum: f44fe7f216946b17d3e3074df3746372703cf24e9127b4c045511456e8e4bf25515fb0a1bb3937676cc305651c5d4fcb6377b0588a4c6a957e748c4c28905d17
@@ -12476,6 +12541,15 @@ fsevents@~2.3.1:
     "@vue/runtime-dom": 3.0.5
     "@vue/shared": 3.0.5
   checksum: ed84a0afcfdb74d4f39efe8ef8eaba803ba94e9164bad97cd343b7a2d806f94eee6b3c471a39e80e8ef7df05fc9bc915f68e1cf964d651a8c9bef9063b4d180f
+  languageName: node
+  linkType: hard
+
+"vuex@npm:4.0.0":
+  version: 4.0.0
+  resolution: "vuex@npm:4.0.0"
+  peerDependencies:
+    vue: ^3.0.2
+  checksum: 7420b32b75cb605a355df1d73de737362207ae86f24d1163a6a96d358da5d2094fd92edd5023da048af636cb59d1b506c7d4d1436a8a4951841230659a5c4e55
   languageName: node
   linkType: hard
 
