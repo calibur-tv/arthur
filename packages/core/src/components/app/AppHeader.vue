@@ -17,39 +17,6 @@
             <span>关于</span>
           </RouterLink>
         </li>
-        <!--
-        <li>
-          <RouterLink class="nav-link" to="/">
-            <span>游戏中心</span>
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink class="nav-link" to="/">
-            <span>直播</span>
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink class="nav-link" to="/">
-            <span>会员购</span>
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink class="nav-link" to="/">
-            <span>漫画</span>
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink class="nav-link" to="/">
-            <span>赛事</span>
-          </RouterLink>
-        </li>
-        <li>
-          <RouterLink class="nav-link" to="/">
-            <i class="iconfont ic-phone" />
-            <span>下载APP</span>
-          </RouterLink>
-        </li>
-        -->
       </ul>
       <ul class="header-right">
         <template v-if="isAuth">
@@ -107,12 +74,14 @@
         </template>
       </ul>
     </div>
+    <div id="sign-container" />
   </nav>
 </template>
 
 <script>
 import AppPopover from '@/components/app/AppPopover.vue'
 import { logout } from '@/api/signApi'
+import { headerPage } from '@/assets/js/qiankun'
 
 export default {
   name: 'AppHeader',
@@ -126,7 +95,9 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      subApp: []
+    }
   },
   computed: {
     hasBg() {
@@ -149,6 +120,12 @@ export default {
       // this.$channel.socketDisconnect()
       window.location = '/'
     }
+  },
+  mounted() {
+    this.subApp = headerPage()
+  },
+  beforeUnmount() {
+    this.subApp.forEach((item) => item.unmount())
   }
 }
 </script>

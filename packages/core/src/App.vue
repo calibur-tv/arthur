@@ -1,21 +1,18 @@
 <template>
   <AppHeader />
   <RouterView />
-  <SignDialog />
   <AppFooter />
 </template>
 
 <script>
 import AppHeader from '@/components/app/AppHeader.vue'
 import AppFooter from '@/components/app/AppFooter.vue'
-import SignDialog from '@/components/sign/SignDialog.vue'
 import useSign from '@/mixins/useSign'
 
 export default {
   components: {
     AppHeader,
-    AppFooter,
-    SignDialog
+    AppFooter
   },
   mixins: [useSign]
 }

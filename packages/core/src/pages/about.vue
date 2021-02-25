@@ -10,14 +10,14 @@ import { aboutPage } from '@/assets/js/qiankun'
 export default {
   data() {
     return {
-      app: null
+      subApp: []
     }
   },
   mounted() {
-    this.app = aboutPage()
+    this.subApp = aboutPage()
   },
   beforeUnmount() {
-    this.app.forEach((item) => item.unmount())
+    this.subApp.forEach((item) => item.unmount())
   }
 }
 </script>

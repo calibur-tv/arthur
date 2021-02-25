@@ -9082,7 +9082,6 @@ fsevents@~2.3.1:
   resolution: "other@workspace:packages/other"
   dependencies:
     "@vue/cli-service": ~4.5.0
-    "@vue/compiler-sfc": ^3.0.0
     cross-env: ^7.0.3
   languageName: unknown
   linkType: soft
@@ -11067,6 +11066,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"sign@workspace:packages/sign":
+  version: 0.0.0-use.local
+  resolution: "sign@workspace:packages/sign"
+  dependencies:
+    "@vue/cli-service": ~4.5.0
+    cross-env: ^7.0.3
+  languageName: unknown
+  linkType: soft
+
 "signal-exit@npm:^3.0.0, signal-exit@npm:^3.0.2":
   version: 3.0.3
   resolution: "signal-exit@npm:3.0.3"
@@ -11781,16 +11789,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"template@workspace:packages/template":
-  version: 0.0.0-use.local
-  resolution: "template@workspace:packages/template"
-  dependencies:
-    "@vue/cli-service": ~4.5.0
-    "@vue/compiler-sfc": ^3.0.0
-    cross-env: ^7.0.3
-  languageName: unknown
-  linkType: soft
-
 "terser-webpack-plugin@npm:^1.4.3":
   version: 1.4.5
   resolution: "terser-webpack-plugin@npm:1.4.5"
@@ -12267,7 +12265,6 @@ fsevents@~2.3.1:
   resolution: "uploader@workspace:packages/uploader"
   dependencies:
     "@vue/cli-service": ~4.5.0
-    "@vue/compiler-sfc": ^3.0.0
     cross-env: ^7.0.3
     filepond: ^4.25.1
     filepond-plugin-file-rename: ^1.1.6

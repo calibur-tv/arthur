@@ -12,14 +12,14 @@ import { homePage } from '@/assets/js/qiankun'
 export default {
   data() {
     return {
-      app: null
+      subApp: []
     }
   },
   mounted() {
-    this.app = homePage()
+    this.subApp = homePage()
   },
   beforeUnmount() {
-    this.app.forEach((item) => item.unmount())
+    this.subApp.forEach((item) => item.unmount())
   }
 }
 </script>

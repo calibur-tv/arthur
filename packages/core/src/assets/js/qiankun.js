@@ -2,6 +2,16 @@ import { loadMicroApp } from 'qiankun'
 
 const isDev = process.env.NODE_ENV === 'development'
 
+export const headerPage = () => {
+  const res1 = loadMicroApp({
+    name: 'sign',
+    entry: isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
+    container: '#sign-container'
+  })
+
+  return [res1]
+}
+
 export const aboutPage = () => {
   const res1 = loadMicroApp({
     name: 'vue-page-01',
@@ -14,7 +24,7 @@ export const aboutPage = () => {
 
 export const homePage = () => {
   const res1 = loadMicroApp({
-    name: 'vue-page-02',
+    name: 'uploader',
     entry: isDev ? '//localhost:7101' : 'https://web.calibur.tv/uploader',
     container: '#about-01'
   })

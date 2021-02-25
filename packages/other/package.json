@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
     "cross-env": "^7.0.3"
   },
   "browserslist": [
