@@ -161,7 +161,8 @@ $header-link-padding: 7px;
   position: relative;
   height: $app-header-hgt;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  font: 12px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+  font: 12px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei,
+    sans-serif;
   z-index: 99;
 
   li {

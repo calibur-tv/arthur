@@ -8,9 +8,6 @@
     "upload": "ossutil cp -r ./dist oss://calibur-arthur/other/ -f",
     "deploy": "npm run build && npm run upload"
   },
-  "dependencies": {
-    "vue": "^3.0.0"
-  },
   "devDependencies": {
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",

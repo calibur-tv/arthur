@@ -5,7 +5,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "yarn workspaces foreach -p run dev"
+    "dev": "yarn workspaces foreach -p run dev",
+    "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore . --fix"
   },
   "workspaces": [
     "packages/*"

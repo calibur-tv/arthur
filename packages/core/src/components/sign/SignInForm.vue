@@ -2,7 +2,12 @@
   <div class="sign-in-form">
     <form :loading="loading" :form="form" :rule="rule" :error="false">
       <input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" />
-      <input v-model="form.secret" type="password" placeholder="密码（6-16个字符组成，区分大小写）" @keydown.enter="submitForm" />
+      <input
+        v-model="form.secret"
+        type="password"
+        placeholder="密码（6-16个字符组成，区分大小写）"
+        @keydown.enter="submitForm"
+      />
       <!--
       <div class="opt-container">
         <ul class="provider">

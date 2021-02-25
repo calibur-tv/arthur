@@ -15,7 +15,13 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 import lang from 'filepond/locale/zh-cn.js'
 
 FilePond.setOptions(lang)
-FilePond.registerPlugin(FilePondPluginFileValidateSize, FilePondPluginFileValidateType, FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileRename)
+FilePond.registerPlugin(
+  FilePondPluginFileValidateSize,
+  FilePondPluginFileValidateType,
+  FilePondPluginImageExifOrientation,
+  FilePondPluginImagePreview,
+  FilePondPluginFileRename
+)
 
 const elRef = ref(null)
 
@@ -94,7 +100,8 @@ onMounted(() => {
 
   .filepond {
     &--root {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     }
   }
 

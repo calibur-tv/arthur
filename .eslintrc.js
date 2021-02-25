@@ -3,10 +3,11 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/prettier'],
   parserOptions: {
     parser: 'babel-eslint'
   },
+  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/prettier'],
+  plugins: ['prettier'],
   rules: {},
   globals: {
     $axios: true,
