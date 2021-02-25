@@ -1,38 +1,40 @@
 import axios from 'axios'
 import parseToken from '@/assets/js/parseToken'
 
-const isDev = process.env.NODE_ENV === 'development'
+const createApi = (BASE_URL) => {
+  const http = axios.create({
+    baseURL: BASE_URL,
+    timeout: 10000
+  })
 
-const http = axios.create({
-  baseURL: isDev ? 'http://localhost:9000/' : 'https://fc.calibur.tv/',
-  timeout: 10000
-})
+  http.interceptors.request.use(
+    (config) => {
+      const token = parseToken()
+      if (!token) {
+        return config
+      }
 
-http.interceptors.request.use(
-  (config) => {
-    const token = parseToken()
-    if (!token) {
+      config.headers.Authorization = `Bearer ${token}`
       return config
+    },
+    (error) => {
+      return Promise.reject(error)
     }
+  )
 
-    config.headers.Authorization = `Bearer ${token}`
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
-
-http.interceptors.response.use(
-  (response) => {
-    if (response.data.code) {
-      return Promise.reject(response.data)
+  http.interceptors.response.use(
+    (response) => {
+      if (response.data.code) {
+        return Promise.reject(response.data)
+      }
+      return response.data.data
+    },
+    (error) => {
+      return Promise.reject(error)
     }
-    return response.data.data
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
+  )
 
-export default http
+  return http
+}
+
+export default createApi

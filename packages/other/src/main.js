@@ -9,7 +9,7 @@ function render(props = {}) {
   // @ts-ignore
   const { container } = props
   instance = createApp(App)
-  instance.mount(container ? container.querySelector('#app') : '#app')
+  instance.mount(container ? container.querySelector('#sub-app') : '#sub-app')
 }
 
 // @ts-ignore
