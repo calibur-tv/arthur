@@ -79,8 +79,7 @@
 </template>
 
 <script>
-import AppPopover from '@/components/app/AppPopover.vue'
-import { logout } from '@/api/signApi'
+import AppPopover from '@/components/AppPopover.vue'
 import { headerPage } from '@/assets/js/qiankun'
 
 export default {
@@ -112,12 +111,11 @@ export default {
   },
   methods: {
     handleSignIn() {
-      this.$bus.emit('sign-in')
+      $bus.emit('sign-in')
     },
     handleLogout() {
-      logout(this)
-      this.$cookie.remove('JWT-TOKEN')
-      // this.$channel.socketDisconnect()
+      $api('sign.logout')
+      $cookie.remove('JWT-TOKEN')
       window.location = '/'
     }
   },

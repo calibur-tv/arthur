@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import AppHeader from '@/components/app/AppHeader.vue'
-import AppFooter from '@/components/app/AppFooter.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import AppFooter from '@/components/AppFooter.vue'
 import useSign from '@/mixins/useSign'
 
 export default {

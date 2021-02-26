@@ -10,7 +10,9 @@ module.exports = {
   plugins: ['prettier'],
   rules: {},
   globals: {
-    $axios: true,
-    BASE_URL: true
+    $api: true,
+    $bus: true,
+    $store: true,
+    $cookie: true
   }
 }

@@ -9,6 +9,7 @@ function render(props = {}) {
   // @ts-ignore
   const { container } = props
   instance = createApp(App)
+  instance.use($store)
   instance.mount(container ? container.querySelector('#sub-app') : '#sub-app')
 }
 

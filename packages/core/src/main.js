@@ -13,23 +13,21 @@ const isDev = process.env.NODE_ENV === 'development'
 const BASE_URL = isDev ? 'http://localhost:9000/' : 'https://fc.calibur.tv/'
 
 export const createApp = ViteSSG(
-  // the root component
   App,
-  // vue-router options
   {
     routes
   },
   ({ app, isClient }) => {
-    const axios = createApi(BASE_URL)
+    const api = createApi(BASE_URL)
+    const bus = mitt()
     app.use(store)
-    app.config.globalProperties.$bus = mitt()
-    app.config.globalProperties.$axios = axios
-    app.config.globalProperties.$cookie = Cookies
     app.config.globalProperties.$resize = imageResize
 
     if (isClient) {
-      window.$axios = axios
-      window.BASE_URL = BASE_URL
+      window.$bus = bus
+      window.$api = api
+      window.$store = store
+      window.$cookie = Cookies
     }
   }
 )

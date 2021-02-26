@@ -30,8 +30,6 @@
 </template>
 
 <script>
-import { login } from '@/api/signApi'
-
 export default {
   name: 'SignInForm',
   data() {
@@ -83,12 +81,12 @@ export default {
         return
       }
       this.loading = true
-      login(this, {
+      $api('sign.login', {
         access: this.form.access,
         secret: this.form.secret
       })
         .then((token) => {
-          this.$cookie.set('JWT-TOKEN', token, {
+          $cookie.set('JWT-TOKEN', token, {
             expires: 365
           })
           if (this.$route.query.redirect) {

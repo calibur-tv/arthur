@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import { sendMessage, resetPassword } from '@/api/signApi'
-
 export default {
   name: 'ResetPasswordForm',
   data() {
@@ -88,7 +86,7 @@ export default {
     async getResetAuthCode() {
       this.step = 1
       try {
-        await sendMessage(this, {
+        await $api('sendMessage', {
           type: 'forgot_password',
           phone_number: this.form.access
         })
@@ -123,7 +121,7 @@ export default {
     },
     async signReset() {
       try {
-        const res = await resetPassword(this, {
+        const res = await $api('resetPassword', {
           access: this.form.access,
           authCode: this.form.authCode,
           secret: this.form.secret

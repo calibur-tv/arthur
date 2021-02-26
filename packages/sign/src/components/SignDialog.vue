@@ -60,14 +60,14 @@ export default {
   },
   mounted() {
     this.canRender = true
-    this.$bus.on('sign-in', () => {
+    $bus.on('sign-in', () => {
       if (window.screen.width <= 768) {
         window.location.href = this.$alias.sign()
       } else {
         this.showLogin()
       }
     })
-    this.$bus.on('sign-up', () => {
+    $bus.on('sign-up', () => {
       this.showRegister()
     })
   },

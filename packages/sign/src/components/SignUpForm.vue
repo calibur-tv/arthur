@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import { sendMessage, register } from '@/api/signApi'
-
 export default {
   name: 'SignUpForm',
   props: {
@@ -181,7 +179,7 @@ export default {
     async getRegisterAuthCode() {
       this.step = 1
       try {
-        await sendMessage(this, {
+        await $api('sendMessage', {
           type: 'sign_up',
           phone_number: this.form.access
         })
@@ -217,14 +215,14 @@ export default {
       this.waitAuthModal = false
     },
     signUp() {
-      register(this, {
+      $api('register', {
         access: this.form.access,
         secret: this.form.secret,
         authCode: this.form.authCode,
         inviteCode: this.form.inviteCode
       })
         .then((token) => {
-          this.$cookie.set('JWT-TOKEN', token)
+          $cookie.set('JWT-TOKEN', token)
           this.$toast.success('注册成功！', () => {
             if (this.$route.query.redirect) {
               window.location = decodeURIComponent(this.$route.query.redirect)

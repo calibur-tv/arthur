@@ -30,7 +30,7 @@ onMounted(() => {
     allowMultiple: false,
     allowRevert: false
   })
-  $axios.get(`${BASE_URL}v1/desk/upload_token`).then((res) => {
+  $api('desk.token').then((res) => {
     const data = res.data
     pond.setOptions({
       fileRenameFunction: (file) => {

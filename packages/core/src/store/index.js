@@ -1,5 +1,4 @@
 import { createStore } from 'vuex'
-import { getLoginUser } from '@/api/signApi'
 
 export default createStore({
   state: () => ({
@@ -51,7 +50,7 @@ export default createStore({
       }
       try {
         commit('SET_LOGGING')
-        const user = await getLoginUser(this)
+        const user = await $api('sign.current')
         commit('SET_USER_INFO', user)
         return user
       } catch (e) {
@@ -63,12 +62,10 @@ export default createStore({
       if (state.roles || !state.user || !state.user.title.length) {
         return
       }
-      this.$axios
-        .$get('v1/user/roles')
-        .then((data) => {
-          commit('SET_USER_ROLE', data)
-        })
-        .catch(() => {})
+
+      $api('user.roles').then((data) => {
+        commit('SET_USER_ROLE', data)
+      })
     }
   },
   getters: {
