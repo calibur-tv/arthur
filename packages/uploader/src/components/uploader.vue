@@ -30,8 +30,7 @@ onMounted(() => {
     allowMultiple: false,
     allowRevert: false
   })
-  $api('desk.token').then((res) => {
-    const data = res.data
+  $api('desk.token').then((data) => {
     pond.setOptions({
       fileRenameFunction: (file) => {
         return `${Date.now()}-${Math.random()
