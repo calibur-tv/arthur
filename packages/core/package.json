@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite-ssg build --modern"
+    "build": "vite-ssg build --modern",
+    "upload": "ossutil cp -r ./dist oss://calibur-file/ -f",
+    "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
     "axios": "^0.21.1",

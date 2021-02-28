@@ -6,4 +6,5 @@ dist
 lib
 .vscode
 .DS_Store
+.vite-ssg-temp
 sw.*

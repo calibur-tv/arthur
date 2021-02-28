@@ -1,6 +1,6 @@
 <template>
   <div class="sign-up-form">
-    <form :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
+    <div class="v-form" :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
       <input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" auto-complete="off" />
       <input
         v-model="form.secret"
@@ -13,7 +13,7 @@
         {{ submitBtnText }}
         <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
       </button>
-    </form>
+    </div>
     <!--
     <div class="others">
       <ul class="provider">

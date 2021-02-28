@@ -1,13 +1,13 @@
 <template>
   <div class="reset-password-form">
-    <form :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
+    <div class="v-form" :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
       <input v-model="form.access" type="text" placeholder="手机号" auto-complete="off" />
       <input v-model="form.secret" type="text" placeholder="新密码" auto-complete="off" />
       <button type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block>
         {{ submitBtnText }}
         <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
       </button>
-    </form>
+    </div>
     <div class="others">
       <a @click="showLogin">返回登录></a>
       <a @click="showRegister">点击注册»</a>

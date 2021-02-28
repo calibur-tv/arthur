@@ -1,6 +1,6 @@
 <template>
   <div class="sign-in-form">
-    <form :loading="loading" :form="form" :rule="rule" :error="false">
+    <div class="v-form" :loading="loading" :form="form" :rule="rule" :error="false">
       <input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" />
       <input
         v-model="form.secret"
@@ -21,7 +21,7 @@
       </div>
       -->
       <button type="button" :loading="loading" @click="login">登录</button>
-    </form>
+    </div>
     <div class="others">
       <a @click="showReset">忘记密码?></a>
       <a @click="showRegister">点击注册»</a>
