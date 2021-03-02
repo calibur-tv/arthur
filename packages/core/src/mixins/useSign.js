@@ -1,8 +1,8 @@
 import parseToken from '@/assets/js/parseToken'
 
 export default {
-  async created() {
-    if (this.$isServer) {
+  async beforeMount() {
+    if (typeof window === 'undefined') {
       return
     }
 

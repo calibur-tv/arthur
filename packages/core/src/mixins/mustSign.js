@@ -1,6 +1,6 @@
 export default {
-  created() {
-    if (this.$isServer) {
+  beforeMount() {
+    if (typeof window === 'undefined') {
       return
     }
 

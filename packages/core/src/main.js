@@ -8,26 +8,22 @@ import Cookies from 'js-cookie'
 import store from '@/store'
 import createApi from '@/api'
 import imageResize from '@/assets/js/imageResize'
+import mfe from '@/mixins/mfe'
 
 const isDev = process.env.NODE_ENV === 'development'
 const BASE_URL = isDev ? 'http://localhost:9000/' : 'https://fc.calibur.tv/'
 
-export const createApp = ViteSSG(
-  App,
-  {
-    routes
-  },
-  ({ app, isClient }) => {
-    const api = createApi(BASE_URL)
-    const bus = mitt()
-    app.use(store)
-    app.config.globalProperties.$resize = imageResize
+export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
+  const api = createApi(BASE_URL)
+  const bus = mitt()
+  app.use(store)
+  app.mixin(mfe)
+  app.config.globalProperties.$resize = imageResize
 
-    if (isClient) {
-      window.$bus = bus
-      window.$api = api
-      window.$store = store
-      window.$cookie = Cookies
-    }
+  if (isClient) {
+    window.$bus = bus
+    window.$api = api
+    window.$store = store
+    window.$cookie = Cookies
   }
-)
+})

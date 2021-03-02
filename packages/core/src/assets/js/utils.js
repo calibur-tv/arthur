@@ -58,55 +58,6 @@ export const timeAgo = (time) => {
   return `${format[1]}-${format[2]} ${format[3]}:${format[4]}`
 }
 
-export const checkInView = (dom, preload = 1) => {
-  if (!dom) {
-    return false
-  }
-  const rect = dom.getBoundingClientRect()
-  return (
-    rect.top < window.innerHeight + preload &&
-    rect.bottom + preload > 0 &&
-    rect.left < window.innerWidth + preload &&
-    rect.right + preload > 0
-  )
-}
-
-export const on = (function() {
-  if (typeof window === 'undefined') {
-    return
-  }
-  if (document.addEventListener) {
-    return function(element, event, handler) {
-      if (element && event && handler) {
-        element.addEventListener(event, handler, false)
-      }
-    }
-  }
-  return function(element, event, handler) {
-    if (element && event && handler) {
-      element.attachEvent('on' + event, handler)
-    }
-  }
-})()
-
-export const off = (function() {
-  if (typeof window === 'undefined') {
-    return
-  }
-  if (document.removeEventListener) {
-    return function(element, event, handler) {
-      if (element && event) {
-        element.removeEventListener(event, handler, false)
-      }
-    }
-  }
-  return function(element, event, handler) {
-    if (element && event) {
-      element.detachEvent('on' + event, handler)
-    }
-  }
-})()
-
 export const isTouchDevice = () => 'ontouchstart' in document.documentElement
 
 export const pad = (number) => {

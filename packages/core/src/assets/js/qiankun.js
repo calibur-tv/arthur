@@ -2,38 +2,22 @@ import { loadMicroApp } from 'qiankun'
 
 const isDev = process.env.NODE_ENV === 'development'
 
-export const headerPage = () => {
-  const res1 = loadMicroApp({
-    name: 'sign',
-    entry: isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
-    container: '#sign-container'
+const loadSubApp = (name, port) => {
+  return loadMicroApp({
+    name,
+    entry: isDev ? `//localhost:${port}` : `https://web.calibur.tv/${name}`,
+    container: `#_${name}`
   })
-
-  return [res1]
 }
 
-export const aboutPage = () => {
-  const res1 = loadMicroApp({
-    name: 'vue-page-01',
-    entry: isDev ? '//localhost:7102' : 'https://web.calibur.tv/other',
-    container: '#vue-01'
-  })
-
-  return [res1]
+export const AppHeader = () => {
+  return [loadSubApp('sign', 7103)]
 }
 
-export const homePage = () => {
-  const res1 = loadMicroApp({
-    name: 'uploader',
-    entry: isDev ? '//localhost:7101' : 'https://web.calibur.tv/uploader',
-    container: '#about-01'
-  })
+export const AboutPage = () => {
+  return [loadSubApp('other', 7102)]
+}
 
-  const res2 = loadMicroApp({
-    name: 'vue-page-03',
-    entry: isDev ? '//localhost:7102' : 'https://web.calibur.tv/other',
-    container: '#about-02'
-  })
-
-  return [res1, res2]
+export const HomePage = () => {
+  return [loadSubApp('uploader', 7101), loadSubApp('other', 7102)]
 }

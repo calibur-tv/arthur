@@ -1,23 +1,11 @@
 <template>
   <div style="text-align: center">
-    <div id="vue-01">vue-01 loading...</div>
+    <div id="_other">vue-01 loading...</div>
   </div>
 </template>
 
 <script>
-import { aboutPage } from '@/assets/js/qiankun'
-
 export default {
-  data() {
-    return {
-      subApp: []
-    }
-  },
-  mounted() {
-    this.subApp = aboutPage()
-  },
-  beforeUnmount() {
-    this.subApp.forEach((item) => item.unmount())
-  }
+  name: 'AboutPage'
 }
 </script>

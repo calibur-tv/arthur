@@ -74,13 +74,12 @@
         </template>
       </ul>
     </div>
-    <div id="sign-container" />
+    <div id="_sign" />
   </nav>
 </template>
 
 <script>
 import AppPopover from '@/components/AppPopover.vue'
-import { headerPage } from '@/assets/js/qiankun'
 
 export default {
   name: 'AppHeader',
@@ -91,11 +90,6 @@ export default {
     background: {
       type: String,
       default: ''
-    }
-  },
-  data() {
-    return {
-      subApp: []
     }
   },
   computed: {
@@ -118,12 +112,6 @@ export default {
       $cookie.remove('JWT-TOKEN')
       window.location = '/'
     }
-  },
-  mounted() {
-    this.subApp = headerPage()
-  },
-  beforeUnmount() {
-    this.subApp.forEach((item) => item.unmount())
   }
 }
 </script>
