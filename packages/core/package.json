@@ -8,7 +8,9 @@
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
+    "ant-design-vue": "2.0.1",
     "axios": "^0.21.1",
+    "element-plus": "^1.0.2-beta.32",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "qiankun": "^2.4.0",
@@ -20,6 +22,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/server-renderer": "^3.0.5",
     "vite": "^2.0.1",
+    "vite-plugin-style-import": "^0.7.6",
     "vite-ssg": "^0.8.10"
   }
 }
