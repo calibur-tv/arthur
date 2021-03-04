@@ -17,7 +17,7 @@
     "filepond-plugin-image-preview": "^4.6.5"
   },
   "devDependencies": {
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-service": "~4.5.11",
     "cross-env": "^7.0.3"
   },
   "browserslist": [

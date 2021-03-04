@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite-ssg build --modern",
+    "build": "vite-ssg build",
     "upload": "ossutil cp -r ./dist oss://calibur-file/ -f",
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
+    "@vueuse/head": "^0.3.1",
     "ant-design-vue": "2.0.1",
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.33",
@@ -18,11 +19,11 @@
     "vuex": "4.0.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.1.4",
-    "@vue/compiler-sfc": "^3.0.5",
-    "@vue/server-renderer": "^3.0.5",
-    "vite": "^2.0.1",
+    "@vitejs/plugin-vue": "^1.1.5",
+    "@vue/compiler-sfc": "^3.0.7",
+    "@vue/server-renderer": "^3.0.7",
+    "vite": "^2.0.5",
     "vite-plugin-style-import": "^0.7.6",
-    "vite-ssg": "^0.8.10"
+    "vite-ssg": "^0.8.12"
   }
 }

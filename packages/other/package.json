@@ -9,7 +9,7 @@
     "deploy": "npm run build && npm run upload"
   },
   "devDependencies": {
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-service": "~4.5.11",
     "cross-env": "^7.0.3"
   },
   "browserslist": [
