@@ -13,6 +13,10 @@ module.exports = {
     $api: true,
     $bus: true,
     $store: true,
-    $cookie: true
+    $cookie: true,
+    $toast: true,
+    $prompt: true,
+    $alert: true,
+    $confirm: true
   }
 }

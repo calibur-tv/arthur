@@ -21,9 +21,11 @@ const getCallFunc = (keys) => {
   return result
 }
 
-const createApi = (BASE_URL) => {
+const isDev = process.env.NODE_ENV === 'development'
+
+const createApi = () => {
   const http = axios.create({
-    baseURL: BASE_URL,
+    baseURL: isDev ? 'http://localhost:9000/' : 'https://fc.calibur.tv/',
     timeout: 10000
   })
 

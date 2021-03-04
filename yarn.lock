@@ -4328,7 +4328,7 @@ __metadata:
     "@vue/server-renderer": ^3.0.5
     ant-design-vue: 2.0.1
     axios: ^0.21.1
-    element-plus: ^1.0.2-beta.32
+    element-plus: ^1.0.2-beta.33
     js-cookie: ^2.2.1
     normalize.css: ^8.0.1
     qiankun: ^2.4.0
@@ -5180,9 +5180,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"element-plus@npm:^1.0.2-beta.32":
-  version: 1.0.2-beta.32
-  resolution: "element-plus@npm:1.0.2-beta.32"
+"element-plus@npm:^1.0.2-beta.33":
+  version: 1.0.2-beta.33
+  resolution: "element-plus@npm:1.0.2-beta.33"
   dependencies:
     "@popperjs/core": ^2.4.4
     async-validator: ^3.4.0
@@ -5192,8 +5192,8 @@ __metadata:
     normalize-wheel: ^1.0.1
     resize-observer-polyfill: ^1.5.1
   peerDependencies:
-    vue: ^3.0.5
-  checksum: 86bc3a20248ac1cb6673e2c3c7422ad6cb7bb21b8f9528eafe5d63f98ab18d5bd5629bf559c7a0528a8e0a70036ba0aa46531ef258d76894c4faf2e932cf7459
+    vue: ^3.0.7
+  checksum: 3c795a67a2a42ecc6fa994ffb4d30f72d664c13686a1f6139a939f4afb7d0f6d7462854268a4d05873d6d8761eb51ed33b618f11b5504c98847efdce856f7a07
   languageName: node
   linkType: hard
 

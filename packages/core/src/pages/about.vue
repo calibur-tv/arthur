@@ -1,7 +1,5 @@
 <template>
-  <div style="text-align: center">
-    <div id="_other">vue-01 loading...</div>
-  </div>
+  <p>about page</p>
 </template>
 
 <script>

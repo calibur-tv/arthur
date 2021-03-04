@@ -41,31 +41,31 @@
               </template>
             </AppPopover>
           </li>
-          <li>
-            <RouterLink class="nav-link" to="/">
-              <span>大会员</span>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink class="nav-link" to="/">
-              <span>消息</span>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink class="nav-link" to="/">
-              <span>动态</span>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink class="nav-link" to="/">
-              <span>稍后在看</span>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink class="nav-link" to="/">
-              <span>收藏</span>
-            </RouterLink>
-          </li>
+          <!--          <li>-->
+          <!--            <RouterLink class="nav-link" to="/">-->
+          <!--              <span>大会员</span>-->
+          <!--            </RouterLink>-->
+          <!--          </li>-->
+          <!--          <li>-->
+          <!--            <RouterLink class="nav-link" to="/">-->
+          <!--              <span>消息</span>-->
+          <!--            </RouterLink>-->
+          <!--          </li>-->
+          <!--          <li>-->
+          <!--            <RouterLink class="nav-link" to="/">-->
+          <!--              <span>动态</span>-->
+          <!--            </RouterLink>-->
+          <!--          </li>-->
+          <!--          <li>-->
+          <!--            <RouterLink class="nav-link" to="/">-->
+          <!--              <span>稍后在看</span>-->
+          <!--            </RouterLink>-->
+          <!--          </li>-->
+          <!--          <li>-->
+          <!--            <RouterLink class="nav-link" to="/">-->
+          <!--              <span>收藏</span>-->
+          <!--            </RouterLink>-->
+          <!--          </li>-->
         </template>
         <template v-else>
           <li>
@@ -74,12 +74,11 @@
         </template>
       </ul>
     </div>
-    <div id="_sign" />
   </nav>
 </template>
 
 <script>
-import AppPopover from '@/components/AppPopover.vue'
+import AppPopover from '@/components/app/AppPopover.vue'
 
 export default {
   name: 'AppHeader',
