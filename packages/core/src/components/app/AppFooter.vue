@@ -4,19 +4,19 @@
       <div class="text-con">
         <p>
           <span
-            >互联网ICP备案：<a class="fade-link" href="http://beian.miit.gov.cn/" target="_blank"
+            >互联网ICP备案：<a href="http://beian.miit.gov.cn/" target="_blank"
               >沪ICP备17050785号-1</a
             ></span
           >
         </p>
-        <p>违法不良信息举报邮箱：<a class="fade-link" href="mailto:im_bai@163.com">im_bai@163.com</a></p>
+        <p>违法不良信息举报邮箱：<a href="mailto:im_bai@163.com">im_bai@163.com</a></p>
         <p>
-          <a class="fade-link" href="http://www.shjbzx.cn" target="_blank">上海互联网举报中心</a>&nbsp;|
-          <a class="fade-link" href="http://jbts.mct.gov.cn/" target="_blank">12318全国文化市场举报网站</a>&nbsp;|
-          <a class="fade-link" href="mailto:userreport@bilibili.com">儿童色情信息举报专区</a>
+          <a href="http://www.shjbzx.cn" target="_blank">上海互联网举报中心</a>&nbsp;|
+          <a href="http://jbts.mct.gov.cn/" target="_blank">12318全国文化市场举报网站</a>&nbsp;|
+          <a href="mailto:userreport@bilibili.com">儿童色情信息举报专区</a>
         </p>
         <p>
-          网上有害信息举报专区：<a class="fade-link" href="https://www.12377.cn/" target="_blank"
+          网上有害信息举报专区：<a href="https://www.12377.cn/" target="_blank"
             >中国互联网违法和不良信息举报中心</a
           >
         </p>
@@ -56,6 +56,10 @@ export default {
     font-size: 12px;
     line-height: 24px;
     margin-top: 15px;
+
+    p {
+      margin-bottom: 0;
+    }
   }
 }
 </style>
