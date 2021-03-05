@@ -1,21 +1,18 @@
 <template>
   <div class="sign-in-form">
-    <AForm :loading="loading" :model="form" :rules="rule">
-      <div class="form-item">
-        <AInput v-model:value="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）">
-          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
-      <div class="form-item">
-        <AInput
-          v-model:value="form.secret"
+    <el-form :disabled="loading" :model="form" :rules="rule">
+      <el-form-item>
+        <el-input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）"> </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input
+          v-model="form.secret"
           type="password"
           placeholder="密码（6-16个字符组成，区分大小写）"
           @keydown.enter="login"
         >
-          <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
+        </el-input>
+      </el-form-item>
       <!--
       <div class="opt-container">
         <ul class="provider">
@@ -28,10 +25,12 @@
         </ul>
       </div>
       -->
-      <div class="form-item">
-        <AButton block html-type="button" :loading="loading" @click="login">登录</AButton>
-      </div>
-    </AForm>
+      <el-form-item>
+        <el-button type="primary" class="block-btn" native-type="button" :loading="loading" @click="login"
+          >登录</el-button
+        >
+      </el-form-item>
+    </el-form>
     <div class="others">
       <a @click="showReset">忘记密码?></a>
       <a @click="showRegister">点击注册»</a>
@@ -40,14 +39,8 @@
 </template>
 
 <script>
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
-
 export default {
   name: 'SignInForm',
-  components: {
-    UserOutlined,
-    LockOutlined
-  },
   data() {
     const validateAccess = (rule, value, callback) => {
       if (!value) {

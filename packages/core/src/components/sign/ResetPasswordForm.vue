@@ -1,23 +1,25 @@
 <template>
   <div class="reset-password-form">
-    <AForm :loading="submitBtnLoading" :model="form" :rules="rule" @submit="submitForm">
-      <div class="form-item">
-        <AInput v-model:value="form.access" type="text" placeholder="手机号" auto-complete="off">
-          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
-      <div class="form-item">
-        <AInput v-model:value="form.secret" type="text" placeholder="新密码" auto-complete="off">
-          <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
-      <div class="form-item">
-        <AButton block html-type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled">
+    <el-form :disabled="submitBtnLoading" :model="form" :rules="rule" @submit="submitForm">
+      <el-form-item>
+        <el-input v-model="form.access" type="text" placeholder="手机号" auto-complete="off"> </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input v-model="form.secret" type="text" placeholder="新密码" auto-complete="off"> </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          type="primary"
+          class="block-btn"
+          native-type="button"
+          :loading="submitBtnLoading"
+          :disabled="submitBtnDisabled"
+        >
           {{ submitBtnText }}
           <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
-        </AButton>
-      </div>
-    </AForm>
+        </el-button>
+      </el-form-item>
+    </el-form>
     <div class="others">
       <a @click="showLogin">返回登录></a>
       <a @click="showRegister">点击注册»</a>
@@ -26,14 +28,8 @@
 </template>
 
 <script>
-import { UserOutlined, LockOutlined } from '@ant-design/icons-vue'
-
 export default {
   name: 'ResetPasswordForm',
-  components: {
-    UserOutlined,
-    LockOutlined
-  },
   data() {
     const validateAccess = (rule, value, callback) => {
       if (!value) {

@@ -1,45 +1,47 @@
 <template>
   <div class="sign-up-form">
-    <AForm :loading="submitBtnLoading" :model="form" :rules="rule" @submit="submitForm">
-      <div class="form-item">
-        <AInput
-          v-model:value="form.access"
-          type="text"
-          placeholder="手机（填写常用手机号，用于登录）"
-          auto-complete="off"
-        >
-          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
-      <div class="form-item">
-        <AInput
-          v-model:value="form.secret"
+    <el-form :disabled="submitBtnLoading" :model="form" :rules="rule" @submit="submitForm">
+      <el-form-item>
+        <el-input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" auto-complete="off">
+        </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-input
+          v-model="form.secret"
           type="password"
           placeholder="密码（6-16个字符组成，区分大小写）"
           auto-complete="off"
         >
-          <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
-      <div class="form-item">
-        <AInput
-          v-model:value="form.inviteCode"
+        </el-input>
+      </el-form-item>
+      <!--
+      <el-form-item>
+        <el-input
+          v-model="form.inviteCode"
           :disabled="!!inviteCode"
           placeholder="邀请码（可不填）"
           auto-complete="off"
         >
-          <template #prefix><PayCircleOutlined style="color: rgba(0, 0, 0, 0.25)"/></template>
-        </AInput>
-      </div>
-      <div class="form-item">
-        <AButton html-type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block @click="submitForm">
+        </el-input>
+      </el-form-item>
+      -->
+      <el-form-item>
+        <el-button
+          type="primary"
+          class="block-btn"
+          native-type="button"
+          :loading="submitBtnLoading"
+          :disabled="submitBtnDisabled"
+          @click="submitForm"
+        >
           {{ submitBtnText }}
           <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
-        </AButton>
-      </div>
-    </AForm>
+        </el-button>
+      </el-form-item>
+    </el-form>
     <div class="others">
       <ul class="provider">
+        <!--
         <span>社交账号注册</span>
         <li @click="qqRegisterLink">
           <i class="iconfont ic-qq" />
@@ -47,6 +49,7 @@
         <li @click="wechatRegisterLink">
           <i class="iconfont ic-v-chat" />
         </li>
+        -->
       </ul>
       <a @click="showLogin">已有账号»</a>
     </div>
@@ -54,15 +57,8 @@
 </template>
 
 <script>
-import { UserOutlined, LockOutlined, PayCircleOutlined } from '@ant-design/icons-vue'
-
 export default {
   name: 'SignUpForm',
-  components: {
-    UserOutlined,
-    LockOutlined,
-    PayCircleOutlined
-  },
   props: {
     inviteCode: {
       type: [String, Number],

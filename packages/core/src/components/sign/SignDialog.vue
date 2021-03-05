@@ -183,14 +183,11 @@ $input-height: 40px;
     background-image: url('https://m1.calibur.tv/logo.png');
     background-size: cover;
     flex-shrink: 0;
+    margin-bottom: 10px;
   }
 
-  .ant-form {
+  .block-btn {
     width: 100%;
-  }
-
-  .form-item {
-    margin-top: 15px;
   }
 }
 </style>
