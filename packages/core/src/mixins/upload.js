@@ -11,6 +11,9 @@ export default {
   computed: {
     isAuth() {
       return this.$store.state.isAuth
+    },
+    folderId() {
+      return this.$store.state.desk.folderId
     }
   },
   mounted() {
@@ -46,8 +49,23 @@ export default {
     handleUploadError(err, file) {
       $toast.error(`${file.name} 上传失败`)
     },
-    handleUploadSuccess(res) {
-      console.log(res)
+    handleUploadSuccess(res, file) {
+      if (res.code !== 0) {
+        this.handleUploadError(res.data, file)
+        return
+      }
+
+      if (!res.data) {
+        return
+      }
+
+      $api('desk.moveFile', {
+        folder_id: this.folderId,
+        file_id: res.data.id,
+        name: file.data.name
+      }).then((item) => {
+        $bus.emit('fileUploadSuccess', item)
+      })
     },
     handleUploadBefore(file) {
       if (file.size > 2147483648) {

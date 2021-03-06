@@ -1,10 +1,10 @@
 <template>
   <div class="reset-password-form">
-    <el-form :disabled="submitBtnLoading" :model="form" :rules="rule" @submit="submitForm">
-      <el-form-item>
+    <el-form ref="form" :disabled="submitBtnLoading" :model="form" :rules="rule">
+      <el-form-item prop="access">
         <el-input v-model="form.access" type="text" placeholder="手机号" auto-complete="off"> </el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="secret">
         <el-input v-model="form.secret" type="text" placeholder="新密码" auto-complete="off"> </el-input>
       </el-form-item>
       <el-form-item>
@@ -14,6 +14,7 @@
           native-type="button"
           :loading="submitBtnLoading"
           :disabled="submitBtnDisabled"
+          @click="submitForm"
         >
           {{ submitBtnText }}
           <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
@@ -59,8 +60,8 @@ export default {
         authCode: ''
       },
       rule: {
-        access: [{ validator: validateAccess, trigger: 'blur' }],
-        secret: [{ validator: validateSecret, trigger: 'blur' }]
+        access: [{ validator: validateAccess }],
+        secret: [{ validator: validateSecret }]
       },
       step: 0,
       timeout: 0
@@ -88,12 +89,16 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.step === 0) {
-        this.getResetAuthCode()
-      }
-      if (this.step === 2) {
-        this.openConfirmModal()
-      }
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          if (this.step === 0) {
+            this.getResetAuthCode()
+          }
+          if (this.step === 2) {
+            this.openConfirmModal()
+          }
+        }
+      })
     },
     async getResetAuthCode() {
       this.step = 1
@@ -105,7 +110,7 @@ export default {
         this.step = 2
         this.openConfirmModal()
       } catch (err) {
-        this.$toast.error(err.message)
+        $toast.error(err.message)
         this.step = 0
       } finally {
         this.timeout = 60
@@ -138,10 +143,10 @@ export default {
           authCode: this.form.authCode,
           secret: this.form.secret
         })
-        this.$toast.success(res)
+        $toast.success(res)
         this.showLogin()
       } catch (err) {
-        this.$toast.error(err.message)
+        $toast.error(err.message)
       } finally {
         this.step = 0
       }

@@ -59,7 +59,7 @@ const createApi = () => {
   return (name, data, config) => {
     const func = getCallFunc(name)
     if (!func) {
-      throw new Error(`路由 ${name} 未注册`)
+      throw new Error(`接口 ${name} 未注册`)
     }
     return func(http, data, config)
   }

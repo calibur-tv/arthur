@@ -1,10 +1,10 @@
 <template>
   <div class="sign-in-form">
-    <el-form :disabled="loading" :model="form" :rules="rule">
-      <el-form-item>
+    <el-form ref="form" :disabled="loading" :model="form" :rules="rule">
+      <el-form-item prop="access">
         <el-input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）"> </el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="secret">
         <el-input
           v-model="form.secret"
           type="password"
@@ -86,28 +86,29 @@ export default {
       return this.$route.query.redirect ? this.$route.query.redirect : encodeURIComponent(window.location.href)
     },
     login() {
-      if (this.loading) {
-        return
-      }
-      this.loading = true
-      $api('sign.login', {
-        access: this.form.access,
-        secret: this.form.secret
-      })
-        .then((token) => {
-          $cookie.set('JWT-TOKEN', token, {
-            expires: 365
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.loading = true
+          $api('sign.login', {
+            access: this.form.access,
+            secret: this.form.secret
           })
-          if (this.$route.query.redirect) {
-            window.location = decodeURIComponent(this.$route.query.redirect)
-          } else {
-            window.location.reload()
-          }
-        })
-        .catch((err) => {
-          $toast.info(err.message)
-          this.loading = false
-        })
+            .then((token) => {
+              $cookie.set('JWT-TOKEN', token, {
+                expires: 365
+              })
+              if (this.$route.query.redirect) {
+                window.location = decodeURIComponent(this.$route.query.redirect)
+              } else {
+                window.location.reload()
+              }
+            })
+            .catch((err) => {
+              $toast.info(err.message)
+              this.loading = false
+            })
+        }
+      })
     },
     showReset() {
       this.$emit('to-reset')

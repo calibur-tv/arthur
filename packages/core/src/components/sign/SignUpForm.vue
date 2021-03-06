@@ -1,11 +1,11 @@
 <template>
   <div class="sign-up-form">
-    <el-form :disabled="submitBtnLoading" :model="form" :rules="rule" @submit="submitForm">
-      <el-form-item>
+    <el-form ref="form" :disabled="submitBtnLoading" :model="form" :rules="rule">
+      <el-form-item prop="access">
         <el-input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" auto-complete="off">
         </el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item prop="secret">
         <el-input
           v-model="form.secret"
           type="password"
@@ -181,12 +181,16 @@ export default {
       return this.$route.query.redirect ? this.$route.query.redirect : encodeURIComponent(window.location.href)
     },
     submitForm() {
-      if (this.step === 0) {
-        this.getRegisterAuthCode()
-      }
-      if (this.step === 2) {
-        this.openConfirmModal()
-      }
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          if (this.step === 0) {
+            this.getRegisterAuthCode()
+          }
+          if (this.step === 2) {
+            this.openConfirmModal()
+          }
+        }
+      })
     },
     async getRegisterAuthCode() {
       this.step = 1
@@ -232,7 +236,7 @@ export default {
       })
         .then((token) => {
           $cookie.set('JWT-TOKEN', token)
-          this.$toast.success('注册成功！', () => {
+          $toast.success('注册成功！', () => {
             if (this.$route.query.redirect) {
               window.location = decodeURIComponent(this.$route.query.redirect)
             } else {

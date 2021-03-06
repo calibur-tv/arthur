@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import desk from './desk'
 
 export default createStore({
   state: () => ({
@@ -73,5 +74,7 @@ export default createStore({
     isAdmin: (state) => (state.isAuth ? state.user.is_admin : false),
     hasRole: (state) => (role) => (state.user.is_admin ? true : state.roles ? ~state.roles.indexOf(role) : false)
   },
-  modules: {}
+  modules: {
+    desk
+  }
 })
