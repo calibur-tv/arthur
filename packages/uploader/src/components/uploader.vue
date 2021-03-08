@@ -33,9 +33,7 @@ onMounted(() => {
   $api('desk.token').then((data) => {
     pond.setOptions({
       fileRenameFunction: (file) => {
-        return `${Date.now()}-${Math.random()
-          .toString(36)
-          .substring(3, 6)}${file.extension}`
+        return `${Date.now()}-${Math.random().toString(36).substring(3, 6)}${file.extension}`
       },
       server: {
         process: (fieldName, file, metadata, load, error, progress, abort) => {
@@ -63,7 +61,7 @@ onMounted(() => {
           // Should call the load method when done and pass the returned server file id
           // this server file id is then used later on when reverting or restoring a file
           // so your server knows which file to return without exposing that info to the client
-          request.onload = function() {
+          request.onload = function () {
             if (request.status >= 200 && request.status < 300) {
               // the load method accepts either a string (id) or an object
               load(request.responseText)

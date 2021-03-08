@@ -12,9 +12,7 @@ export const convertTA = (sex = -1, isMine = false) => {
 }
 
 export const randomStr = () => {
-  return `${Date.now()}-${Math.random()
-    .toString(36)
-    .substring(3, 6)}`
+  return `${Date.now()}-${Math.random().toString(36).substring(3, 6)}`
 }
 
 export const adjustDate = (time) => {

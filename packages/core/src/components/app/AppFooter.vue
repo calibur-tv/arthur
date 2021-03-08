@@ -3,11 +3,7 @@
     <div class="v-layout">
       <div class="text-con">
         <p>
-          <span
-            >互联网ICP备案：<a href="http://beian.miit.gov.cn/" target="_blank"
-              >沪ICP备17050785号-1</a
-            ></span
-          >
+          <span>互联网ICP备案：<a href="http://beian.miit.gov.cn/" target="_blank">沪ICP备17050785号-1</a></span>
         </p>
         <p>违法不良信息举报邮箱：<a href="mailto:im_bai@163.com">im_bai@163.com</a></p>
         <p>
@@ -16,9 +12,7 @@
           <a href="mailto:userreport@bilibili.com">儿童色情信息举报专区</a>
         </p>
         <p>
-          网上有害信息举报专区：<a href="https://www.12377.cn/" target="_blank"
-            >中国互联网违法和不良信息举报中心</a
-          >
+          网上有害信息举报专区：<a href="https://www.12377.cn/" target="_blank">中国互联网违法和不良信息举报中心</a>
         </p>
         <p>公司名称：上海十六夜网络科技有限公司&nbsp;|&nbsp;公司地址：浦东新区 万祥镇宏祥北路83弄1-42号</p>
       </div>

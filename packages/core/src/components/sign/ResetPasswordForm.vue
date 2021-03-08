@@ -123,7 +123,7 @@ export default {
       }
     },
     openConfirmModal() {
-      this.$prompt('请输入收到的验证码', '短信已发送', {
+      $prompt('请输入收到的验证码', '短信已发送', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         inputPattern: /^\d{6}$/,
