@@ -1,8 +1,7 @@
 <template>
   <div class="desk-uploader">
-    <el-button v-if="closingDrawer" size="small" type="primary">点击上传</el-button>
     <el-upload
-      v-else
+      ref="uploader"
       :action="uploadAction"
       :accept="uploadAccept"
       :data="uploadExtras"
@@ -52,7 +51,6 @@ export default {
   data() {
     return {
       openProgressDrawer: false,
-      closingDrawer: false,
       pendingFiles: []
     }
   },
@@ -93,7 +91,12 @@ export default {
       return true
     },
     removeFile(file) {
-      console.log(file)
+      this.$refs.uploader.uploadRef.abort(file)
+      this.pendingFiles.forEach((item, index) => {
+        if (item.uid === file.uid) {
+          this.pendingFiles.splice(index, 1)
+        }
+      })
     },
     handleProgress(event, file, fileList) {
       this.openProgressDrawer = true
@@ -101,10 +104,7 @@ export default {
     },
     clearPendingList(done) {
       this.pendingFiles = []
-      this.closingDrawer = true
-      this.$nextTick(() => {
-        this.closingDrawer = false
-      })
+      this.$refs.uploader.clearFiles()
       done()
     }
   }
