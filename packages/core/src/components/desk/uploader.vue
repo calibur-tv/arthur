@@ -1,13 +1,14 @@
 <template>
   <div class="desk-uploader">
+    <el-button v-if="closingDrawer" size="small" type="primary">点击上传</el-button>
     <el-upload
+      v-else
       :action="uploadAction"
       :accept="uploadAccept"
       :data="uploadExtras"
       :http-request="uploadRequest"
       :on-error="handleError"
       :on-success="handleSuccess"
-      :on-remove="handleRemove"
       :on-progress="handleProgress"
       :before-upload="handleBefore"
       :show-file-list="false"
@@ -15,6 +16,27 @@
     >
       <el-button size="small" type="primary">点击上传</el-button>
     </el-upload>
+    <el-drawer
+      title="我是标题"
+      v-model="openProgressDrawer"
+      direction="rtl"
+      :append-to-body="true"
+      :before-close="clearPendingList"
+    >
+      <li v-for="item in pendingFiles">
+        <i class="el-icon-document" />
+        <span v-text="item.name" />
+        <template v-if="item.status === 'uploading'">
+          <el-progress
+            :percentage="item.percentage"
+            :stroke-width="2"
+          />
+          <span @click="removeFile(item)">
+            <i class="el-icon-delete" />
+          </span>
+        </template>
+      </li>
+    </el-drawer>
   </div>
 </template>
 
@@ -28,7 +50,11 @@ export default {
   props: {},
   mixins: [upload],
   data() {
-    return {}
+    return {
+      openProgressDrawer: false,
+      closingDrawer: false,
+      pendingFiles: []
+    }
   },
   computed: {
     uploadRequest() {
@@ -51,14 +77,10 @@ export default {
         return
       }
 
-      if (!res.data) {
-        return
-      }
-
       $api('desk.moveFile', {
         folder_id: this.folderId,
         file_id: res.data.id,
-        name: file.data.name
+        name: file.name
       }).then((item) => {
         $bus.emit('fileUploadSuccess', item)
       })
@@ -70,14 +92,20 @@ export default {
       }
       return true
     },
-    handleRemove(file, fileList) {
+    removeFile(file) {
       console.log(file)
-      console.log(fileList)
     },
     handleProgress(event, file, fileList) {
-      console.log(event)
-      console.log(file)
-      console.log(fileList)
+      this.openProgressDrawer = true
+      this.pendingFiles = fileList
+    },
+    clearPendingList(done) {
+      this.pendingFiles = []
+      this.closingDrawer = true
+      this.$nextTick(() => {
+        this.closingDrawer = false
+      })
+      done()
     }
   }
 }
