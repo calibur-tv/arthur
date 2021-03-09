@@ -13,7 +13,7 @@
       :show-file-list="false"
       multiple
     >
-      <el-button size="small" type="primary">点击上传</el-button>
+      <el-button size="small" type="primary" icon="el-icon-upload">点击上传</el-button>
     </el-upload>
     <el-drawer
       title="我是标题"
@@ -22,14 +22,11 @@
       :append-to-body="true"
       :before-close="clearPendingList"
     >
-      <li v-for="item in pendingFiles">
+      <li v-for="item in pendingFiles" :key="item.uid">
         <i class="el-icon-document" />
         <span v-text="item.name" />
         <template v-if="item.status === 'uploading'">
-          <el-progress
-            :percentage="item.percentage"
-            :stroke-width="2"
-          />
+          <el-progress :percentage="item.percentage" :stroke-width="2" />
           <span @click="removeFile(item)">
             <i class="el-icon-delete" />
           </span>
