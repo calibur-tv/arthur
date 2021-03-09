@@ -111,6 +111,10 @@ export default {
         .catch(() => {})
     },
     updateFolder(folder_id, index) {
+      if (folder_id <= 0) {
+        $toast.info('不能修改默认文件夹')
+        return
+      }
       $prompt('请输入文件夹名称', '重命名文件夹', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
