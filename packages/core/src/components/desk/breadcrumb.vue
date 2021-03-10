@@ -1,10 +1,10 @@
 <template>
   <el-breadcrumb class="desk-breadcrumb" separator-class="el-icon-arrow-right">
     <el-breadcrumb-item v-if="selected">
-      <span @click="handleClick">返回上一级</span>
+      <span class="fade-link" @click="handleClick">返回上一级</span>
     </el-breadcrumb-item>
     <el-breadcrumb-item>
-      <span @click="handleClick">全部文件</span>
+      <span :class="{ 'fade-link': selected }" @click="handleClick">全部文件</span>
     </el-breadcrumb-item>
     <el-breadcrumb-item v-if="selected">
       <span v-text="selected.name" />
@@ -53,6 +53,18 @@ export default {
 
 <style lang="scss">
 .desk-breadcrumb {
-  margin-bottom: 5px;
+  margin-bottom: 7px;
+  padding: 0 10px;
+  font-size: 12px;
+  color: #666;
+
+  i {
+    vertical-align: middle !important;
+  }
+
+  .fade-link {
+    color: #303133;
+    font-weight: 700;
+  }
 }
 </style>

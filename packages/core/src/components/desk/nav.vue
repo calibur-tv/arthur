@@ -1,7 +1,9 @@
 <template>
   <div class="desk-nav">
     <desk-uploader />
-    <el-button size="small" icon="el-icon-folder-add" @click="createFolder">新建文件夹</el-button>
+    <el-button v-if="folderId === -1" size="small" icon="el-icon-folder-add" @click="createFolder">
+      新建文件夹
+    </el-button>
   </div>
 </template>
 
@@ -17,7 +19,11 @@ export default {
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    folderId() {
+      return this.$store.state.desk.folderId
+    }
+  },
   watch: {},
   created() {},
   mounted() {},
@@ -53,7 +59,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 14px 0;
+  padding: 14px 10px;
 
   > * {
     margin-right: 10px;

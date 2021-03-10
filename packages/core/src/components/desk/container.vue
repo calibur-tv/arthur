@@ -87,8 +87,6 @@ export default {
 .desk-container {
   width: 800px;
   height: 500px;
-  background-color: #fafafa;
-  border-radius: 10px;
-  padding: 0 10px;
+  border: 1px solid black;
 }
 </style>
