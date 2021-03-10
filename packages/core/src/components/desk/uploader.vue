@@ -72,13 +72,15 @@ export default {
         return
       }
 
-      $api('desk.moveFile', {
-        folder_id: this.folderId,
-        file_id: res.data.id,
-        name: file.name
-      }).then((item) => {
-        $bus.emit('fileUploadSuccess', item)
-      })
+      $api.desk
+        .moveFile({
+          folder_id: this.folderId,
+          file_id: res.data.id,
+          name: file.name
+        })
+        .then((item) => {
+          $bus.emit('fileUploadSuccess', item)
+        })
     },
     handleBefore(file) {
       if (file.size > 2147483648) {

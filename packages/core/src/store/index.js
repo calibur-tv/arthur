@@ -1,4 +1,6 @@
 import { createStore } from 'vuex'
+import { ListStore } from '@flowlist/vue-listview'
+import * as api from '../api/flow'
 import desk from './desk'
 
 export default createStore({
@@ -51,7 +53,7 @@ export default createStore({
       }
       try {
         commit('SET_LOGGING')
-        const user = await $api('sign.current')
+        const user = await $api.sign.current()
         commit('SET_USER_INFO', user)
         return user
       } catch (e) {
@@ -60,13 +62,14 @@ export default createStore({
       }
     },
     getUserRoles({ state, commit }) {
-      if (state.roles || !state.user || !state.user.title.length) {
-        return
-      }
-
-      $api('user.roles').then((data) => {
-        commit('SET_USER_ROLE', data)
-      })
+      console.log(state, commit)
+      // if (state.roles || !state.user || !state.user.title.length) {
+      //   return
+      // }
+      //
+      // $api.user.roles().then((data) => {
+      //   commit('SET_USER_ROLE', data)
+      // })
     }
   },
   getters: {
@@ -75,6 +78,7 @@ export default createStore({
     hasRole: (state) => (role) => (state.user.is_admin ? true : state.roles ? ~state.roles.indexOf(role) : false)
   },
   modules: {
-    desk
+    desk,
+    list: ListStore({ api })
   }
 })

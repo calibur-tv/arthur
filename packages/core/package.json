@@ -8,6 +8,7 @@
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
+    "@flowlist/vue-listview": "^3.0.3",
     "@vueuse/head": "^0.3.1",
     "ant-design-vue": "2.0.1",
     "axios": "^0.21.1",

@@ -52,17 +52,19 @@ export default {
   },
   methods: {
     getFolders() {
-      $api('desk.folders').then((list) => {
+      $api.desk.folders().then((list) => {
         this.folders = list
       })
     },
     getFiles(folder_id) {
       this.$store.commit('desk/UPDATE_FOLDER_ID', folder_id)
-      $api('desk.files', {
-        folder_id
-      }).then((files) => {
-        this.files = files.result
-      })
+      $api.desk
+        .files({
+          folder_id
+        })
+        .then((files) => {
+          this.files = files.result
+        })
     },
     createFolder(folder) {
       this.folders.unshift(folder)

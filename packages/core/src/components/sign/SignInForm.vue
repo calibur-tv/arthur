@@ -89,10 +89,11 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.loading = true
-          $api('sign.login', {
-            access: this.form.access,
-            secret: this.form.secret
-          })
+          $api.sign
+            .login({
+              access: this.form.access,
+              secret: this.form.secret
+            })
             .then((token) => {
               $cookie.set('JWT-TOKEN', token, {
                 expires: 365

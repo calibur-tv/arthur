@@ -107,7 +107,7 @@ export default {
       $bus.emit('sign-in')
     },
     handleLogout() {
-      $api('sign.logout')
+      $api.sign.logout()
       $cookie.remove('JWT-TOKEN')
       window.location = '/'
     }

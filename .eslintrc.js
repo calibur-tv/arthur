@@ -12,6 +12,7 @@ module.exports = {
   globals: {
     $api: true,
     $bus: true,
+    $http: true,
     $store: true,
     $cookie: true,
     $toast: true,

@@ -32,7 +32,7 @@ export default {
       }, 1000 * 60 * 30)
     },
     async getUpToken() {
-      const token = await $api('desk.token')
+      const token = await $api.desk.token()
       // extra.name = file.name
       this.uploadExtras.key = token.dir + '${filename}'
       this.uploadExtras.policy = token.policy

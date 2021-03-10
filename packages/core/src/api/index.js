@@ -4,23 +4,6 @@ import * as sign from './sign'
 import * as user from './user'
 import * as desk from './desk'
 
-const routeMap = {
-  sign,
-  user,
-  desk
-}
-
-const getCallFunc = (keys) => {
-  if (!keys) {
-    return null
-  }
-  let result = routeMap
-  keys.split('.').forEach((key) => {
-    result = result[key]
-  })
-  return result
-}
-
 const isDev = process.env.NODE_ENV === 'development'
 
 const createApi = () => {
@@ -56,12 +39,12 @@ const createApi = () => {
     }
   )
 
-  return (name, data, config) => {
-    const func = getCallFunc(name)
-    if (!func) {
-      throw new Error(`接口 ${name} 未注册`)
-    }
-    return func(http, data, config)
+  window.$http = http
+
+  return {
+    sign,
+    user,
+    desk
   }
 }
 

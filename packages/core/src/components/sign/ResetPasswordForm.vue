@@ -103,7 +103,7 @@ export default {
     async getResetAuthCode() {
       this.step = 1
       try {
-        await $api('sign.sendMessage', {
+        await $api.sign.sendMessage({
           type: 'forgot_password',
           phone_number: this.form.access
         })
@@ -138,7 +138,7 @@ export default {
     },
     async signReset() {
       try {
-        const res = await $api('sign.resetPassword', {
+        const res = await $api.sign.resetPassword({
           access: this.form.access,
           authCode: this.form.authCode,
           secret: this.form.secret

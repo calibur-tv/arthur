@@ -9,6 +9,7 @@ import store from '@/store'
 import createApi from '@/api'
 import imageResize from '@/assets/js/imageResize'
 import ElementPlus, { ElMessageBox, ElMessage } from 'element-plus'
+import { ListView } from '@flowlist/vue-listview'
 import '@/assets/css/element.scss'
 
 export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
@@ -16,6 +17,7 @@ export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
   const bus = mitt()
   app.use(store)
   app.use(ElementPlus)
+  app.component(ListView.name, ListView)
   app.config.globalProperties.$resize = imageResize
 
   if (isClient) {

@@ -57,10 +57,11 @@ export default {
           if (!value) {
             return
           }
-          $api('desk.updateFolder', {
-            name: value,
-            folder_id: this.item.id
-          })
+          $api.desk
+            .updateFolder({
+              name: value,
+              folder_id: this.item.id
+            })
             .then(() => {
               this.$emit('update', {
                 name: value
@@ -81,7 +82,8 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       }).then(() => {
-        $api('desk.deleteFolder', { folder_id: this.item.id })
+        $api.desk
+          .deleteFolder({ folder_id: this.item.id })
           .then(() => {
             $toast.success('删除成功')
             this.$emit('delete')

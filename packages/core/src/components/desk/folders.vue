@@ -1,13 +1,17 @@
 <template>
   <div class="desk-folders">
-    <desk-folder
-      v-for="(item, index) in folders"
-      :key="item.id"
-      :item="item"
-      @update="handleUpdate($event, index)"
-      @delete="handleDelete(index)"
-      @open="handleClick(item.id)"
-    />
+    <list-view func="getFolders">
+      <template #default="{ list }">
+        <desk-folder
+          v-for="(item, index) in list"
+          :key="item.id"
+          :item="item"
+          @update="handleUpdate($event, index)"
+          @delete="handleDelete(index)"
+          @open="handleClick(item.id)"
+        />
+      </template>
+    </list-view>
   </div>
 </template>
 

@@ -195,7 +195,7 @@ export default {
     async getRegisterAuthCode() {
       this.step = 1
       try {
-        await $api('sign.sendMessage', {
+        await $api.sign.sendMessage({
           type: 'sign_up',
           phone_number: this.form.access
         })
@@ -228,12 +228,13 @@ export default {
         .catch(() => {})
     },
     signUp() {
-      $api('sign.register', {
-        access: this.form.access,
-        secret: this.form.secret,
-        authCode: this.form.authCode,
-        inviteCode: this.form.inviteCode
-      })
+      $api.sign
+        .register({
+          access: this.form.access,
+          secret: this.form.secret,
+          authCode: this.form.authCode,
+          inviteCode: this.form.inviteCode
+        })
         .then((token) => {
           $cookie.set('JWT-TOKEN', token)
           $toast.success('注册成功！', () => {

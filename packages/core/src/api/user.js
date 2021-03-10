@@ -1,53 +1,49 @@
-export const getRecommendedUsers = (ctx) => ctx.get('user/recommended')
+export const getRecommendedUsers = () => $http.get('user/recommended')
 
-export const settingProfile = (ctx, params) => ctx.post('v1/user/update_info', params)
+export const settingProfile = (params) => $http.post('v1/user/update_info', params)
 
-export const settingImage = (ctx, { type, url }) => ctx.post('user/setting/image', { type, url })
+export const settingImage = ({ type, url }) => $http.post('user/setting/image', { type, url })
 
-export const getUserInfo = (ctx, { slug }) => ctx.get('v1/user/show', { params: { slug } })
+export const getUserInfo = ({ slug }) => $http.get('v1/user/show', { params: { slug } })
 
-export const getMailboxTotal = (ctx, { slug }) =>
-  ctx.get('v1/message/total', {
-    params: { slug },
-    progress: false
-  })
+export const getMailboxTotal = ({ slug }) => $http.get('v1/message/total', { params: { slug } })
 
-export const feedback = (ctx, { type, desc, ua }) => ctx.post('user/feedback', { type, desc, ua })
+export const feedback = ({ type, desc, ua }) => $http.post('user/feedback', { type, desc, ua })
 
-export const daySignAction = (ctx) => ctx.post('user/daySign')
+export const daySignAction = () => $http.post('user/daySign')
 
-export const getUserCard = (ctx, { id }) =>
-  ctx.get('user/card', {
+export const getUserCard = ({ id }) =>
+  $http.get('user/card', {
     params: { id }
   })
 
-export const getUserBadgeDetail = (ctx, { user_id, badge_id }) =>
-  ctx.get('user/badge/item', {
+export const getUserBadgeDetail = ({ user_id, badge_id }) =>
+  $http.get('user/badge/item', {
     params: {
       user_id,
       badge_id
     }
   })
 
-export const report = (ctx, { id, type, model, message }) =>
-  ctx.post('report/send', {
+export const report = ({ id, type, model, message }) =>
+  $http.post('report/send', {
     id,
     type,
     model,
     message
   })
 
-export const readAllMessage = (ctx) => ctx.post('user/notification/clear')
+export const readAllMessage = () => $http.post('user/notification/clear')
 
-export const readMessage = (ctx, { id }) => ctx.post('user/notification/read', { id })
+export const readMessage = ({ id }) => $http.post('user/notification/read', { id })
 
-export const readNotice = (ctx, { id }) => ctx.post('user/notice/mark', { id })
+export const readNotice = ({ id }) => $http.post('user/notice/mark', { id })
 
-export const getNotifications = (ctx, { minId }) =>
-  ctx.get('user/notification/list', {
+export const getNotifications = ({ minId }) =>
+  $http.get('user/notification/list', {
     params: { minId }
   })
 
-export const getNotificationCount = (ctx) => ctx.get('user/notification/count')
+export const getNotificationCount = () => $http.get('user/notification/count')
 
-export const getSystemNotice = (ctx) => ctx.get('user/notice/list')
+export const getSystemNotice = () => $http.get('user/notice/list')

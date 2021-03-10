@@ -39,7 +39,8 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       }).then(() => {
-        $api('desk.deleteFile', { file_id })
+        $api.desk
+          .deleteFile({ file_id })
           .then(() => {
             $toast.success('删除成功')
             this.$emit('delete', index)
@@ -58,11 +59,12 @@ export default {
           if (!value) {
             return
           }
-          $api('desk.moveFile', {
-            name: value,
-            file_id,
-            folder_id: this.folderId
-          })
+          $api.desk
+            .moveFile({
+              name: value,
+              file_id,
+              folder_id: this.folderId
+            })
             .then(() => {
               this.$emit('update', {
                 index,

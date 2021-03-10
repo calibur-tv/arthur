@@ -37,9 +37,10 @@ export default {
           if (!value) {
             return
           }
-          $api('desk.createFolder', {
-            name: value
-          })
+          $api.desk
+            .createFolder({
+              name: value
+            })
             .then((folder) => {
               this.$emit('create', folder)
             })
