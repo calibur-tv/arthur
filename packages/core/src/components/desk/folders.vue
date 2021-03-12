@@ -1,15 +1,8 @@
 <template>
   <div class="desk-folders">
-    <list-view func="getFolders">
+    <list-view ref="loader" func="getFolders">
       <template #default="{ list }">
-        <desk-folder
-          v-for="(item, index) in list"
-          :key="item.id"
-          :item="item"
-          @update="handleUpdate($event, index)"
-          @delete="handleDelete(index)"
-          @open="handleClick(item.id)"
-        />
+        <desk-folder v-for="item in list" :key="item.id" :item="item" @update="handleUpdate" @delete="handleDelete" />
       </template>
     </list-view>
   </div>
@@ -23,24 +16,20 @@ export default {
   components: {
     DeskFolder
   },
-  props: {
-    folders: {
-      type: Array,
-      required: true
-    }
+  mounted() {
+    $bus.on('DESK_CREATE_FOLDER', (folder) => {
+      this.$refs.loader.unshift(folder)
+    })
+  },
+  beforeUnmount() {
+    $bus.off('DESK_CREATE_FOLDER')
   },
   methods: {
-    handleClick(id) {
-      this.$emit('open', id)
+    handleUpdate(data, item) {
+      this.$refs.loader.merge(item.id, data)
     },
-    handleUpdate(data, index) {
-      this.$emit('update', {
-        ...data,
-        index
-      })
-    },
-    handleDelete(index) {
-      this.$emit('delete', index)
+    handleDelete(item) {
+      this.$refs.loader.delete(item.id)
     }
   }
 }

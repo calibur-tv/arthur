@@ -1,26 +1,33 @@
 <template>
   <div class="desk-files">
-    <ul>
-      <li v-for="item in files" :key="item.id">
-        <span class="folder-item" v-html="item.meta" />
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <button @click="renameFile(item.id, index)">重命名文件</button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <button @click="deleteFile(item.id, index)">删除文件</button>
-      </li>
-    </ul>
+    <list-view
+      ref="loader"
+      func="getFolderFiles"
+      :params="{
+        folder_id: folderId
+      }"
+    >
+      <template #default="{ list }">
+        <desk-file
+          v-for="item in list"
+          :key="item.id"
+          :item="item"
+          @update="handleUpdate($event, item)"
+          @delete="handleDelete(item)"
+          @open="handleClick(item)"
+        />
+      </template>
+    </list-view>
   </div>
 </template>
 
 <script>
+import DeskFile from './file.vue'
+
 export default {
   name: 'DeskFiles',
-  components: {},
-  props: {
-    files: {
-      type: Array,
-      required: true
-    }
+  components: {
+    DeskFile
   },
   data() {
     return {}
@@ -32,50 +39,23 @@ export default {
   },
   watch: {},
   created() {},
-  mounted() {},
+  mounted() {
+    $bus.on('DESK_UPLOAD_SUCCESS', (file) => {
+      this.$refs.loader.unshift(file)
+    })
+  },
+  beforeUnmount() {
+    $bus.off('DESK_UPLOAD_SUCCESS')
+  },
   methods: {
-    deleteFile(file_id, index) {
-      $confirm('删除后不可恢复，确认吗？', '删除文件', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消'
-      }).then(() => {
-        $api.desk
-          .deleteFile({ file_id })
-          .then(() => {
-            $toast.success('删除成功')
-            this.$emit('delete', index)
-          })
-          .catch((err) => {
-            $toast.error(err.message)
-          })
-      })
+    handleUpdate(data, item) {
+      this.$refs.loader.merge(item.id, data)
     },
-    renameFile(file_id, index) {
-      $prompt('请输入文件夹名称', '重命名文件', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消'
-      })
-        .then(({ value }) => {
-          if (!value) {
-            return
-          }
-          $api.desk
-            .moveFile({
-              name: value,
-              file_id,
-              folder_id: this.folderId
-            })
-            .then(() => {
-              this.$emit('update', {
-                index,
-                name: value
-              })
-            })
-            .catch((err) => {
-              $toast.error(err.message)
-            })
-        })
-        .catch(() => {})
+    handleDelete(item) {
+      this.$refs.loader.delete(item.id)
+    },
+    handleClick(item) {
+      this.$emit('open', item.id)
     }
   }
 }

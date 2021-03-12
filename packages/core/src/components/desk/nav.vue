@@ -42,7 +42,7 @@ export default {
               name: value
             })
             .then((folder) => {
-              this.$emit('create', folder)
+              $bus.emit('DESK_CREATE_FOLDER', folder)
             })
             .catch((err) => {
               $toast.error(err.message)

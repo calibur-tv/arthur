@@ -16,16 +16,17 @@
 export default {
   name: 'DeskBreadcrumb',
   components: {},
-  props: {
-    folders: {
-      type: Array,
-      required: true
-    }
-  },
   data() {
     return {}
   },
   computed: {
+    folders() {
+      const field = this.$store.getters['list/get']({
+        func: 'getFolders'
+      })
+
+      return field.result
+    },
     folderId() {
       return this.$store.state.desk.folderId
     },

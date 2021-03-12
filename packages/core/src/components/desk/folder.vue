@@ -42,7 +42,7 @@ export default {
   mounted() {},
   methods: {
     getFiles() {
-      this.$emit('open')
+      this.$store.commit('desk/UPDATE_FOLDER_ID', this.item.id)
     },
     updateFolder() {
       if (this.item.id <= 0) {

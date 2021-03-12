@@ -61,16 +61,16 @@ export default createStore({
         return null
       }
     },
-    getUserRoles({ state, commit }) {
-      console.log(state, commit)
-      // if (state.roles || !state.user || !state.user.title.length) {
-      //   return
-      // }
-      //
-      // $api.user.roles().then((data) => {
-      //   commit('SET_USER_ROLE', data)
-      // })
-    }
+    getUserRoles() {}
+    // getUserRoles({ state, commit }) {
+    // if (state.roles || !state.user || !state.user.title.length) {
+    //   return
+    // }
+    //
+    // $api.user.roles().then((data) => {
+    //   commit('SET_USER_ROLE', data)
+    // })
+    // }
   },
   getters: {
     isMine: (state) => (slug) => (state.isAuth ? state.user.slug === slug : false),

@@ -79,10 +79,13 @@ export default {
           name: file.name
         })
         .then((item) => {
-          $bus.emit('fileUploadSuccess', item)
+          $bus.emit('DESK_UPLOAD_SUCCESS', item)
         })
     },
     handleBefore(file) {
+      if (this.folderId === -1) {
+        this.$store.commit('desk/UPDATE_FOLDER_ID', 0)
+      }
       if (file.size > 2147483648) {
         $toast.error('最大上传 2G 文件')
         return false
