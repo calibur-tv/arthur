@@ -1276,19 +1276,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flowlist/js-core@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "@flowlist/js-core@npm:1.5.0"
-  checksum: c459add7ae2bddb98401010f1b8e6961da017d3c9ae28ccdef458ec46dcf397e1bc79a50befdf14e8756906e343fd7f4be86d20bca270f72aa85c05a6974c5b5
+"@flowlist/js-core@npm:1.6.2":
+  version: 1.6.2
+  resolution: "@flowlist/js-core@npm:1.6.2"
+  checksum: 5d4330ae8901da807f2b941cfad19fa9d0a681f855adfdbd787375144d573c5d0bb97bf708189a31bc8d6e1b6a1f8c1c26770622d0c1f01a884d6ce2fde875eb
   languageName: node
   linkType: hard
 
-"@flowlist/vue-listview@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "@flowlist/vue-listview@npm:3.2.1"
+"@flowlist/vue-listview@npm:^3.2.5":
+  version: 3.2.5
+  resolution: "@flowlist/vue-listview@npm:3.2.5"
   dependencies:
-    "@flowlist/js-core": ^1.5.0
-  checksum: 5bcf18e9c652fe41c1bf3610e80a62d7ed67b65f346e007f803bbb2986aabf1b53b9193e3c31afadd003098ff0d87990428c3590a38ff4fa8af2f3a4ea885094
+    "@flowlist/js-core": 1.6.2
+  checksum: ef377b97868f73ec34a1b534a63b3f1ccfa8081c91f37200209104cb3f0e2e691efdb8c45231fd84360c905459b8bbe38a808e9bb9e1a12b056aa3085a5b4b61
   languageName: node
   linkType: hard
 
@@ -4263,7 +4263,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "core@workspace:packages/core"
   dependencies:
-    "@flowlist/vue-listview": ^3.2.1
+    "@flowlist/vue-listview": ^3.2.5
     "@vitejs/plugin-vue": ^1.1.5
     "@vue/compiler-sfc": ^3.0.7
     "@vue/server-renderer": ^3.0.7
@@ -4271,7 +4271,7 @@ __metadata:
     ant-design-vue: 2.0.1
     axios: ^0.21.1
     blueimp-md5: ^2.18.0
-    element-plus: ^1.0.2-beta.33
+    element-plus: 1.0.2-beta.33
     js-cookie: ^2.2.1
     normalize.css: ^8.0.1
     qiankun: ^2.4.0
@@ -5097,7 +5097,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"element-plus@npm:^1.0.2-beta.33":
+"element-plus@npm:1.0.2-beta.33":
   version: 1.0.2-beta.33
   resolution: "element-plus@npm:1.0.2-beta.33"
   dependencies:

@@ -8,12 +8,12 @@
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
-    "@flowlist/vue-listview": "^3.2.1",
+    "@flowlist/vue-listview": "^3.2.5",
     "@vueuse/head": "^0.3.1",
     "ant-design-vue": "2.0.1",
     "axios": "^0.21.1",
     "blueimp-md5": "^2.18.0",
-    "element-plus": "^1.0.2-beta.33",
+    "element-plus": "1.0.2-beta.33",
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "qiankun": "^2.4.0",

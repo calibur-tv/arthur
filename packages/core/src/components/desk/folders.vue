@@ -2,7 +2,13 @@
   <div class="desk-folders">
     <list-view ref="loader" func="getFolders">
       <template #default="{ list }">
-        <desk-folder v-for="item in list" :key="item.id" :item="item" @update="handleUpdate" @delete="handleDelete" />
+        <desk-folder
+          v-for="item in list"
+          :key="item.id"
+          :item="item"
+          @update="handleUpdate($event, item)"
+          @delete="handleDelete(item)"
+        />
       </template>
     </list-view>
   </div>
@@ -26,7 +32,7 @@ export default {
   },
   methods: {
     handleUpdate(data, item) {
-      this.$refs.loader.merge(item.id, data)
+      this.$refs.loader.update(item.id, 'name', data.name)
     },
     handleDelete(item) {
       this.$refs.loader.delete(item.id)

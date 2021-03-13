@@ -7,6 +7,7 @@ import mitt from 'mitt'
 import Cookies from 'js-cookie'
 import store from '@/store'
 import createApi from '@/api'
+import * as utils from '@/assets/js/utils'
 import imageResize from '@/assets/js/imageResize'
 import ElementPlus, { ElMessageBox, ElMessage } from 'element-plus'
 import { ListView } from '@flowlist/vue-listview'
@@ -19,6 +20,7 @@ export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
   app.use(ElementPlus)
   app.component(ListView.name, ListView)
   app.config.globalProperties.$resize = imageResize
+  app.config.globalProperties.$utils = utils
 
   if (isClient) {
     window.$bus = bus
@@ -29,5 +31,6 @@ export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
     window.$confirm = ElMessageBox.confirm
     window.$prompt = ElMessageBox.prompt
     window.$toast = ElMessage
+    window.$utils = utils
   }
 })

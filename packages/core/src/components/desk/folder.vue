@@ -7,18 +7,17 @@
         </svg>
         <span v-html="item.name" class="fade-link" @click="getFiles" />
       </div>
-      <div class="tool">
-        <button @click="updateFolder">
-          <i class="el-icon-edit-outline" />
-        </button>
-        <button @click="deleteFolder">
-          <i class="el-icon-delete" />
-        </button>
+      <div v-if="item.id" class="tool">
+        <i class="el-icon-more" />
+        <div class="popover">
+          <button @click="updateFolder">重命名</button>
+          <button @click="deleteFolder">删除</button>
+        </div>
       </div>
     </div>
     <div class="size">-</div>
     <div class="time">
-      {{ item.updated_at || '-' }}
+      {{ item.updated_at ? $utils.formatTime(item.updated_at, 'ymdhm') : '-' }}
     </div>
   </div>
 </template>
@@ -142,7 +141,54 @@ export default {
     }
 
     .tool {
+      position: relative;
       display: none;
+
+      .el-icon-more {
+        display: block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover + .popover {
+          display: flex;
+        }
+      }
+
+      .popover {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 80%;
+        width: 86px;
+        border: 1px solid rgba($color-main, 0.2);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        transform: translate(-50%, 0);
+        background-color: #fff;
+        z-index: 10;
+
+        &:hover {
+          display: flex;
+        }
+
+        button {
+          height: 27px;
+          line-height: 27px;
+          color: $color-main;
+          font-size: 12px;
+          width: 100%;
+
+          &:hover {
+            background: #f6faff;
+            border-radius: 2px;
+          }
+        }
+      }
     }
   }
 

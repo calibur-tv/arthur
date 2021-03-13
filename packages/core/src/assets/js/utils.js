@@ -16,8 +16,14 @@ export const randomStr = () => {
 }
 
 export const adjustDate = (time) => {
-  if (/^\d+$/.test(time) && time.toString().length === 10) {
-    return new Date(time * 1000)
+  if (!time) {
+    return null
+  }
+  if (/^\d+$/.test(time)) {
+    if (time.toString().length === 10) {
+      return new Date(time * 1000)
+    }
+    return new Date(+time)
   }
   let result = new Date(time)
   if (result.toString() === 'Invalid Date') {
@@ -54,6 +60,49 @@ export const timeAgo = (time) => {
     return `前天${format[3]}:${format[4]}`
   }
   return `${format[1]}-${format[2]} ${format[3]}:${format[4]}`
+}
+
+export const parseDateProps = (time) => {
+  if (!time) {
+    return null
+  }
+  const date = adjustDate(time)
+  if (!date) {
+    return null
+  }
+
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+    hour: date.getHours(),
+    minutes: date.getMinutes(),
+    seconds: date.getSeconds()
+  }
+}
+
+export const formatTime = (ts, type = 'ymd') => {
+  const obj = parseDateProps(ts)
+  if (!obj) {
+    return ''
+  }
+  if (type === 'ymd') {
+    return `${obj.year}-${obj.month}-${obj.day}`
+  }
+
+  if (type === 'md') {
+    return `${obj.month}-${obj.day}`
+  }
+
+  if (type === 'ymdhm') {
+    return `${obj.year}-${obj.month}-${obj.day} ${pad(obj.hour)}:${pad(obj.minutes)}`
+  }
+
+  if (type === 'mdhm') {
+    return `${obj.month}-${obj.day} ${pad(obj.hour)}:${pad(obj.minutes)}`
+  }
+
+  return obj.year
 }
 
 export const isTouchDevice = () => 'ontouchstart' in document.documentElement
