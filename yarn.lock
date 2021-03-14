@@ -1276,19 +1276,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@flowlist/js-core@npm:1.6.2":
-  version: 1.6.2
-  resolution: "@flowlist/js-core@npm:1.6.2"
-  checksum: 5d4330ae8901da807f2b941cfad19fa9d0a681f855adfdbd787375144d573c5d0bb97bf708189a31bc8d6e1b6a1f8c1c26770622d0c1f01a884d6ce2fde875eb
+"@flowlist/js-core@npm:1.6.3":
+  version: 1.6.3
+  resolution: "@flowlist/js-core@npm:1.6.3"
+  checksum: 38b1b790212ed53bd00f55edff0336a741d4100353bd15f7d24d783a3dd5b55ecfc803869d286185e9d343cca500b0cd42611715c0ca89e375fe2e9ab19b29cf
   languageName: node
   linkType: hard
 
-"@flowlist/vue-listview@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "@flowlist/vue-listview@npm:3.2.5"
+"@flowlist/vue-listview@npm:^3.2.6":
+  version: 3.2.6
+  resolution: "@flowlist/vue-listview@npm:3.2.6"
   dependencies:
-    "@flowlist/js-core": 1.6.2
-  checksum: ef377b97868f73ec34a1b534a63b3f1ccfa8081c91f37200209104cb3f0e2e691efdb8c45231fd84360c905459b8bbe38a808e9bb9e1a12b056aa3085a5b4b61
+    "@flowlist/js-core": 1.6.3
+  checksum: c2b60220c7cdbbab68d719f25510ec6465306069b1d3a83dabdc53defaf2df85662511962f75c1b8d320bca5f01b80d9550eb3cbbea6368025d766470d80ca3e
   languageName: node
   linkType: hard
 
@@ -4263,7 +4263,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "core@workspace:packages/core"
   dependencies:
-    "@flowlist/vue-listview": ^3.2.5
+    "@flowlist/vue-listview": ^3.2.6
     "@vitejs/plugin-vue": ^1.1.5
     "@vue/compiler-sfc": ^3.0.7
     "@vue/server-renderer": ^3.0.7
