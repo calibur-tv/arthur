@@ -4272,6 +4272,7 @@ __metadata:
     axios: ^0.21.1
     blueimp-md5: ^2.18.0
     element-plus: 1.0.2-beta.33
+    filesize: ^6.1.0
     js-cookie: ^2.2.1
     normalize.css: ^8.0.1
     qiankun: ^2.4.0
@@ -5961,6 +5962,13 @@ __metadata:
   version: 3.6.1
   resolution: "filesize@npm:3.6.1"
   checksum: 9fb54113c906f0b7aecc05440185dc8b8dac83bd73b839a5298ce02500a487151b3a4735784bfab027fc58776f5281ec4c31e60f59b9173d62f47838dae31783
+  languageName: node
+  linkType: hard
+
+"filesize@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "filesize@npm:6.1.0"
+  checksum: 5c0c4be4861bacdfcb701f1162aad6d6fe3724cbb69fcb9f55b3adfbb43d83d776790446a3d10da1cecf3616fc91b5d73ee3ab174ff1e141c983418cb83f9c9c
   languageName: node
   linkType: hard
 

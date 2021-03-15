@@ -11,6 +11,12 @@
   word-break: break-all;
 }
 
+%oneline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
 @mixin multi-line($line-height, $line: 2) {
   line-height: $line-height;
   max-height: $line-height * $line;

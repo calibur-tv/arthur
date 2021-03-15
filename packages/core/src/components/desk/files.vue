@@ -3,7 +3,7 @@
     <list-view
       ref="loader"
       func="getFolderFiles"
-      :params="{
+      :query="{
         folder_id: folderId
       }"
     >

@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      uploadAccept: ['image/*', 'video/*', 'audio/*'].join(', '),
+      uploadAccept: ['image/*', 'video/*', 'audio/*', 'txt'].join(', '),
       uploadExtras: {},
       uploadAction: '',
       getUpTokenTimer: 0

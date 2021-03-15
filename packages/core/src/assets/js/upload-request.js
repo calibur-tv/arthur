@@ -55,7 +55,7 @@ export default function upload(option) {
     })
   }
 
-  const name = md5(option.file.name + option.file.size + option.file.type)
+  const name = md5(option.file.name + option.file.size + option.file.type) + '.' + option.file.type.split('/').pop()
   formData.append(option.filename, option.file, name)
   formData.append('name', name)
 
