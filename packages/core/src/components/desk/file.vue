@@ -3,7 +3,7 @@
     <div class="main">
       <div class="name">
         <component :is="item.meta.mimeType.split('/').shift() + '-icon'" />
-        <span v-html="item.name || item.meta.filename.split('/').pop()" class="fade-link" />
+        <span v-html="item.name || item.meta.filename.split('/').pop()" class="fade-link" @click="handleClick" />
       </div>
       <div v-if="item.id" class="tool">
         <i class="el-icon-more" />
@@ -41,21 +41,14 @@ export default {
       required: true
     }
   },
-  data() {
-    return {}
-  },
   computed: {
     folderId() {
       return this.$store.state.desk.folderId
     },
     fileSize() {
-      console.log(this.item)
       return filesize(this.item.meta.size)
     }
   },
-  watch: {},
-  created() {},
-  mounted() {},
   methods: {
     deleteFile() {
       $confirm('删除后不可恢复，确认吗？', '删除文件', {
@@ -102,6 +95,9 @@ export default {
             })
         })
         .catch(() => {})
+    },
+    handleClick() {
+      $bus.emit('DESK_OPEN_FILE', this.item)
     }
   }
 }
