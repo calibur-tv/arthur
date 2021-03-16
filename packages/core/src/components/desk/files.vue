@@ -17,6 +17,9 @@
           @open="handleClick(item)"
         />
       </template>
+      <template #nothing>
+        <img src="../../assets/img/nothing.png" alt="" />
+      </template>
     </list-view>
   </div>
 </template>
@@ -61,4 +64,13 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.desk-files {
+  .list-view__state {
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+</style>

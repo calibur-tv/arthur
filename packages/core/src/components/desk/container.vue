@@ -36,7 +36,6 @@ export default {
 .desk-container {
   width: 800px;
   height: 500px;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

@@ -1,7 +1,7 @@
 <template>
-  <div v-if="isAuth" class="desk-wrap">
+  <v-curtain v-if="isAuth" id="desk" :position="{ left: 360, top: 120 }">
     <desk-container />
-  </div>
+  </v-curtain>
 </template>
 
 <script>

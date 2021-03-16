@@ -18,6 +18,7 @@ module.exports = {
     $toast: true,
     $prompt: true,
     $alert: true,
-    $confirm: true
+    $confirm: true,
+    $cache: true
   }
 }
