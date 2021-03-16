@@ -54,18 +54,18 @@ export default {
     })
   },
   beforeUnmount() {
-    this.$manager.unbindComponent(this.id)
+    $manager.unbindComponent(this.id)
   },
   methods: {
     initManager() {
-      if (!this.$manager.componentIsUnique(this.id)) {
+      if (!$manager.componentIsUnique(this.id)) {
         // eslint-disable-next-line
         console.error(`curtain 组件的 id 必须是独一无二的，id：${this.id}已被注册`)
         return
       }
       const rect = this.$el.getBoundingClientRect()
-      this.$manager.bindComponent(this.id, this)
-      this.rect = this.$manager.getRect(
+      $manager.bindComponent(this.id, this)
+      this.rect = $manager.getRect(
         this.id,
         this.position
           ? {
@@ -96,7 +96,7 @@ export default {
       this.drag = false
       this.moving = false
       const rect = this.$el.getBoundingClientRect()
-      this.$manager.setRect(this.id, {
+      $manager.setRect(this.id, {
         top: rect.top,
         left: rect.left,
         width: rect.width,
@@ -108,7 +108,7 @@ export default {
       this.updateIndex()
     },
     updateIndex() {
-      this.rect.zIndex = this.$manager.setMaxIndex(this.id)
+      this.rect.zIndex = $manager.setMaxIndex(this.id)
     }
   }
 }

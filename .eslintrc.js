@@ -19,6 +19,7 @@ module.exports = {
     $prompt: true,
     $alert: true,
     $confirm: true,
-    $cache: true
+    $cache: true,
+    $manager: true
   }
 }

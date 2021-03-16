@@ -25,7 +25,6 @@ export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
   app.component(Curtain.name, Curtain)
   app.config.globalProperties.$resize = imageResize
   app.config.globalProperties.$utils = utils
-  app.config.globalProperties.$manager = new Manager()
 
   if (isClient) {
     window.$bus = bus
@@ -38,5 +37,6 @@ export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
     window.$toast = ElMessage
     window.$utils = utils
     window.$cache = Cache
+    window.$manager = new Manager()
   }
 })
