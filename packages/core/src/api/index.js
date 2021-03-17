@@ -39,7 +39,9 @@ const createApi = () => {
     }
   )
 
-  window.$http = http
+  if (typeof window !== 'undefined') {
+    window.$http = http
+  }
 
   return {
     sign,
