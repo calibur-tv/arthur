@@ -1,18 +1,29 @@
 <template>
-  <div class="preview-image">PreviewImage</div>
+  <div class="preview-image" :style="wrapStyle">
+    <img :src="item.meta.url" />
+  </div>
 </template>
 
 <script>
 export default {
   name: 'PreviewImage',
   components: {},
-  props: {},
-  data() {
-    return {
-      fff: 111
+  props: {
+    item: {
+      type: Object,
+      required: true
     }
   },
-  computed: {},
+  computed: {
+    wrapStyle() {
+      const rate = 400 / this.item.meta.width
+
+      return {
+        width: '400px',
+        height: `${(rate * this.item.meta.height) | 0}px`
+      }
+    }
+  },
   watch: {},
   created() {},
   mounted() {},
@@ -22,8 +33,11 @@ export default {
 
 <style lang="scss">
 .preview-image {
-  width: 400px;
-  height: 600px;
-  background-color: gold;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 </style>

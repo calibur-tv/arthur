@@ -101,15 +101,17 @@ export default {
     handleClick() {
       binder.open({
         component: PreviewImage,
-        props: {
-          id: 'fuck',
+        rect: {
+          id: `preview-img-${this.item.id}`,
           position: {
             left: 100,
             top: 100
           }
+        },
+        data: {
+          item: this.item
         }
       })
-      $bus.emit('DESK_OPEN_FILE', this.item)
     }
   }
 }
