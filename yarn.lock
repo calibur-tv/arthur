@@ -47,6 +47,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@arthur/loader@workspace:packages/loader":
+  version: 0.0.0-use.local
+  resolution: "@arthur/loader@workspace:packages/loader"
+  languageName: unknown
+  linkType: soft
+
 "@babel/code-frame@npm:7.12.11":
   version: 7.12.11
   resolution: "@babel/code-frame@npm:7.12.11"
@@ -11442,16 +11448,14 @@ fsevents@~2.3.1:
   version: 0.0.0-use.local
   resolution: "shojo@workspace:packages/shojo"
   dependencies:
+    "@vueuse/head": ^0.3.2
+    element-plus: 1.0.2-beta.35
+    js-cookie: ^2.2.1
+    normalize.css: ^8.0.1
+    qiankun: ^2.4.0
     vite: ^2.1.3
-  languageName: unknown
-  linkType: soft
-
-"sign@workspace:packages/sign":
-  version: 0.0.0-use.local
-  resolution: "sign@workspace:packages/sign"
-  dependencies:
-    "@vue/cli-service": ~4.5.12
-    cross-env: ^7.0.3
+    vite-plugin-style-import: ^0.9.0
+    vite-ssg: ^0.9.1
   languageName: unknown
   linkType: soft
 
