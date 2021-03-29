@@ -1,9 +1,17 @@
+import { ref, onMounted, onUnmounted } from 'vue'
+
 export const loader = (name, cdn, callback) => new Promise((resolve, reject) => {
   if (window[name]) {
     resolve()
   } else {
-    const script = document.createElement('script')
-    script.src = cdn
+    const isStyle = /.css/.test(cdn)
+    const script = document.createElement(isStyle ? 'style' : 'script')
+    if (isStyle) {
+      script.setAttribute('rel', 'stylesheet')
+      script.href = cdn
+    } else {
+      script.src = cdn
+    }
     script.onload = function() {
       callback && callback()
       resolve()
@@ -19,7 +27,9 @@ export const bootstrap = (array, app) => {
   const pending = []
 
   array.forEach(obj => {
-    pending.push(loader(obj.key, obj.cdn, () => obj.callback(app)))
+    obj.resource.forEach(pkg => {
+      pending.push(loader(obj.global, pkg.cdn, () => pkg.callback ? pkg.callback(app) : null))
+    })
   })
 
   return Promise.all(pending)
@@ -27,10 +37,21 @@ export const bootstrap = (array, app) => {
 
 export const cdn = {
   ElementPlus: {
-    key: 'ElementPlus',
-    cdn: 'https://unpkg.com/element-plus@1.0.2-beta.35/lib/index.full.js',
-    callback: (app) => {
-      app.use(window.ElementPlus)
-    }
+    global: 'ElementPlus',
+    resource: [
+      {
+        cdn: 'https://unpkg.com/element-plus@1.0.2-beta.35/lib/index.full.js',
+        callback: (app) => {
+          app.use(window.ElementPlus)
+        }
+      },
+      {
+        cdn: 'https://unpkg.com/element-plus/lib/theme-chalk/index.css'
+      }
+    ]
   }
+}
+
+export const useMFE = (appName) => {
+
 }
