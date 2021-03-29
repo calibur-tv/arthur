@@ -32,13 +32,6 @@ export default defineConfig({
     styleImport({
       libs: [
         {
-          libraryName: 'ant-design-vue',
-          esModule: true,
-          resolveStyle: (name) => {
-            return `ant-design-vue/es/${name}/style/index`
-          }
-        },
-        {
           libraryName: 'element-plus',
           resolveStyle: (name) => {
             return `element-plus/lib/theme-chalk/${name}.css`

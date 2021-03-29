@@ -7,14 +7,6 @@ import styleImport from 'vite-plugin-style-import'
 export default defineConfig({
   css: {
     preprocessorOptions: {
-      less: {
-        javascriptEnabled: true,
-        modifyVars: {
-          'primary-color': '#fb7299',
-          'link-color': '#fb7299',
-          'border-radius-base': '2px'
-        }
-      },
       scss: {
         // example : additionalData: `@import "./src/design/styles/variables";`
         // dont need include file extend .scss
@@ -31,13 +23,6 @@ export default defineConfig({
     vue(),
     styleImport({
       libs: [
-        {
-          libraryName: 'ant-design-vue',
-          esModule: true,
-          resolveStyle: (name) => {
-            return `ant-design-vue/es/${name}/style/index`
-          }
-        },
         {
           libraryName: 'element-plus',
           resolveStyle: (name) => {

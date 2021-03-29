@@ -1,4 +1,6 @@
 import { createStore } from 'vuex'
+import { ListStore } from '@flowlist/vue-listview'
+import * as api from '../api/flow'
 
 export default createStore({
   state: () => ({
@@ -74,5 +76,7 @@ export default createStore({
     isAdmin: (state) => (state.isAuth ? state.user.is_admin : false),
     hasRole: (state) => (role) => (state.user.is_admin ? true : state.roles ? ~state.roles.indexOf(role) : false)
   },
-  modules: {}
+  modules: {
+    list: ListStore({ api })
+  }
 })
