@@ -1,5 +1,5 @@
 <template>
-  <SignDialog />
+  <sign-dialog />
 </template>
 
 <script>

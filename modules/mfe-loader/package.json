@@ -1,6 +1,6 @@
 {
   "name": "@calibur/mfe-loader",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "main": "./dist/MFELoader.umd.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name MFELoader src/main.js"

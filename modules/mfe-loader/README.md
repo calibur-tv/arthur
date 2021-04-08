@@ -14,7 +14,7 @@ yarn add @calibur/mfe-loader
 Import
 
 ```javascript
-import { bootstrap } from '@calibur/mfe-loader'
+import bootstrap from '@calibur/mfe-loader'
 
 const dependencies = [
   {
@@ -38,7 +38,7 @@ const dependencies = [
     ]
   },
   {
-    global: 'ListView',
+    global: 'Flowlist',
     resource: [
       'https://unpkg.com/@flowlist/vue-listview'
     ]

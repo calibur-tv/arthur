@@ -1,5 +1,5 @@
 {
-  "name": "@arthur/shared-dependencies",
+  "name": "@calibur/shared-dependencies",
   "version": "0.0.0",
   "main": "./index.js"
 }

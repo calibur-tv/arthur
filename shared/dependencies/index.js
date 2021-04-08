@@ -6,7 +6,7 @@ const dependencies = [
   {
     global: 'ElementPlus',
     resource: [
-      'https://unpkg.com/element-plus',
+      'https://unpkg.com/element-plus/lib/index.full.js',
       'https://unpkg.com/element-plus/lib/theme-chalk/index.css',
       'https://unpkg.com/normalize.css'
     ]
