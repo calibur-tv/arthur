@@ -1,5 +1,5 @@
 <template>
-  <form :class="`search-${state}`" action="#" method="get" class="search-box" @submit.prevent="submit">
+  <form class="search-box" :class="`search-${state}`" action="#" method="get" @submit.prevent="submit">
     <div class="search-input">
       <button type="submit" class="search-input-btn">
         <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,23 +35,29 @@
           role="combobox"
           spellcheck="false"
           maxlength="50"
-          @focus="handleInputFocus"
-          @blur="handleInputBlur"
+          @focus="handleFocus"
+          @blur="handleBlur"
           @keydown="handleKeydown"
+          @input="handleInput"
         />
       </div>
     </div>
-    <ul v-if="displayHistory" class="search-history">
-      <li v-for="(item, index) in history" :key="item.id" :class="{ 'is-active': index === selectedIndex }">
+    <ul v-show="displayList" class="search-list">
+      <li
+        v-for="(item, index) in list"
+        :key="item.id"
+        :class="{ 'is-active': index === selectedIndex }"
+        @click="handleClick(item)"
+      >
         <span v-text="item.text" />
         <svg
-          v-if="!word"
+          v-if="historyMode"
           width="16"
           height="16"
           viewBox="0 0 48 48"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          @click="deleteHistory(index)"
+          @click="handleDelete(index)"
         >
           <rect width="48" height="48" fill="white" fill-opacity="0.01" />
           <path d="M14 14L34 34" stroke="#999" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
@@ -85,81 +91,71 @@ export default {
     type: {
       type: String,
       default: 'all'
-    },
-    showSuggestion: {
-      type: Boolean,
-      default: false
     }
   },
   data() {
     return {
       word: this.value,
       state: this.autofocus ? 'focus' : 'blur',
-      typing: false,
+      historyMode: true,
       filteredSelect: [],
       selectedIndex: -1,
-      suggestion: [],
+      suggest: [],
       history: []
     }
   },
   computed: {
     list() {
-      return this.word ? this.suggestion : this.history
+      return this.historyMode ? this.history : this.suggest
     },
-    displaySuggestion() {
-      return (
-        this.state === 'focus' &&
-        this.showSuggestion &&
-        this.word &&
-        this.word.length &&
-        this.typing &&
-        this.filteredSelect.length
-      )
-    },
-    displayHistory() {
-      return this.state === 'focus' && !this.displaySuggestion && this.history.length
+    displayList() {
+      return this.state === 'focus' && this.list.length
     }
   },
   mounted() {
-    this.$watch('value', (val) => {
-      this.word = val
-      this.typing = true
-      this.selectedIndex = -1
-      this.handleEnter(val)
+    this.$watch('selectedIndex', (val) => {
+      if (val === -1) {
+        return
+      }
+      this.word = this.list[val].text
     })
 
-    this.$watch('selectedIndex', (val) => {
-      this.word = val >= 0 ? this.list[val].text : ''
-    })
     this.initHistory()
+    this.initSuggest()
   },
   methods: {
     initHistory() {
       this.history = lscache.get(HISTORY_KEY) || []
     },
+    initSuggest() {
+      this.suggest = []
+    },
+    handleInput(evt) {
+      const { value } = evt.target
+      this.selectedIndex = -1
+      this.historyMode = !value
+      this.filterSuggest(value)
+    },
     handleKeydown(evt) {
       if (evt.keyCode === 38) {
+        if (this.selectedIndex <= 0) {
+          return
+        }
+
         evt.preventDefault()
-        this.switchSelected(-1)
+        this.selectedIndex--
       }
 
       if (evt.keyCode === 40) {
+        if (this.selectedIndex >= this.list.length - 1) {
+          return
+        }
+
         evt.preventDefault()
-        this.switchSelected(1)
+        this.selectedIndex++
       }
     },
-    switchSelected(modify) {
-      if (modify === -1 && this.selectedIndex <= 0) {
-        return
-      }
-
-      if (modify === 1 && this.selectedIndex >= this.list.length - 1) {
-        return
-      }
-
-      this.selectedIndex += modify
-    },
-    deleteHistory(index) {
+    handleDelete(index) {
       this.history.splice(index, 1)
       lscache.set(HISTORY_KEY, this.history)
 
@@ -173,6 +169,25 @@ export default {
       }
 
       this.selectedIndex -= 1
+    },
+    handleClick(item) {
+      this.word = item.text
+      this.submit()
+    },
+    filterSuggest(query) {
+      if (!query) {
+        this.filteredSelect = []
+        return
+      }
+      this.filteredSelect = this.suggest.filter((option) => {
+        return option.alias.includes(query) || option.name.includes(query)
+      })
+    },
+    handleFocus() {
+      this.state = 'focus'
+    },
+    handleBlur() {
+      this.state = 'blur'
     },
     submit() {
       if (!this.word) {
@@ -195,21 +210,6 @@ export default {
 
         lscache.set(HISTORY_KEY, this.history)
       }, 20)
-    },
-    handleEnter(query) {
-      if (!query) {
-        this.filteredSelect = []
-        return
-      }
-      this.filteredSelect = this.tags.filter((option) => {
-        return option.alias.includes(query) || option.name.includes(query)
-      })
-    },
-    handleInputFocus() {
-      this.state = 'focus'
-    },
-    handleInputBlur() {
-      this.state = 'blur'
     }
   }
 }
@@ -267,7 +267,7 @@ export default {
     }
   }
 
-  .search-history {
+  .search-list {
     position: absolute;
     left: 0;
     right: 0;
@@ -281,6 +281,10 @@ export default {
     padding: 8px;
     margin: 0;
     max-height: 336px;
+
+    &:hover {
+      display: block !important;
+    }
 
     li {
       padding: 6px 10px 6px 12px;
