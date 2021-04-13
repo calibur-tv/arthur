@@ -24,7 +24,6 @@
         <input
           v-model.trim="word"
           :placeholder="placeholder"
-          :autofocus="autofocus"
           type="text"
           name="q"
           aria-autocomplete="both"
@@ -85,24 +84,13 @@ export default {
     placeholder: {
       type: String,
       default: ''
-    },
-    autofocus: {
-      type: Boolean,
-      default: false
-    },
-    value: {
-      type: String,
-      default: ''
-    },
-    type: {
-      type: String,
-      default: 'all'
     }
   },
   data() {
     return {
-      word: this.value,
-      state: this.autofocus ? 'focus' : 'blur',
+      word: '',
+      type: 'all',
+      state: 'blur',
       historyMode: true,
       filterSuggest: [],
       selectedIndex: -1,
@@ -215,6 +203,7 @@ export default {
 
         this.history.unshift({
           slug: Date.now(),
+          type: 'all',
           text: this.word
         })
 
