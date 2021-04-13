@@ -1,15 +1,20 @@
 <template>
+  <div class="banner-wrap">
+    <Banner />
+  </div>
   <div class="search-wrap">
     <Search />
   </div>
 </template>
 
 <script>
+import Banner from './components/Banner.vue'
 import Search from './components/Search.vue'
 
 export default {
   name: 'App',
   components: {
+    Banner,
     Search
   }
 }
@@ -26,11 +31,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightgray;
-  background-image: url('./assets/bg.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+}
+
+.banner-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .search-wrap {
