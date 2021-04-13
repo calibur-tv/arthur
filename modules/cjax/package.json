@@ -1,0 +1,14 @@
+{
+  "name": "@calibur/http",
+  "version": "0.1.1",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name Http src/index.js"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0"
+  }
+}

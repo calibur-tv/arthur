@@ -1,7 +1,7 @@
 <template>
-  <form class="search-box" :class="`search-${state}`" action="#" method="get" @submit.prevent="submit">
+  <form class="calibur-search" action="#" method="get" @submit.prevent="submit">
     <div class="search-input">
-      <button type="submit" class="search-input-btn">
+      <button type="submit" class="search-input-btn" @click="submit">
         <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="48" fill="white" fill-opacity="0.01" />
           <path
@@ -71,7 +71,7 @@
 <script>
 import lscache from 'lscache'
 
-const HISTORY_KEY = 'test-history'
+const HISTORY_KEY = 'search-history-v1'
 
 export default {
   name: 'CaliburSearch',
@@ -216,7 +216,7 @@ export default {
 </script>
 
 <style lang="scss">
-.search-box {
+.calibur-search {
   position: relative;
   width: 100%;
   height: 100%;
