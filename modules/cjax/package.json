@@ -1,9 +1,9 @@
 {
   "name": "@calibur/http",
-  "version": "0.1.4",
-  "main": "./dist/Http.umd.js",
+  "version": "0.1.5",
+  "main": "./dist/http.umd.js",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name Http src/index.js"
+    "build": "vue-cli-service build --target lib --name http src/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5"

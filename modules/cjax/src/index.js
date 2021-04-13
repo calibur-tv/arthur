@@ -30,7 +30,7 @@ import {
  */
 const Http = class {
   constructor(option = {}) {
-    this.baseURL = option.baseURL || ENUM_CONST.baseURL[option.env]
+    this.baseURL = option.baseURL || ENUM_CONST.baseURL[ENUM_CONST.ENV]
   }
   /**
    * @desc
@@ -245,4 +245,4 @@ const Http = class {
   }
 }
 
-export default Http
+export default new Http()

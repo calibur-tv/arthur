@@ -6,11 +6,7 @@
 </template>
 
 <script>
-import Http from '@calibur/http'
-
-const http = new Http({
-  env: process.env.NODE_ENV
-})
+import http from '@calibur/http'
 
 export default {
   name: 'CaliburBanner',

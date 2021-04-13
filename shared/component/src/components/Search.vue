@@ -68,15 +68,11 @@
 </template>
 
 <script>
-import Http from '@calibur/http'
+import http from '@calibur/http'
 import lscache from 'lscache'
 
 const HISTORY_KEY = 'search-history-v2'
 const SUGGEST_KEY = 'search-suggest-v1'
-
-const http = new Http({
-  env: process.env.NODE_ENV
-})
 
 export default {
   name: 'CaliburSearch',
@@ -186,6 +182,7 @@ export default {
     },
     handleBlur() {
       this.state = 'blur'
+      this.selectedIndex = -1
     },
     submit() {
       if (!this.word) {
