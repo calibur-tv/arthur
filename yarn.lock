@@ -1690,8 +1690,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calibur/component@workspace:shared/component"
   dependencies:
-    "@vue/cli-plugin-babel": 5.0.0-alpha.8
-    "@vue/cli-service": 5.0.0-alpha.8
+    "@calibur/http": "workspace:modules/cjax"
+    "@vue/cli-plugin-babel": ~4.5.0
+    "@vue/cli-service": ~4.5.0
     "@vue/compiler-sfc": ^3.0.0
     core-js: ^3.6.5
     lscache: ^1.3.0

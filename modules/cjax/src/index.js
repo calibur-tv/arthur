@@ -1,4 +1,11 @@
-import { supportNativeCache, supportNativeFetch, requestIdleCallback, combineURL, parseToken } from './utils'
+import {
+  supportNativeCache,
+  supportNativeFetch,
+  requestIdleCallback,
+  combineURL,
+  parseToken,
+  ENUM_CONST
+} from './utils'
 
 /**
  * @type {Http}
@@ -23,7 +30,7 @@ import { supportNativeCache, supportNativeFetch, requestIdleCallback, combineURL
  */
 const Http = class {
   constructor(option = {}) {
-    this.baseURL = option.baseURL
+    this.baseURL = option.baseURL || ENUM_CONST.baseURL[option.env]
   }
   /**
    * @desc

@@ -1,7 +1,7 @@
 <template>
   <form class="calibur-search" action="#" method="get" @submit.prevent="submit">
     <div class="search-input">
-      <button type="submit" class="search-input-btn" @click="submit">
+      <button type="button" class="search-input-btn" @click="submit">
         <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="48" fill="white" fill-opacity="0.01" />
           <path
@@ -45,7 +45,7 @@
     <ul v-show="displayList" class="search-list">
       <li
         v-for="(item, index) in list"
-        :key="item.id"
+        :key="item.slug"
         :class="{ 'is-active': index === selectedIndex }"
         @click="handleClick(item)"
       >
@@ -69,9 +69,15 @@
 </template>
 
 <script>
+import Http from '@calibur/http'
 import lscache from 'lscache'
 
-const HISTORY_KEY = 'search-history-v1'
+const HISTORY_KEY = 'search-history-v2'
+const SUGGEST_KEY = 'search-suggest-v1'
+
+const http = new Http({
+  env: process.env.NODE_ENV
+})
 
 export default {
   name: 'CaliburSearch',
@@ -98,7 +104,7 @@ export default {
       word: this.value,
       state: this.autofocus ? 'focus' : 'blur',
       historyMode: true,
-      filteredSelect: [],
+      filterSuggest: [],
       selectedIndex: -1,
       suggest: [],
       history: []
@@ -106,7 +112,7 @@ export default {
   },
   computed: {
     list() {
-      return this.historyMode ? this.history : this.suggest
+      return this.historyMode ? this.history : this.filterSuggest
     },
     displayList() {
       return this.state === 'focus' && this.list.length
@@ -128,13 +134,26 @@ export default {
       this.history = lscache.get(HISTORY_KEY) || []
     },
     initSuggest() {
-      this.suggest = []
+      this.suggest = lscache.get(SUGGEST_KEY) || []
+      if (this.suggest.length) {
+        return
+      }
+      http.get('bangumi/all').then((res) => {
+        lscache.set(SUGGEST_KEY, res.result, 86400)
+        this.suggest = res.result
+      })
     },
     handleInput(evt) {
       const { value } = evt.target
       this.selectedIndex = -1
       this.historyMode = !value
-      this.filterSuggest(value)
+      if (!value) {
+        this.filterSuggest = []
+        return
+      }
+      this.filterSuggest = this.suggest.filter((option) => {
+        return option.alias.toLowerCase().includes(value.toLowerCase())
+      })
     },
     handleKeydown(evt) {
       if (evt.keyCode === 38) {
@@ -174,15 +193,6 @@ export default {
       this.word = item.text
       this.submit()
     },
-    filterSuggest(query) {
-      if (!query) {
-        this.filteredSelect = []
-        return
-      }
-      this.filteredSelect = this.suggest.filter((option) => {
-        return option.alias.includes(query) || option.name.includes(query)
-      })
-    },
     handleFocus() {
       this.state = 'focus'
     },
@@ -204,7 +214,7 @@ export default {
         })
 
         this.history.unshift({
-          id: Date.now(),
+          slug: Date.now(),
           text: this.word
         })
 

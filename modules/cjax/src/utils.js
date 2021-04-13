@@ -49,7 +49,7 @@ export const combineURL = (baseURL, relativeURL) => {
     return relativeURL
   }
 
-  return `${baseURL}/${relativeURL}`.replace('///', '/').replace('//', '/')
+  return `${baseURL}${relativeURL}`
 }
 
 export const parseToken = (cookieStr) => {
@@ -64,4 +64,11 @@ export const parseToken = (cookieStr) => {
     }
   })
   return token
+}
+
+export const ENUM_CONST = {
+  baseURL: {
+    development: 'http://localhost:9000/v1/',
+    production: 'https://fc.calibur.tv/v1/'
+  }
 }
