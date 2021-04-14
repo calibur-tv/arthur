@@ -1691,6 +1691,7 @@ __metadata:
   resolution: "@calibur/component@workspace:shared/component"
   dependencies:
     "@calibur/http": "workspace:modules/cjax"
+    "@calibur/utils": "workspace:modules/utils"
     "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
     "@vue/compiler-sfc": ^3.0.0

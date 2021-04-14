@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@calibur/http": "workspace:modules/cjax",
+    "@calibur/utils": "workspace:modules/utils",
     "core-js": "^3.6.5",
     "lscache": "^1.3.0",
     "vue": "^3.0.0"

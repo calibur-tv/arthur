@@ -7,6 +7,7 @@
 
 <script>
 import http from '@calibur/http'
+import utils from '@calibur/utils'
 
 export default {
   name: 'CaliburBanner',
@@ -46,14 +47,15 @@ export default {
       }
     },
     loopBanner() {
-      this.banner1 = this.banners[0]
+      // this.banner1 = utils.resize(this.banners[0], { width: 2040 })
+      this.banner1 = 'https://web.calibur.tv/banner/6.jpg?x-oss-process=image/auto-orient,1/resize,w_4080/format,webp'
       this.timer = setInterval(() => {
         if (!this.banners.length) {
           return
         }
 
         this.index = 1 + this.index === this.banners.length ? 0 : this.index + 1
-        const data = this.banners[this.index]
+        const data = utils.resize(this.banners[this.index], { width: 2040 })
         this.toggle ? (this.banner2 = data) : (this.banner1 = data)
         setTimeout(() => {
           this.toggle = !this.toggle

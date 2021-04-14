@@ -2,6 +2,9 @@
   <div class="banner-wrap">
     <Banner />
   </div>
+  <div class="logo-wrap">
+    <Logo />
+  </div>
   <div class="search-wrap">
     <Search />
   </div>
@@ -10,10 +13,12 @@
 <script>
 import Banner from './components/Banner.vue'
 import Search from './components/Search.vue'
+import Logo from './components/Logo.vue'
 
 export default {
   name: 'App',
   components: {
+    Logo,
     Banner,
     Search
   }
@@ -31,6 +36,14 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo-wrap {
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 .banner-wrap {
