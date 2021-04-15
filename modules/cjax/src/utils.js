@@ -5,6 +5,12 @@
  */
 export const isNode = typeof window === 'undefined'
 
+export const isArray = (val) => toString.call(val) === '[object Array]'
+
+export const isObject = (val) => val !== null && typeof val === 'object'
+
+export const isDate = (val) => toString.call(val) === '[object Date]'
+
 /**
  * @desc
  * - 检测是否支持`CacheStorage`
@@ -72,4 +78,53 @@ export const ENUM_CONST = {
     development: 'http://localhost:9000/v1/',
     production: 'https://fc.calibur.tv/v1/'
   }
+}
+
+export const encodeParams = (val) => {
+  return encodeURIComponent(val)
+    .replace(/%3A/gi, ':')
+    .replace(/%24/g, '$')
+    .replace(/%2C/gi, ',')
+    .replace(/%20/g, '+')
+    .replace(/%5B/gi, '[')
+    .replace(/%5D/gi, ']')
+}
+
+export const buildURL = (url, params) => {
+  let serializedParams
+  let parts = []
+
+  for (let [key, val] of Object.entries(params)) {
+    if (val === null || typeof val === 'undefined') {
+      return
+    }
+
+    if (Array.isArray(val)) {
+      key = key + '[]'
+    } else {
+      val = [val]
+    }
+
+    val.forEach((v) => {
+      if (isDate(v)) {
+        v = v.toISOString()
+      } else if (isObject(v)) {
+        v = JSON.stringify(v)
+      }
+      parts.push(encodeParams(key) + '=' + encodeParams(v))
+    })
+  }
+
+  serializedParams = parts.join('&')
+
+  if (serializedParams) {
+    let hashMarkIndex = url.indexOf('#')
+    if (hashMarkIndex !== -1) {
+      url = url.slice(0, hashMarkIndex)
+    }
+
+    url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams
+  }
+
+  return url
 }

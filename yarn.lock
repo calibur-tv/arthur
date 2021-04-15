@@ -1749,6 +1749,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@calibur/user@workspace:modules/user":
+  version: 0.0.0-use.local
+  resolution: "@calibur/user@workspace:modules/user"
+  dependencies:
+    "@calibur/http": "workspace:modules/cjax"
+    "@vue/cli-plugin-babel": ~4.5.0
+    "@vue/cli-service": ~4.5.0
+    "@vue/compiler-sfc": ^3.0.0
+    core-js: ^3.6.5
+    js-cookie: ^2.2.1
+  languageName: unknown
+  linkType: soft
+
 "@calibur/utils@workspace:modules/utils":
   version: 0.0.0-use.local
   resolution: "@calibur/utils@workspace:modules/utils"

@@ -3,7 +3,7 @@
     <Banner />
   </div>
   <div class="logo-wrap">
-    <Logo />
+    <Logo shadow />
   </div>
   <div class="search-wrap">
     <Search />

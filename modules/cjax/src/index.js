@@ -4,7 +4,8 @@ import {
   requestIdleCallback,
   combineURL,
   parseToken,
-  ENUM_CONST
+  ENUM_CONST,
+  buildURL
 } from './utils'
 
 /**
@@ -66,6 +67,10 @@ const Http = class {
       config.method = 'GET'
     }
 
+    if (config.params) {
+      url = buildURL(url, config.params)
+    }
+
     if (!supportNativeCache) {
       return this.send(url, config, false)
     }
@@ -110,6 +115,11 @@ const Http = class {
    */
   post(url, config = {}) {
     config.method = 'POST'
+
+    if (config.body && typeof config.body !== 'string') {
+      config.body = JSON.stringify(config.body)
+    }
+
     return this.get(url, config)
   }
 
@@ -206,7 +216,8 @@ const Http = class {
 
       config.headers = config.headers || {}
       config.headers['Content-Type'] = 'application/json'
-      const token = parseToken()
+      config.credentials = 'omit'
+      const token = parseToken(document.cookie)
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }
