@@ -1691,12 +1691,20 @@ __metadata:
   resolution: "@calibur/component@workspace:shared/component"
   dependencies:
     "@calibur/http": "workspace:modules/cjax"
+    "@calibur/user": "workspace:modules/user"
     "@calibur/utils": "workspace:modules/utils"
     "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
     "@vue/compiler-sfc": ^3.0.0
+    babel-plugin-import: ^1.13.3
     core-js: ^3.6.5
+    element-plus: ^1.0.2-beta.40
+    fibers: ^5.0.0
+    install: ^0.13.0
     lscache: ^1.3.0
+    sass: ^1.32.8
+    sass-loader: 10
+    style-resources-loader: ^1.4.1
     vue: ^3.0.0
   languageName: unknown
   linkType: soft
@@ -2142,6 +2150,13 @@ __metadata:
   version: 7.0.7
   resolution: "@types/json-schema@npm:7.0.7"
   checksum: b9d2c509fa4e0b82f58e73f5e6ab76c60ff1884ba41bb82f37fb1cece226d4a3e5a62fedf78a43da0005373a6713d9abe61c1e592906402c41c08ad6ab26d52b
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.161":
+  version: 4.14.168
+  resolution: "@types/lodash@npm:4.14.168"
+  checksum: 9a4e25f89fc035b9f0388f1f7be85e5eff49f9e6db0d93432c9a89fce0916f8a89db4e8290415f7ea02de6b00d3573826378dcb655b7b2d20530a6e8d6dd6fd0
   languageName: node
   linkType: hard
 
@@ -4018,6 +4033,16 @@ __metadata:
   dependencies:
     object.assign: ^4.1.0
   checksum: 6745b8edca96f6c8bc34ab65935b5676358d2e55323e8e823b8de7aa353e3e6398a495ce434c9c36ad5fb1609467a1b1a0028946e1490bf7de8f97df3ae7f3b1
+  languageName: node
+  linkType: hard
+
+"babel-plugin-import@npm:^1.13.3":
+  version: 1.13.3
+  resolution: "babel-plugin-import@npm:1.13.3"
+  dependencies:
+    "@babel/helper-module-imports": ^7.0.0
+    "@babel/runtime": ^7.0.0
+  checksum: 4a21b12990922ff32544f48b6e6df0bd22980bf52d33814ded548fc2d98412ada4991782b390bc8415088ad0c8ef9175698c730e2e39dce5f1ef2fedaf9391bc
   languageName: node
   linkType: hard
 
@@ -6236,6 +6261,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"detect-libc@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "detect-libc@npm:1.0.3"
+  bin:
+    detect-libc: ./bin/detect-libc.js
+  checksum: 6cec442139459ec2e8517076974b0eba42079885938683eca013c2e0b5db02ef048870725ce68e7ac8e4cf17e482f67d7322f45bbc5f203b7332817bc7833b39
+  languageName: node
+  linkType: hard
+
 "detect-node@npm:^2.0.4":
   version: 2.0.4
   resolution: "detect-node@npm:2.0.4"
@@ -6517,6 +6551,24 @@ __metadata:
   peerDependencies:
     vue: ^3.0.9
   checksum: e40b9d206a44958c2fa986f646cc1c58d6955c30958cb3a0dc196c30f6e2b114966a0f73c9689a4a38f32ef38592cda192e11fc070684091b6bef3a110ee7cee
+  languageName: node
+  linkType: hard
+
+"element-plus@npm:^1.0.2-beta.40":
+  version: 1.0.2-beta.40
+  resolution: "element-plus@npm:1.0.2-beta.40"
+  dependencies:
+    "@popperjs/core": ^2.4.4
+    "@types/lodash": ^4.14.161
+    async-validator: ^3.4.0
+    dayjs: 1.x
+    lodash: ^4.17.20
+    mitt: ^2.1.0
+    normalize-wheel: ^1.0.1
+    resize-observer-polyfill: ^1.5.1
+  peerDependencies:
+    vue: ^3.0.9
+  checksum: ec773b69b1acec8ed4c452b15edaadcfa7f9cde46e338ae2e35ebf8adb7f9e9ccf68a92a036aca2524115426b4060d80099bf64ffa524eb90cd522443f680a10
   languageName: node
   linkType: hard
 
@@ -7330,6 +7382,15 @@ __metadata:
   dependencies:
     websocket-driver: ">=0.5.1"
   checksum: 94c48a5b4e9ab6ff05a424dfeebe0da6c7963776172c8713588926f1e15348c423e440c601360d105602586d59f8daeed5dadb76e29070f0b468ebd55e1f868d
+  languageName: node
+  linkType: hard
+
+"fibers@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "fibers@npm:5.0.0"
+  dependencies:
+    detect-libc: ^1.0.3
+  checksum: f4fbe15485664378fbc0a0d182fbdb9d8c97a48ac74669737a227cf4a5d0b82b046c461cb3481265105738b51f167338b68a19288164eafdcf93c4dcb130e434
   languageName: node
   linkType: hard
 
@@ -8674,6 +8735,13 @@ fsevents@~2.3.1:
     strip-ansi: ^6.0.0
     through: ^2.3.6
   checksum: fa0cbd9594a04e04c5c10a806e9a86b23986acdc7d07c75afdbc03412ff03b1d201efa83d9d64929afe99a901a093bfc9ae7ab13560f8e557cb98eddbe5bf37d
+  languageName: node
+  linkType: hard
+
+"install@npm:^0.13.0":
+  version: 0.13.0
+  resolution: "install@npm:0.13.0"
+  checksum: ccb9caa85166de28af041bdfe945d949420c1de3101522acf7b211476c255301de4bc4bb74db2a3373f846f58a8213333110c3503230671f8e958b698b60d6cf
   languageName: node
   linkType: hard
 
@@ -13150,7 +13218,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:^10.1.1":
+"sass-loader@npm:10, sass-loader@npm:^10.1.1":
   version: 10.1.1
   resolution: "sass-loader@npm:10.1.1"
   dependencies:

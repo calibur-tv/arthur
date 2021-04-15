@@ -11,6 +11,27 @@ const User = class {
     this.loading = false
     this.resolves = []
     this.rejects = []
+    this.handlers = new Set()
+  }
+  /**
+   * TODO：geetest?
+   */
+  login(body) {
+    return new Promise((resolve, reject) => {
+      http
+        .post('sign/login', { body })
+        .then((token) => {
+          Cookies.set(TOKEN_KEY, token)
+          resolve()
+        })
+        .catch((err) => {
+          this.info = null
+          reject(err)
+        })
+        .finally(() => {
+          this.checked = false
+        })
+    })
   }
 
   get() {
@@ -31,6 +52,9 @@ const User = class {
         .post('sign/get_user_info')
         .then((res) => {
           this.info = res
+          this.handlers.forEach((callback) => {
+            callback(res)
+          })
           this.resolves.forEach((callback) => {
             callback(res)
           })
@@ -52,33 +76,35 @@ const User = class {
         })
     })
   }
-  /**
-   * TODO：geetest?
-   */
-  login(body) {
-    return new Promise((resolve, reject) => {
-      http
-        .post('sign/login', { body })
-        .then((token) => {
-          this.checked = false
-          Cookies.set(TOKEN_KEY, token)
-          resolve()
+
+  logout() {
+    return new Promise((resolve) => {
+      http.post('sign/logout').finally(() => {
+        Cookies.remove(TOKEN_KEY)
+        this.handlers.forEach((callback) => {
+          callback(null)
         })
-        .catch(reject)
+        this.info = null
+        this.checked = false
+        resolve()
+      })
     })
   }
 
-  logout() {
-    http
-      .post('sign/logout')
-      .then(() => {
-        Cookies.remove(TOKEN_KEY)
-        window.location.reload()
-      })
-      .catch(() => {
-        Cookies.remove(TOKEN_KEY)
-        window.location.reload()
-      })
+  watch(callback, options = {}) {
+    if (typeof callback === 'function') {
+      if (this.checked && options.immediate) {
+        callback(this.info)
+      }
+
+      this.handlers.add(callback)
+
+      return () => {
+        this.handlers.delete(callback)
+      }
+    }
+
+    return () => {}
   }
 }
 

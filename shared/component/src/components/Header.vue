@@ -4,42 +4,40 @@
       <div class="mask-bg" :style="{ backgroundImage: `url(${background})` }" />
     </div>
     <div class="mask-shim" />
-    <div class="text-wrap v-layout">
+    <div class="text-wrap">
       <ul class="header-left">
         <li>
-          <RouterLink class="nav-link home-link" to="/">
-            <i class="iconfont ic-calibur" />
+          <a class="nav-link home-link" href="/">
+            <Logo color="#12b7f5" width="70" />
             <span>首页</span>
-          </RouterLink>
+          </a>
         </li>
         <li>
-          <RouterLink class="nav-link home-link" to="/about">
+          <a class="nav-link" href="/about">
             <span>关于</span>
-          </RouterLink>
+          </a>
         </li>
       </ul>
       <ul class="header-right">
-        <template v-if="isAuth">
+        <template v-if="userInfo">
           <li class="user-panel">
-            <AppPopover class-name="user-popover">
-              <template #trigger>
-                <RouterLink to="/" class="avatar">
-                  <img :src="$resize(user.avatar, { width: 60 })" alt="" />
-                </RouterLink>
+            <ElPopover trigger="hover" popper-class="user-popover">
+              <template #reference>
+                <a href="/" class="avatar">
+                  <img :src="userInfo.avatar" alt="" />
+                </a>
               </template>
-              <template #content>
-                <p class="nickname oneline" v-html="user.nickname" />
-                <RouterLink to="/">
-                  <div class="field">
-                    <div class="label">
-                      <i class="iconfont ic-setup_fill" />
-                      <span>设置</span>
-                    </div>
+              <p class="nickname oneline" v-html="userInfo.nickname" />
+              <a href="/">
+                <div class="field">
+                  <div class="label">
+                    <i class="iconfont ic-setup_fill" />
+                    <span>设置</span>
                   </div>
-                </RouterLink>
-                <button class="sign-out" @click="handleLogout">退出</button>
-              </template>
-            </AppPopover>
+                </div>
+              </a>
+              <button class="sign-out" @click="handleLogout">退出</button>
+            </ElPopover>
           </li>
         </template>
         <template v-else>
@@ -53,12 +51,16 @@
 </template>
 
 <script>
-import AppPopover from '@/components/app/AppPopover.vue'
+import { ElPopover } from 'element-plus'
+import user from '@calibur/user'
+// import utils from '@calibur/utils'
+import Logo from './Logo.vue'
 
 export default {
   name: 'CaliburHeader',
   components: {
-    AppPopover
+    Logo,
+    ElPopover
   },
   props: {
     background: {
@@ -66,25 +68,32 @@ export default {
       default: ''
     }
   },
+  data() {
+    return {
+      userInfo: null
+    }
+  },
   computed: {
     hasBg() {
       return !!this.background
-    },
-    isAuth() {
-      return this.$store.state.isAuth
-    },
-    user() {
-      return this.$store.state.user
     }
+  },
+  mounted() {
+    user.get().then((user) => {
+      this.userInfo = user
+    })
+    user.watch((user) => {
+      this.userInfo = user
+    })
   },
   methods: {
     handleSignIn() {
       $bus.emit('sign-in')
     },
     handleLogout() {
-      $api.sign.logout()
-      $cookie.remove('JWT-TOKEN')
-      window.location = '/'
+      user.logout().then(() => {
+        window.location = '/'
+      })
     }
   }
 }
@@ -92,18 +101,35 @@ export default {
 
 <style lang="scss">
 $header-link-padding: 7px;
+$app-header-hgt: 56px;
+$app-banner-hgt: 170px;
+$app-padding-h: 10px;
 
 #calibur-header {
-  width: 100%;
   position: relative;
+  width: 100%;
   height: $app-header-hgt;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  font: 12px Helvetica Neue, Helvetica, Arial, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei,
-    sans-serif;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+  font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, sans-serif;
   z-index: 99;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
   li {
     float: left;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .mask-wrap {
@@ -141,6 +167,7 @@ $header-link-padding: 7px;
 
   .text-wrap {
     position: relative;
+    padding: $app-padding-h 24px;
     z-index: 2;
 
     .iconfont {
@@ -154,8 +181,8 @@ $header-link-padding: 7px;
   .nav-link {
     display: block;
     padding: 0 $header-link-padding;
-    height: $app-header-hgt;
-    line-height: $app-header-hgt;
+    height: $app-header-hgt - $app-padding-h * 2;
+    line-height: $app-header-hgt - $app-padding-h * 2;
     color: #222;
     white-space: nowrap;
   }
@@ -165,10 +192,10 @@ $header-link-padding: 7px;
 
     .home-link {
       margin-left: -10px;
-
-      i {
-        font-size: 24px;
-      }
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
     }
   }
 
@@ -178,7 +205,7 @@ $header-link-padding: 7px;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    height: $app-header-hgt;
+    height: $app-header-hgt - $app-padding-h * 2;
 
     .user-panel {
       position: relative;

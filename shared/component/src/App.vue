@@ -1,4 +1,7 @@
 <template>
+  <div class="header-wrap">
+    <Header />
+  </div>
   <div class="banner-wrap">
     <Banner />
   </div>
@@ -11,6 +14,7 @@
 </template>
 
 <script>
+import Header from './components/Header.vue'
 import Banner from './components/Banner.vue'
 import Search from './components/Search.vue'
 import Logo from './components/Logo.vue'
@@ -18,6 +22,7 @@ import Logo from './components/Logo.vue'
 export default {
   name: 'App',
   components: {
+    Header,
     Logo,
     Banner,
     Search
@@ -36,6 +41,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.header-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .logo-wrap {
