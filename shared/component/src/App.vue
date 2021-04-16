@@ -38,9 +38,7 @@ body {
 #app {
   width: 100vw;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: rgb(239, 239, 244);
 }
 
 .header-wrap {
@@ -48,12 +46,13 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  height: 60px;
 }
 
 .logo-wrap {
   position: absolute;
   left: 50%;
-  top: 200px;
+  top: 50px;
   transform: translateX(-50%);
   z-index: 10;
 }
@@ -63,11 +62,15 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: 460px;
 }
 
 .search-wrap {
+  position: absolute;
+  left: 50%;
   width: 600px;
   height: 50px;
+  transform: translateX(-50%);
+  top: 220px;
 }
 </style>

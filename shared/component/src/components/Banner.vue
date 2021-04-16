@@ -48,7 +48,7 @@ export default {
     },
     loopBanner() {
       // this.banner1 = utils.resize(this.banners[0], { width: 2040 })
-      this.banner1 = 'https://web.calibur.tv/banner/6.jpg?x-oss-process=image/auto-orient,1/resize,w_4080/format,webp'
+      this.banner1 = 'https://i.loli.net/2020/05/25/RbTGL1ZQfcHVwY3.jpg'
       this.timer = setInterval(() => {
         if (!this.banners.length) {
           return
@@ -70,7 +70,6 @@ export default {
 .calibur-banner {
   width: 100%;
   height: 100%;
-  background-color: rgb(239, 239, 244);
 
   .banner {
     position: absolute;

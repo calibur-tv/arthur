@@ -1,20 +1,11 @@
 <template>
-  <nav id="calibur-header" :class="{ 'with-bg': hasBg }">
-    <div v-if="hasBg" class="mask-wrap">
-      <div class="mask-bg" :style="{ backgroundImage: `url(${background})` }" />
-    </div>
+  <nav id="calibur-header">
     <div class="mask-shim" />
     <div class="text-wrap">
-      <ul class="header-left">
+      <ul v-if="left" class="header-left">
         <li>
-          <a class="nav-link home-link" href="/">
-            <Logo color="#12b7f5" width="70" />
-            <span>首页</span>
-          </a>
-        </li>
-        <li>
-          <a class="nav-link" href="/about">
-            <span>关于</span>
+          <a href="/">
+            <Logo color="#fff" shadow width="140" />
           </a>
         </li>
       </ul>
@@ -42,7 +33,13 @@
         </template>
         <template v-else>
           <li>
-            <button class="nav-link" @click="handleSignIn">登录</button>
+            <button class="login-btn" @click="handleSignIn">登录</button>
+          </li>
+          <li>
+            <a class="nav-link create-center" href="/">创作中心</a>
+          </li>
+          <li>
+            <button class="create-btn">投稿</button>
           </li>
         </template>
       </ul>
@@ -63,19 +60,14 @@ export default {
     ElPopover
   },
   props: {
-    background: {
-      type: String,
-      default: ''
+    left: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
     return {
       userInfo: null
-    }
-  },
-  computed: {
-    hasBg() {
-      return !!this.background
     }
   },
   mounted() {
@@ -100,22 +92,19 @@ export default {
 </script>
 
 <style lang="scss">
-$header-link-padding: 7px;
-$app-header-hgt: 56px;
-$app-banner-hgt: 170px;
-$app-padding-h: 10px;
-
 #calibur-header {
   position: relative;
   width: 100%;
-  height: $app-header-hgt;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
+  height: 100%;
   font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, PingFang SC, Hiragino Sans GB,
     Microsoft YaHei, sans-serif;
+  -webkit-font-smoothing: antialiased;
   z-index: 99;
 
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   ul {
@@ -132,26 +121,10 @@ $app-padding-h: 10px;
     text-decoration: none;
   }
 
-  .mask-wrap {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
-
-    .mask-bg {
-      position: absolute;
-      right: 0;
-      left: 0;
-      top: 0;
-      height: $app-banner-hgt;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      @include filter-blur();
-    }
+  button {
+    border: none;
+    outline-width: 0;
+    cursor: pointer;
   }
 
   .mask-shim {
@@ -159,32 +132,29 @@ $app-padding-h: 10px;
     right: 0;
     left: 0;
     top: 0;
-    height: $app-header-hgt;
+    height: 100%;
     z-index: 1;
     overflow: hidden;
-    background-color: #fff;
+    background-color: transparent;
   }
 
   .text-wrap {
     position: relative;
-    padding: $app-padding-h 24px;
+    padding: 5px 12px;
     z-index: 2;
+    height: 100%;
 
-    .iconfont {
-      color: $color-main;
-      display: block;
-      float: left;
-      margin-right: 3px;
+    &:after {
+      content: '';
+      clear: both;
+      display: table;
     }
-  }
 
-  .nav-link {
-    display: block;
-    padding: 0 $header-link-padding;
-    height: $app-header-hgt - $app-padding-h * 2;
-    line-height: $app-header-hgt - $app-padding-h * 2;
-    color: #222;
-    white-space: nowrap;
+    &:before {
+      content: '';
+      clear: both;
+      display: table;
+    }
   }
 
   .header-left {
@@ -205,11 +175,36 @@ $app-padding-h: 10px;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    height: $app-header-hgt - $app-padding-h * 2;
+    height: 100%;
+    backdrop-filter: blur(20px);
+    border-radius: 100px;
+    padding: 7px;
+
+    $item-height: 36px;
+
+    .login-btn {
+      display: block;
+      width: $item-height;
+      height: $item-height;
+      border-radius: 50%;
+      background-color: #fff;
+      color: rgb(0, 161, 214);
+      margin-right: 16px;
+      font-weight: 600;
+    }
+
+    .nav-link {
+      color: #fff;
+      text-shadow: 0 2px 10px rgb(0 0 0 / 55%);
+    }
+
+    .create-center {
+      margin-left: 12px;
+    }
 
     .user-panel {
       position: relative;
-      height: $app-header-hgt;
+      height: 100%;
       padding: 4px 7px 0;
 
       &:hover {
@@ -292,38 +287,17 @@ $app-padding-h: 10px;
     }
 
     .create-btn {
-      display: block;
-      width: 68px;
-      height: 46px;
-      line-height: 46px;
-      text-align: center;
-      font-size: 14px;
+      position: relative;
       color: #fff;
-      background-color: #f45a8d;
-      border-radius: 0 0 6px 6px;
-      padding-bottom: 2px;
-      margin-left: 5px;
-
-      &:hover {
-        background-color: #fb7299;
-      }
-    }
-  }
-
-  &.with-bg {
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 0;
-
-    .mask-shim {
-      background-color: hsla(0, 0%, 100%, 0.4);
-    }
-
-    .text-wrap {
-      .nav-link:hover {
-        background-color: hsla(0, 0%, 100%, 0.3);
-      }
+      font-size: 14px;
+      display: block;
+      width: 100px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      background-color: rgb(0, 161, 214);
+      border-radius: 40px;
+      margin-left: 14px;
     }
   }
 }
