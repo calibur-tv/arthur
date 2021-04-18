@@ -1700,7 +1700,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calibur/component@workspace:shared/component"
   dependencies:
-    "@calibur/http": "workspace:modules/cjax"
+    "@calibur/http": "workspace:modules/http"
     "@calibur/user": "workspace:modules/user"
     "@calibur/utils": "workspace:modules/utils"
     "@vue/cli-plugin-babel": ~4.5.0
@@ -1731,9 +1731,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@calibur/http@workspace:modules/cjax":
+"@calibur/http@workspace:modules/http":
   version: 0.0.0-use.local
-  resolution: "@calibur/http@workspace:modules/cjax"
+  resolution: "@calibur/http@workspace:modules/http"
   dependencies:
     "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
@@ -1763,7 +1763,7 @@ __metadata:
     "@arthur/shared-css": "workspace:shared/css"
     "@calibur/bus": "workspace:modules/bus"
     "@calibur/component": "workspace:shared/component"
-    "@calibur/http": "workspace:modules/cjax"
+    "@calibur/http": "workspace:modules/http"
     "@calibur/user": "workspace:modules/user"
     "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
@@ -1781,12 +1781,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calibur/user@workspace:modules/user"
   dependencies:
-    "@calibur/http": "workspace:modules/cjax"
+    "@calibur/bus": "workspace:modules/bus"
+    "@calibur/http": "workspace:modules/http"
     "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
     "@vue/compiler-sfc": ^3.0.0
     core-js: ^3.6.5
     js-cookie: ^2.2.1
+    qiankun: ^2.4.0
   languageName: unknown
   linkType: soft
 

@@ -12,8 +12,10 @@ function addStyleResource(rule) {
 }
 
 module.exports = (conf) => {
+  const name = conf.name.split('/').pop()
+
   return {
-    publicPath: isBuild ? `//web.calibur.tv/${conf.name.split('/').pop()}/` : '/',
+    publicPath: isBuild ? `//web.calibur.tv/${name}/` : '/',
     devServer: {
       port: conf.port || 3000,
       headers: {
@@ -23,9 +25,9 @@ module.exports = (conf) => {
     configureWebpack: {
       output: {
         // 把子应用打包成 umd 库格式
-        library: `${conf.name}-[name]`,
+        library: `${name}-[name]`,
         libraryTarget: 'umd',
-        jsonpFunction: `webpackJsonp_${conf.name}`
+        jsonpFunction: `webpackJsonp_${name}`
       }
     },
     chainWebpack: (config) => {

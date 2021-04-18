@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     handleSignIn() {
-      $bus.emit('sign-in')
+      user.login()
     },
     handleLogout() {
       user.logout().then(() => {

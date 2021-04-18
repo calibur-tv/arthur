@@ -1,5 +1,7 @@
+import bus from '@calibur/bus'
 import http from '@calibur/http'
 import Cookies from 'js-cookie'
+import { loadMicroApp } from 'qiankun'
 
 const TOKEN_KEY = 'JWT-TOKEN'
 
@@ -13,25 +15,9 @@ const User = class {
     this.rejects = []
     this.handlers = new Set()
   }
-  /**
-   * TODO：geetest?
-   */
-  login(body) {
-    return new Promise((resolve, reject) => {
-      http
-        .post('sign/login', { body })
-        .then((token) => {
-          Cookies.set(TOKEN_KEY, token)
-          resolve()
-        })
-        .catch((err) => {
-          this.info = null
-          reject(err)
-        })
-        .finally(() => {
-          this.checked = false
-        })
-    })
+
+  login() {
+    bus.emit('sign-in')
   }
 
   get() {
@@ -117,6 +103,16 @@ const userInstance = () => {
 
   if (!glob.__calibur_user__) {
     glob.__calibur_user__ = new User()
+
+    const el = document.createElement('div')
+    const id = '#_calibur_sign_service'
+    el.setAttribute('id', id)
+    document.body.appendChild(el)
+    loadMicroApp({
+      name: 'sign',
+      entry: http.isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
+      container: el
+    })
   }
 
   return glob.__calibur_user__

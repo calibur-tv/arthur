@@ -12,7 +12,7 @@
     "@arthur/shared-css": "workspace:shared/css",
     "@calibur/bus": "workspace:modules/bus",
     "@calibur/component": "workspace:shared/component",
-    "@calibur/http": "workspace:modules/cjax",
+    "@calibur/http": "workspace:modules/http",
     "@calibur/user": "workspace:modules/user",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.36",

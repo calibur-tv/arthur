@@ -10,7 +10,7 @@
   ],
   "main": "./src/export.js",
   "dependencies": {
-    "@calibur/http": "workspace:modules/cjax",
+    "@calibur/http": "workspace:modules/http",
     "@calibur/user": "workspace:modules/user",
     "@calibur/utils": "workspace:modules/utils",
     "core-js": "^3.6.5",

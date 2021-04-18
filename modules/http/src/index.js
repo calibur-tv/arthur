@@ -32,6 +32,7 @@ import {
 const Http = class {
   constructor(option = {}) {
     this.baseURL = option.baseURL || ENUM_CONST.baseURL[ENUM_CONST.ENV]
+    this.isDev = ENUM_CONST.ENV === 'development'
   }
   /**
    * @desc
