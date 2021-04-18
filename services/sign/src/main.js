@@ -1,25 +1,22 @@
+import { createApp } from 'vue'
+import { ElForm, ElFormItem, ElButton, ElInput, ElMessage, ElMessageBox } from 'element-plus'
+import '@arthur/shared-css/theme.scss'
 import App from './App.vue'
-import './public-path'
 
 let instance
 
 function render(props = {}) {
   const { container } = props
-  // eslint-disable-next-line
-  const { createApp } = Vue
   instance = createApp(App)
-  // instance.use($store)
-  // eslint-disable-next-line
-  instance.use(ElementPlus)
+  instance.use(ElForm)
+  instance.use(ElFormItem)
+  instance.use(ElButton)
+  instance.use(ElInput)
   instance.mount(container ? container.querySelector('#sub-app') : '#sub-app')
 }
 
 if (!window.__POWERED_BY_QIANKUN__) {
-  Promise.all([import('@calibur/mfe-loader'), import('@calibur/shared-dependencies')]).then((modules) => {
-    const bootstrap = modules[0].default
-    const dependencies = modules[1].default
-    bootstrap(dependencies).then(render)
-  })
+  render()
 }
 
 export async function bootstrap() {}
@@ -28,6 +25,8 @@ export async function mount(props) {
   render(props)
   instance.config.globalProperties.$onGlobalStateChange = props.onGlobalStateChange
   instance.config.globalProperties.$setGlobalState = props.setGlobalState
+  instance.config.globalProperties.$prompt = ElMessageBox.prompt
+  instance.config.globalProperties.$toast = ElMessage
 }
 
 export async function unmount() {

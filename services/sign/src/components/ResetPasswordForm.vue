@@ -1,13 +1,26 @@
 <template>
   <div class="reset-password-form">
-    <div class="v-form" :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
-      <input v-model="form.access" type="text" placeholder="手机号" auto-complete="off" />
-      <input v-model="form.secret" type="text" placeholder="新密码" auto-complete="off" />
-      <button type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block>
-        {{ submitBtnText }}
-        <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
-      </button>
-    </div>
+    <el-form ref="form" :disabled="submitBtnLoading" :model="form" :rules="rule">
+      <el-form-item prop="access">
+        <el-input v-model="form.access" type="text" placeholder="手机号" auto-complete="off"> </el-input>
+      </el-form-item>
+      <el-form-item prop="secret">
+        <el-input v-model="form.secret" type="text" placeholder="新密码" auto-complete="off"> </el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button
+          type="primary"
+          class="block-btn"
+          native-type="button"
+          :loading="submitBtnLoading"
+          :disabled="submitBtnDisabled"
+          @click="submitForm"
+        >
+          {{ submitBtnText }}
+          <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
+        </el-button>
+      </el-form-item>
+    </el-form>
     <div class="others">
       <a @click="showLogin">返回登录></a>
       <a @click="showRegister">点击注册»</a>
@@ -16,6 +29,8 @@
 </template>
 
 <script>
+import http from '@calibur/http'
+
 export default {
   name: 'ResetPasswordForm',
   data() {
@@ -47,8 +62,8 @@ export default {
         authCode: ''
       },
       rule: {
-        access: [{ validator: validateAccess, trigger: 'blur' }],
-        secret: [{ validator: validateSecret, trigger: 'blur' }]
+        access: [{ validator: validateAccess }],
+        secret: [{ validator: validateSecret }]
       },
       step: 0,
       timeout: 0
@@ -76,19 +91,25 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.step === 0) {
-        this.getResetAuthCode()
-      }
-      if (this.step === 2) {
-        this.openConfirmModal()
-      }
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          if (this.step === 0) {
+            this.getResetAuthCode()
+          }
+          if (this.step === 2) {
+            this.openConfirmModal()
+          }
+        }
+      })
     },
     async getResetAuthCode() {
       this.step = 1
       try {
-        await $api('sendMessage', {
-          type: 'forgot_password',
-          phone_number: this.form.access
+        await http.post('sign/message', {
+          body: {
+            type: 'forgot_password',
+            phone_number: this.form.access
+          }
         })
         this.step = 2
         this.openConfirmModal()
@@ -121,10 +142,12 @@ export default {
     },
     async signReset() {
       try {
-        const res = await $api('resetPassword', {
-          access: this.form.access,
-          authCode: this.form.authCode,
-          secret: this.form.secret
+        const res = await http.post('sign/reset_password', {
+          body: {
+            access: this.form.access,
+            authCode: this.form.authCode,
+            secret: this.form.secret
+          }
         })
         this.$toast.success(res)
         this.showLogin()

@@ -1,13 +1,18 @@
 <template>
   <div class="sign-in-form">
-    <div class="v-form" :loading="loading" :form="form" :rule="rule" :error="false">
-      <input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" />
-      <input
-        v-model="form.secret"
-        type="password"
-        placeholder="密码（6-16个字符组成，区分大小写）"
-        @keydown.enter="submitForm"
-      />
+    <el-form ref="form" :disabled="loading" :model="form" :rules="rule">
+      <el-form-item prop="access">
+        <el-input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）"> </el-input>
+      </el-form-item>
+      <el-form-item prop="secret">
+        <el-input
+          v-model="form.secret"
+          type="password"
+          placeholder="密码（6-16个字符组成，区分大小写）"
+          @keydown.enter="login"
+        >
+        </el-input>
+      </el-form-item>
       <!--
       <div class="opt-container">
         <ul class="provider">
@@ -20,8 +25,12 @@
         </ul>
       </div>
       -->
-      <button type="button" :loading="loading" @click="login">登录</button>
-    </div>
+      <el-form-item>
+        <el-button type="primary" class="block-btn" native-type="button" :loading="loading" @click="login"
+          >登录</el-button
+        >
+      </el-form-item>
+    </el-form>
     <div class="others">
       <a @click="showReset">忘记密码?></a>
       <a @click="showRegister">点击注册»</a>
@@ -30,6 +39,9 @@
 </template>
 
 <script>
+import http from '@calibur/http'
+import Cookies from 'js-cookie'
+
 export default {
   name: 'SignInForm',
   data() {
@@ -73,31 +85,29 @@ export default {
     authWechat() {
       window.location.href = 'http://fc.calibur.tv/callback/oauth2/wechat?from=sign'
     },
-    redirect() {
-      return this.$route.query.redirect ? this.$route.query.redirect : encodeURIComponent(window.location.href)
-    },
     login() {
-      if (this.loading) {
-        return
-      }
-      this.loading = true
-      $api('sign.login', {
-        access: this.form.access,
-        secret: this.form.secret
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          this.loading = true
+          http
+            .post('sign/login', {
+              body: {
+                access: this.form.access,
+                secret: this.form.secret
+              }
+            })
+            .then((token) => {
+              Cookies.set('JWT-TOKEN', token, {
+                expires: 365
+              })
+              window.location.reload()
+            })
+            .catch((err) => {
+              this.$toast.info(err.message)
+              this.loading = false
+            })
+        }
       })
-        .then((token) => {
-          $cookie.set('JWT-TOKEN', token, {
-            expires: 365
-          })
-          if (this.$route.query.redirect) {
-            window.location = decodeURIComponent(this.$route.query.redirect)
-          } else {
-            window.location.reload()
-          }
-        })
-        .catch(() => {
-          this.loading = false
-        })
     },
     showReset() {
       this.$emit('to-reset')
@@ -145,19 +155,6 @@ export default {
       .ic-v-chat:hover {
         color: $color-green;
       }
-    }
-  }
-
-  .v-form {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    &__submit {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
     }
   }
 

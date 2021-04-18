@@ -1686,6 +1686,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@calibur/bus@workspace:modules/bus":
+  version: 0.0.0-use.local
+  resolution: "@calibur/bus@workspace:modules/bus"
+  dependencies:
+    "@vue/cli-plugin-babel": ~4.5.0
+    "@vue/cli-service": ~4.5.0
+    core-js: ^3.6.5
+  languageName: unknown
+  linkType: soft
+
 "@calibur/component@workspace:shared/component":
   version: 0.0.0-use.local
   resolution: "@calibur/component@workspace:shared/component"
@@ -1750,10 +1760,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calibur/sign@workspace:services/sign"
   dependencies:
-    "@calibur/mfe-loader": "workspace:modules/mfe-loader"
-    "@calibur/shared-dependencies": "workspace:shared/dependencies"
+    "@arthur/shared-css": "workspace:shared/css"
+    "@calibur/bus": "workspace:modules/bus"
+    "@calibur/component": "workspace:shared/component"
+    "@calibur/http": "workspace:modules/cjax"
+    "@calibur/user": "workspace:modules/user"
+    "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
+    "@vue/compiler-sfc": ^3.0.0
+    babel-plugin-import: ^1.13.3
+    core-js: ^3.6.5
     cross-env: ^7.0.3
+    element-plus: ^1.0.2-beta.36
+    js-cookie: ^2.2.1
+    vue: ^3.0.0
   languageName: unknown
   linkType: soft
 
@@ -1776,7 +1796,6 @@ __metadata:
   dependencies:
     "@vue/cli-plugin-babel": ~4.5.0
     "@vue/cli-service": ~4.5.0
-    "@vue/compiler-sfc": ^3.0.0
     core-js: ^3.6.5
   languageName: unknown
   linkType: soft
@@ -3804,9 +3823,7 @@ __metadata:
     "@vue/cli-service": ~4.5.12
     "@vue/compiler-sfc": ^3.0.11
     "@vue/eslint-config-prettier": ^6.0.0
-    axios: ^0.21.1
     babel-eslint: ^10.1.0
-    core-js: ^3.10.1
     cross-env: ^7.0.3
     eslint: ^7.23.0
     eslint-plugin-prettier: ^3.3.1
@@ -3814,13 +3831,11 @@ __metadata:
     less: ^4.1.1
     less-loader: ^8.0.0
     lint-staged: ^10.5.4
+    mitt: ^2.1.0
     prettier: ^2.2.1
     sass: ^1.32.8
     sass-loader: ^10.1.1
     style-resources-loader: ^1.4.1
-    vue: ^3.0.11
-    vue-router: 4.0.6
-    vuex: 4.0.0
   languageName: unknown
   linkType: soft
 
@@ -3975,15 +3990,6 @@ __metadata:
   version: 1.11.0
   resolution: "aws4@npm:1.11.0"
   checksum: d30dce2b73839974894d8283a06c53e8374b74d643d3b08340d84c364e01158be011fcfd1a88f8462be946d69055313a3038202f2eafd155b039aaab3549ba21
-  languageName: node
-  linkType: hard
-
-"axios@npm:^0.21.1":
-  version: 0.21.1
-  resolution: "axios@npm:0.21.1"
-  dependencies:
-    follow-redirects: ^1.10.0
-  checksum: 864fb7b5d077d236737f10adca53bf451a93f35a15271f56fba8da07265a02d26b7d881b935a6697dc6adb0549ea3e56d2eecb403edaa3bb78f6479901c10f69
   languageName: node
   linkType: hard
 
@@ -5503,17 +5509,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^3.10.1, core-js@npm:^3.8.3":
-  version: 3.10.1
-  resolution: "core-js@npm:3.10.1"
-  checksum: 5329c1bb03a9fa36d259b26180d9c4ad377a37867d2753b08a53738d41adb3b1193708abfaec4976d422140abcfabdc272584fb9ed16b1406a5c02fd122b8702
-  languageName: node
-  linkType: hard
-
 "core-js@npm:^3.6.5":
   version: 3.9.0
   resolution: "core-js@npm:3.9.0"
   checksum: c1711d5f60db480a561bba6a8ce02a0e8f4400c14b3c0eb728133be2ae30d74eb0bd20cd8154c3b0910ecc01bd07efa1efb04596f2c9432109dcbef268ef332d
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.8.3":
+  version: 3.10.1
+  resolution: "core-js@npm:3.10.1"
+  checksum: 5329c1bb03a9fa36d259b26180d9c4ad377a37867d2753b08a53738d41adb3b1193708abfaec4976d422140abcfabdc272584fb9ed16b1406a5c02fd122b8702
   languageName: node
   linkType: hard
 
@@ -6554,7 +6560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"element-plus@npm:^1.0.2-beta.40":
+"element-plus@npm:^1.0.2-beta.36, element-plus@npm:^1.0.2-beta.40":
   version: 1.0.2-beta.40
   resolution: "element-plus@npm:1.0.2-beta.40"
   dependencies:
@@ -7589,7 +7595,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.10.0":
+"follow-redirects@npm:^1.0.0":
   version: 1.13.2
   resolution: "follow-redirects@npm:1.13.2"
   peerDependenciesMeta:
@@ -15243,15 +15249,6 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"vue-router@npm:4.0.6":
-  version: 4.0.6
-  resolution: "vue-router@npm:4.0.6"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 0f7ac0b5da2a0d37f1dadd58be69600f26d9a95c75ece82e50803e5532a25599e414100a15f942d4188eb789bf40fe132b4badc98337a3c431898e112f63f18c
-  languageName: node
-  linkType: hard
-
 "vue-style-loader@npm:^4.1.0, vue-style-loader@npm:^4.1.2":
   version: 4.1.2
   resolution: "vue-style-loader@npm:4.1.2"
@@ -15298,26 +15295,6 @@ fsevents@~2.3.1:
     "@vue/runtime-dom": 3.0.11
     "@vue/shared": 3.0.11
   checksum: b71201f33a37b8e2648126abc0ece5847087b5cdeb68c28e2d202c355efff1fd2d4a0ba6722d89778bf13ab2dc469cd6bb8b8f984283cfc06085646ae1295f40
-  languageName: node
-  linkType: hard
-
-"vue@npm:^3.0.11":
-  version: 3.0.11
-  resolution: "vue@npm:3.0.11"
-  dependencies:
-    "@vue/compiler-dom": 3.0.11
-    "@vue/runtime-dom": 3.0.11
-    "@vue/shared": 3.0.11
-  checksum: b71201f33a37b8e2648126abc0ece5847087b5cdeb68c28e2d202c355efff1fd2d4a0ba6722d89778bf13ab2dc469cd6bb8b8f984283cfc06085646ae1295f40
-  languageName: node
-  linkType: hard
-
-"vuex@npm:4.0.0":
-  version: 4.0.0
-  resolution: "vuex@npm:4.0.0"
-  peerDependencies:
-    vue: ^3.0.2
-  checksum: 7420b32b75cb605a355df1d73de737362207ae86f24d1163a6a96d358da5d2094fd92edd5023da048af636cb59d1b506c7d4d1436a8a4951841230659a5c4e55
   languageName: node
   linkType: hard
 
@@ -15966,6 +15943,18 @@ fsevents@~2.3.1:
   checksum: 519fcda0fcdf0c16327be2de9d98646742307bc830277e8868529fcf7566f2b330a6453c233e0cdcb767d5838dd61a90984a02ecc983bcddebea5ad0833bbf98
   languageName: node
   linkType: hard
+
+"write@workspace:services/write":
+  version: 0.0.0-use.local
+  resolution: "write@workspace:services/write"
+  dependencies:
+    "@vue/cli-plugin-babel": ~4.5.0
+    "@vue/cli-service": ~4.5.0
+    "@vue/compiler-sfc": ^3.0.0
+    core-js: ^3.6.5
+    vue: ^3.0.0
+  languageName: unknown
+  linkType: soft
 
 "ws@npm:^6.0.0, ws@npm:^6.2.1":
   version: 6.2.1

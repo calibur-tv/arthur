@@ -1,9 +1,9 @@
 {
-  "name": "@calibur/utils",
+  "name": "@calibur/bus",
   "version": "0.1.1",
-  "main": "./dist/utils.umd.js",
+  "main": "./dist/bus.umd.js",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name utils src/index.js"
+    "build": "vue-cli-service build --target lib --name bus src/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5"

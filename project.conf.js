@@ -13,7 +13,7 @@ function addStyleResource(rule) {
 
 module.exports = (conf) => {
   return {
-    publicPath: isBuild ? `//web.calibur.tv/${conf.name}/` : '/',
+    publicPath: isBuild ? `//web.calibur.tv/${conf.name.split('/').pop()}/` : '/',
     devServer: {
       port: conf.port || 3000,
       headers: {

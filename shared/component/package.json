@@ -1,11 +1,14 @@
 {
   "name": "@calibur/component",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name calibur ./src/export.js"
   },
+  "files": [
+    "src"
+  ],
+  "main": "./src/export.js",
   "dependencies": {
     "@calibur/http": "workspace:modules/cjax",
     "@calibur/user": "workspace:modules/user",

@@ -82,6 +82,9 @@ export default {
 
 <style lang="scss">
 .calibur-logo {
+  display: flex;
+  justify-content: center;
+
   svg {
     display: block;
   }

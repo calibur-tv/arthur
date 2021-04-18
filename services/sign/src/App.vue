@@ -11,3 +11,17 @@ export default {
   }
 }
 </script>
+
+<style>
+.el-form {
+  width: 100%;
+}
+
+.block-btn {
+  width: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+</style>

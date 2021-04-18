@@ -1,22 +1,47 @@
 <template>
   <div class="sign-up-form">
-    <div class="v-form" :loading="submitBtnLoading" :form="form" :rule="rule" @submit="submitForm">
-      <input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" auto-complete="off" />
-      <input
-        v-model="form.secret"
-        type="password"
-        placeholder="密码（6-16个字符组成，区分大小写）"
-        auto-complete="off"
-      />
-      <input v-model="form.inviteCode" :disabled="!!inviteCode" placeholder="邀请码（可为空）" auto-complete="off" />
-      <button type="button" :loading="submitBtnLoading" :disabled="submitBtnDisabled" block @click="submitForm">
-        {{ submitBtnText }}
-        <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
-      </button>
-    </div>
-    <!--
+    <el-form ref="form" :disabled="submitBtnLoading" :model="form" :rules="rule">
+      <el-form-item prop="access">
+        <el-input v-model="form.access" type="text" placeholder="手机（填写常用手机号，用于登录）" auto-complete="off">
+        </el-input>
+      </el-form-item>
+      <el-form-item prop="secret">
+        <el-input
+          v-model="form.secret"
+          type="password"
+          placeholder="密码（6-16个字符组成，区分大小写）"
+          auto-complete="off"
+        >
+        </el-input>
+      </el-form-item>
+      <!--
+      <el-form-item>
+        <el-input
+          v-model="form.inviteCode"
+          :disabled="!!inviteCode"
+          placeholder="邀请码（可不填）"
+          auto-complete="off"
+        >
+        </el-input>
+      </el-form-item>
+      -->
+      <el-form-item>
+        <el-button
+          type="primary"
+          class="block-btn"
+          native-type="button"
+          :loading="submitBtnLoading"
+          :disabled="submitBtnDisabled"
+          @click="submitForm"
+        >
+          {{ submitBtnText }}
+          <template v-if="timeout"> （{{ timeout }}s 后可重新获取） </template>
+        </el-button>
+      </el-form-item>
+    </el-form>
     <div class="others">
       <ul class="provider">
+        <!--
         <span>社交账号注册</span>
         <li @click="qqRegisterLink">
           <i class="iconfont ic-qq" />
@@ -24,25 +49,17 @@
         <li @click="wechatRegisterLink">
           <i class="iconfont ic-v-chat" />
         </li>
+        -->
       </ul>
       <a @click="showLogin">已有账号»</a>
     </div>
-    <AModal
-      title="短信已发送"
-      :visible="showAuthModal"
-      :confirm-loading="waitAuthModal"
-      ok-text="确定"
-      cancel-text="取消"
-      @ok="submitFormData"
-      @cancel="closeAuthModal"
-    >
-      <input v-model="form.authCode" placeholder="请输入收到的验证码" type="text"></input>
-    </AModal>
-    -->
   </div>
 </template>
 
 <script>
+import http from '@calibur/http'
+import Cookies from 'js-cookie'
+
 export default {
   name: 'SignUpForm',
   props: {
@@ -111,9 +128,7 @@ export default {
        * ---- 无论如何，注册失败都返回 step 0
        */
       step: 0,
-      timeout: 0,
-      showAuthModal: false,
-      waitAuthModal: false
+      timeout: 0
     }
   },
   computed: {
@@ -169,19 +184,25 @@ export default {
       return this.$route.query.redirect ? this.$route.query.redirect : encodeURIComponent(window.location.href)
     },
     submitForm() {
-      if (this.step === 0) {
-        this.getRegisterAuthCode()
-      }
-      if (this.step === 2) {
-        this.openConfirmModal()
-      }
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          if (this.step === 0) {
+            this.getRegisterAuthCode()
+          }
+          if (this.step === 2) {
+            this.openConfirmModal()
+          }
+        }
+      })
     },
     async getRegisterAuthCode() {
       this.step = 1
       try {
-        await $api('sendMessage', {
-          type: 'sign_up',
-          phone_number: this.form.access
+        await http.post('sign/message', {
+          body: {
+            type: 'sign_up',
+            phone_number: this.form.access
+          }
         })
         this.step = 2
         this.openConfirmModal()
@@ -198,44 +219,36 @@ export default {
       }
     },
     openConfirmModal() {
-      this.showAuthModal = true
-    },
-    submitFormData() {
-      this.waitAuthModal = true
-      if (!/^\d{6}$/.test(this.form.authCode)) {
-        this.waitAuthModal = false
-        this.$toast.error('验证码格式不正确')
-        return
-      }
-      this.step = 3
-      this.signUp()
-    },
-    closeAuthModal() {
-      this.showAuthModal = false
-      this.waitAuthModal = false
+      this.$prompt('请输入收到的验证码', '短信已发送', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        inputPattern: /^\d{6}$/,
+        inputErrorMessage: '验证码格式不正确'
+      })
+        .then(({ value }) => {
+          this.form.authCode = value
+          this.step = 3
+          this.signUp()
+        })
+        .catch(() => {})
     },
     signUp() {
-      $api('register', {
-        access: this.form.access,
-        secret: this.form.secret,
-        authCode: this.form.authCode,
-        inviteCode: this.form.inviteCode
-      })
+      http
+        .post('sign/register', {
+          body: {
+            access: this.form.access,
+            secret: this.form.secret,
+            authCode: this.form.authCode,
+            inviteCode: this.form.inviteCode
+          }
+        })
         .then((token) => {
-          $cookie.set('JWT-TOKEN', token)
-          this.$toast.success('注册成功！', () => {
-            if (this.$route.query.redirect) {
-              window.location = decodeURIComponent(this.$route.query.redirect)
-            } else {
-              window.location.reload()
-            }
-          })
+          this.$toast.success('注册成功！')
+          Cookies.set('JWT-TOKEN', token)
+          window.location.reload()
         })
         .catch(() => {
           this.step = 0
-        })
-        .finally(() => {
-          this.closeAuthModal()
         })
     },
     showLogin() {
