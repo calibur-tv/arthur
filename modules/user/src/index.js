@@ -34,6 +34,14 @@ const User = class {
       }
 
       this.loading = true
+      if (!Cookies.get(TOKEN_KEY)) {
+        this.isLogin = false
+        this.checked = true
+        this.loading = false
+        resolve(this.info)
+        return
+      }
+
       http
         .post('sign/get_user_info')
         .then((res) => {
