@@ -3,7 +3,6 @@
     <div class="search-input">
       <button type="button" class="search-input-btn" @click="submit">
         <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="48" height="48" fill="white" fill-opacity="0.01" />
           <path
             d="M21 38C30.3888 38 38 30.3888 38 21C38 11.6112 30.3888 4 21 4C11.6112 4 4 11.6112 4 21C4 30.3888 11.6112 38 21 38Z"
             fill="none"
@@ -58,7 +57,6 @@
           xmlns="http://www.w3.org/2000/svg"
           @click="handleDelete(index)"
         >
-          <rect width="48" height="48" fill="white" fill-opacity="0.01" />
           <path d="M14 14L34 34" stroke="#999" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
           <path d="M14 34L34 14" stroke="#999" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
