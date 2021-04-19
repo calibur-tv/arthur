@@ -52,7 +52,7 @@ body {
 .logo-wrap {
   position: absolute;
   left: 50%;
-  top: 50px;
+  top: 120px;
   transform: translateX(-50%);
   z-index: 10;
 }
@@ -62,7 +62,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 460px;
+  bottom: 0;
 }
 
 .search-wrap {
@@ -71,6 +71,6 @@ body {
   width: 600px;
   height: 50px;
   transform: translateX(-50%);
-  top: 220px;
+  top: 290px;
 }
 </style>

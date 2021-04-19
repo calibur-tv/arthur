@@ -12,52 +12,54 @@
       <ul class="header-right">
         <template v-if="userInfo">
           <li class="user-panel">
-            <ElPopover trigger="hover" popper-class="user-popover">
-              <template #reference>
+            <Popover class-name="user-popover">
+              <template #trigger>
                 <a href="/" class="avatar">
-                  <img :src="userInfo.avatar" alt="" />
+                  <img :src="resize(userInfo.avatar, { width: 72 })" alt="" />
                 </a>
               </template>
-              <p class="nickname oneline" v-html="userInfo.nickname" />
-              <a href="/">
-                <div class="field">
-                  <div class="label">
-                    <i class="iconfont ic-setup_fill" />
-                    <span>设置</span>
+              <template #content>
+                <p class="nickname oneline" v-html="userInfo.nickname" />
+                <a href="/">
+                  <div class="field">
+                    <div class="label">
+                      <i class="iconfont ic-setup_fill" />
+                      <span>设置</span>
+                    </div>
                   </div>
-                </div>
-              </a>
-              <button class="sign-out" @click="handleLogout">退出</button>
-            </ElPopover>
+                </a>
+                <button class="sign-out" @click="handleLogout">退出</button>
+              </template>
+            </Popover>
           </li>
         </template>
         <template v-else>
           <li>
             <button class="login-btn" @click="handleSignIn">登录</button>
           </li>
-          <li>
-            <a class="nav-link create-center" href="/">创作中心</a>
-          </li>
-          <li>
-            <button class="create-btn">投稿</button>
-          </li>
         </template>
+        <li>
+          <a class="nav-link create-center" href="/">创作中心</a>
+        </li>
+        <li>
+          <button class="create-btn">投稿</button>
+        </li>
       </ul>
     </div>
   </nav>
 </template>
 
 <script>
-import { ElPopover } from 'element-plus'
 import user from '@calibur/user'
-// import utils from '@calibur/utils'
+import utils from '@calibur/utils'
+import Popover from './Popover.vue'
 import Logo from './Logo.vue'
 
 export default {
   name: 'CaliburHeader',
   components: {
     Logo,
-    ElPopover
+    Popover
   },
   props: {
     left: {
@@ -68,6 +70,11 @@ export default {
   data() {
     return {
       userInfo: null
+    }
+  },
+  computed: {
+    resize() {
+      return utils.resize
     }
   },
   mounted() {
@@ -205,7 +212,7 @@ export default {
     .user-panel {
       position: relative;
       height: 100%;
-      padding: 4px 7px 0;
+      margin-right: 10px;
 
       &:hover {
         background-color: transparent;
@@ -219,14 +226,18 @@ export default {
         display: block;
         position: relative;
         transition: 0.3s;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
         z-index: 1;
+        overflow: hidden;
+        background-color: #fff;
 
         img {
           display: block;
-          border: 1px solid #fff;
-          width: 33px;
-          height: 33px;
-          border-radius: 50%;
+          width: 100%;
+          height: 100%;
+          image-rendering: -webkit-optimize-contrast;
         }
       }
 
