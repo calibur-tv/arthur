@@ -1,4 +1,4 @@
 export const routes = [
-  { path: '/', component: () => import('../pages/index.vue') },
+  { path: '/', component: () => import('../pages') },
   { path: '/about', component: () => import('../pages/about.vue') }
 ]

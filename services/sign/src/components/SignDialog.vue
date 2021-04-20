@@ -33,7 +33,7 @@
 <script>
 import bus from '@calibur/bus'
 import user from '@calibur/user'
-import Component from '@calibur/component'
+import { Logo } from '@calibur/component'
 import SignInForm from './SignInForm.vue'
 import SignUpForm from './SignUpForm.vue'
 import ResetPasswordForm from './ResetPasswordForm.vue'
@@ -41,7 +41,7 @@ import ResetPasswordForm from './ResetPasswordForm.vue'
 export default {
   name: 'SignDialog',
   components: {
-    Logo: Component.Logo,
+    Logo,
     SignUpForm,
     SignInForm,
     ResetPasswordForm

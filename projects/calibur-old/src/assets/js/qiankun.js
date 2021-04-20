@@ -1,4 +1,4 @@
-import { loadMicroApp } from 'qiankun'
+import { loadMicroApp } from 'projects/calibur-old/src/assets/js/qiankun'
 
 const isDev = process.env.NODE_ENV === 'development'
 

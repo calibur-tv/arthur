@@ -112,14 +112,16 @@ const userInstance = () => {
   if (!glob.__calibur_user__) {
     glob.__calibur_user__ = new User()
 
-    const el = document.createElement('div')
-    const id = '#_calibur_sign_service'
-    el.setAttribute('id', id)
-    document.body.appendChild(el)
-    loadMicroApp({
-      name: 'sign',
-      entry: http.isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
-      container: el
+    document.addEventListener('load', () => {
+      const el = document.createElement('div')
+      const id = '#_calibur_sign_service'
+      el.setAttribute('id', id)
+      document.body.appendChild(el)
+      loadMicroApp({
+        name: 'sign',
+        entry: http.isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
+        container: el
+      })
     })
   }
 

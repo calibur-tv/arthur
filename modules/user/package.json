@@ -1,6 +1,6 @@
 {
   "name": "@calibur/user",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "./dist/user.umd.js",
   "scripts": {
     "build": "vue-cli-service build --target lib --name user src/index.js"
@@ -8,13 +8,12 @@
   "dependencies": {
     "@calibur/bus": "workspace:modules/bus",
     "@calibur/http": "workspace:modules/http",
-    "core-js": "^3.6.5",
+    "core-js": "^3.10.1",
     "js-cookie": "^2.2.1",
     "qiankun": "^2.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0"
+    "@vue/cli-plugin-babel": "~4.5.12",
+    "@vue/cli-service": "~4.5.12"
   }
 }

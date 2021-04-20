@@ -13,15 +13,15 @@ const addStyleResource = (rule) => {
     .use('style-resource')
     .loader('style-resources-loader')
     .options({
-      patterns: [path.resolve(__dirname, '../css/var.scss'), path.resolve(__dirname, '../css/mixin.scss')]
+      patterns: [
+        path.resolve(__dirname, '../../shared/css/var.scss'),
+        path.resolve(__dirname, '../../shared/css/mixin.scss')
+      ]
     })
 }
 
 module.exports = {
   configureWebpack: {
-    output: {
-      libraryExport: 'default'
-    },
     plugins: [new webpack.BannerPlugin(banner)]
   },
   chainWebpack: (config) => {

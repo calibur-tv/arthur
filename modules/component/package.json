@@ -1,32 +1,29 @@
 {
   "name": "@calibur/component",
   "version": "0.1.0",
+  "private": true,
+  "author": "冰淤",
   "scripts": {
     "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name calibur ./src/export.js"
+    "upload": "ossutil cp -r ./dist oss://calibur-file/wc-async/ -f",
+    "build": "vue-cli-service build --target wc-async --name calibur 'src/components/*.vue'",
+    "deploy": "npm run build && npm run upload"
   },
-  "files": [
-    "src"
-  ],
-  "main": "./src/export.js",
   "dependencies": {
     "@calibur/http": "workspace:modules/http",
     "@calibur/user": "workspace:modules/user",
     "@calibur/utils": "workspace:modules/utils",
     "core-js": "^3.6.5",
-    "element-plus": "^1.0.2-beta.40",
     "lscache": "^1.3.0",
-    "vue": "^3.0.0"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "babel-plugin-import": "^1.13.3",
     "fibers": "^5.0.0",
-    "install": "^0.13.0",
-    "sass": "^1.32.8",
-    "sass-loader": "10",
-    "style-resources-loader": "^1.4.1"
+    "sass": "^1.32.10",
+    "sass-loader": "10.1.1",
+    "style-resources-loader": "^1.4.1",
+    "vue-template-compiler": "^2.6.11"
   }
 }
