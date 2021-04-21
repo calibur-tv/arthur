@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,6 +22,12 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    VitePWA({
+      workbox: {
+        workboxURL: 'https://www.calibur.tv/workbox-514/workbox-sw.js',
+        offline: false
+      }
+    }),
     styleImport({
       libs: [
         {

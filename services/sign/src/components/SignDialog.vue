@@ -10,7 +10,7 @@
         class="sign-modal sign-in-modal"
         @click.stop
       >
-        <Logo width="500" color="#00a1d6" />
+        <CaliburLogo width="500" color="#00a1d6" />
         <ResetPasswordForm v-show="showReset" @to-login="showReset = false" @to-register="showRegister" />
         <SignInForm v-show="!showReset" @to-reset="showReset = true" @to-register="showRegister" />
       </div>
@@ -23,7 +23,7 @@
         class="sign-modal sign-up-modal"
         @click.stop
       >
-        <Logo width="500" color="#00a1d6" />
+        <CaliburLogo width="500" color="#00a1d6" />
         <SignUpForm @to-login="showLogin" />
       </div>
     </div>
@@ -33,7 +33,7 @@
 <script>
 import bus from '@calibur/bus'
 import user from '@calibur/user'
-import Component from '@calibur/component'
+import { CaliburLogo } from '@calibur/component'
 import SignInForm from './SignInForm.vue'
 import SignUpForm from './SignUpForm.vue'
 import ResetPasswordForm from './ResetPasswordForm.vue'
@@ -41,7 +41,7 @@ import ResetPasswordForm from './ResetPasswordForm.vue'
 export default {
   name: 'SignDialog',
   components: {
-    Logo: Component.Logo,
+    CaliburLogo,
     SignUpForm,
     SignInForm,
     ResetPasswordForm
@@ -101,6 +101,10 @@ export default {
   top: 0;
   z-index: 100;
 
+  * {
+    box-sizing: border-box;
+  }
+
   &.space-leave {
     visibility: hidden;
   }
@@ -119,8 +123,8 @@ export default {
     z-index: 12;
 
     .calibur-logo {
-      margin-top: -50px;
-      margin-bottom: -15px;
+      margin-top: -80px;
+      margin-bottom: -40px;
     }
 
     .sign-modal {

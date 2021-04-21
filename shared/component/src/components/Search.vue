@@ -187,7 +187,7 @@ export default {
         return
       }
 
-      window.open(`https://fc.calibur.tv/v1/search/mixin?q=${this.word}&type=${this.type}`)
+      window.open(`${window.location.origin}/search?q=${this.word}&type=${this.type}`)
 
       setTimeout(() => {
         this.history.forEach((item, index) => {

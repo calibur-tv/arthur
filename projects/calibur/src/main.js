@@ -5,6 +5,7 @@ import 'normalize.css'
 import '@/assets/css/global.scss'
 import mitt from 'mitt'
 import Cookies from 'js-cookie'
+import user from '@calibur/user'
 import store from '@/store'
 import createApi from '@/api'
 import * as utils from '@/assets/js/utils'
@@ -27,6 +28,13 @@ export const createApp = ViteSSG(App, { routes }, ({ app, isClient }) => {
   app.config.globalProperties.$utils = utils
 
   if (isClient) {
+    user.get().then((user) => {
+      store.commit('SET_USER_INFO', user)
+    })
+    user.watch((user) => {
+      store.commit('SET_USER_INFO', user)
+    })
+
     window.$bus = bus
     window.$api = api
     window.$store = store

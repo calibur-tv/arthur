@@ -136,6 +136,10 @@ export default {
     padding-right: 10px;
 
     .name {
+      svg {
+        color: $color-main;
+      }
+
       span {
         color: #424e67;
         margin-left: 5px;

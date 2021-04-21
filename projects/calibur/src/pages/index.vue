@@ -1,33 +1,71 @@
 <template>
-  <calibur-logo shadow />
-  <v-curtain v-if="isAuth" id="desk" :position="{ left: 360, top: 120 }">
-    <desk-container />
-  </v-curtain>
+  <div id="page-index">
+    <div class="header-wrap">
+      <calibur-header />
+    </div>
+    <div class="banner-wrap">
+      <calibur-banner />
+    </div>
+    <div class="logo-wrap">
+      <calibur-logo shadow />
+    </div>
+    <div class="search-wrap">
+      <calibur-search />
+    </div>
+  </div>
 </template>
 
 <script>
-import DeskContainer from '@/components/desk/container.vue'
-import { CaliburLogo } from '@calibur/component'
+import { CaliburLogo, CaliburBanner, CaliburHeader, CaliburSearch } from '@calibur/component'
 
 export default {
-  name: 'HomePage',
+  name: 'PageIndex',
   components: {
+    CaliburHeader,
+    CaliburBanner,
     CaliburLogo,
-    DeskContainer
-  },
-  computed: {
-    isAuth() {
-      return this.$store.state.isAuth
-    }
+    CaliburSearch
   }
 }
 </script>
 
 <style lang="scss">
-.desk-wrap {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+#page-index {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(239, 239, 244);
+
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+  }
+
+  .logo-wrap {
+    position: absolute;
+    left: 50%;
+    top: 120px;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+
+  .banner-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .search-wrap {
+    position: absolute;
+    left: 50%;
+    width: 600px;
+    height: 50px;
+    transform: translateX(-50%);
+    top: 290px;
+  }
 }
 </style>

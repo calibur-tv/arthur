@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@calibur/component": "workspace:shared/component",
+    "@calibur/user": "workspace:modules/user",
     "@flowlist/vue-listview": "^3.2.10",
     "@vueuse/head": "^0.5.1",
     "axios": "^0.21.1",
@@ -18,6 +19,7 @@
     "js-cookie": "^2.2.1",
     "normalize.css": "^8.0.1",
     "qiankun": "^2.4.0",
+    "vite-plugin-pwa": "^0.7.2",
     "vue": "^3.0.0",
     "vue-router": "4",
     "vuex": "4"
