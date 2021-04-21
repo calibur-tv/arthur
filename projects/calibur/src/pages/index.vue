@@ -1,4 +1,5 @@
 <template>
+  <calibur-logo shadow />
   <v-curtain v-if="isAuth" id="desk" :position="{ left: 360, top: 120 }">
     <desk-container />
   </v-curtain>
@@ -6,10 +7,12 @@
 
 <script>
 import DeskContainer from '@/components/desk/container.vue'
+import { CaliburLogo } from '@calibur/component'
 
 export default {
   name: 'HomePage',
   components: {
+    CaliburLogo,
     DeskContainer
   },
   computed: {

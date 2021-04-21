@@ -1,11 +1,6 @@
-import Search from './components/Search'
-import Banner from './components/Banner'
-import Header from './components/Header'
-import Logo from './components/Logo'
+import CaliburSearch from './components/Search.vue'
+import CaliburBanner from './components/Banner.vue'
+import CaliburHeader from './components/Header.vue'
+import CaliburLogo from './components/Logo.vue'
 
-export default {
-  Search,
-  Banner,
-  Header,
-  Logo
-}
+export { CaliburSearch, CaliburBanner, CaliburHeader, CaliburLogo }

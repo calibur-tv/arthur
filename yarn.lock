@@ -3995,6 +3995,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.21.1":
+  version: 0.21.1
+  resolution: "axios@npm:0.21.1"
+  dependencies:
+    follow-redirects: ^1.10.0
+  checksum: 864fb7b5d077d236737f10adca53bf451a93f35a15271f56fba8da07265a02d26b7d881b935a6697dc6adb0549ea3e56d2eecb403edaa3bb78f6479901c10f69
+  languageName: node
+  linkType: hard
+
 "babel-eslint@npm:^10.1.0":
   version: 10.1.0
   resolution: "babel-eslint@npm:10.1.0"
@@ -4654,8 +4663,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "calibur@workspace:projects/calibur"
   dependencies:
+    "@calibur/component": "workspace:shared/component"
     "@flowlist/vue-listview": ^3.2.10
+    "@vue/compiler-sfc": ^3.0.0
     "@vueuse/head": ^0.5.1
+    axios: ^0.21.1
     blueimp-md5: ^2.18.0
     element-plus: 1.0.2-beta.36
     filesize: ^6.1.0
@@ -4665,6 +4677,9 @@ __metadata:
     vite: ^2.1.5
     vite-plugin-style-import: ^0.9.2
     vite-ssg: ^0.9.2
+    vue: ^3.0.0
+    vue-router: 4
+    vuex: 4
   languageName: unknown
   linkType: soft
 
@@ -7604,6 +7619,16 @@ __metadata:
     debug:
       optional: true
   checksum: 76a23a75e5eedb872fc223fcce5b267fd315b123e0fc38f8d7701283445418d9ead72c7ff8a468d95042526a34e5677bfe76b85f973aa0563890c695c975c451
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.10.0":
+  version: 1.13.3
+  resolution: "follow-redirects@npm:1.13.3"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 9ad74c3b66ad5c32d8c009a2afb4e5c1b9e5dbe1f631419296c21f8e4f9976ed2c52f9a676c4acdd1d7f41a8f17a03dfaa3704993b25b5965eb11bc9dc9a8ef5
   languageName: node
   linkType: hard
 
@@ -15251,6 +15276,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"vue-router@npm:4":
+  version: 4.0.6
+  resolution: "vue-router@npm:4.0.6"
+  peerDependencies:
+    vue: ^3.0.0
+  checksum: 0f7ac0b5da2a0d37f1dadd58be69600f26d9a95c75ece82e50803e5532a25599e414100a15f942d4188eb789bf40fe132b4badc98337a3c431898e112f63f18c
+  languageName: node
+  linkType: hard
+
 "vue-style-loader@npm:^4.1.0, vue-style-loader@npm:^4.1.2":
   version: 4.1.2
   resolution: "vue-style-loader@npm:4.1.2"
@@ -15297,6 +15331,15 @@ fsevents@~2.3.1:
     "@vue/runtime-dom": 3.0.11
     "@vue/shared": 3.0.11
   checksum: b71201f33a37b8e2648126abc0ece5847087b5cdeb68c28e2d202c355efff1fd2d4a0ba6722d89778bf13ab2dc469cd6bb8b8f984283cfc06085646ae1295f40
+  languageName: node
+  linkType: hard
+
+"vuex@npm:4":
+  version: 4.0.0
+  resolution: "vuex@npm:4.0.0"
+  peerDependencies:
+    vue: ^3.0.2
+  checksum: 7420b32b75cb605a355df1d73de737362207ae86f24d1163a6a96d358da5d2094fd92edd5023da048af636cb59d1b506c7d4d1436a8a4951841230659a5c4e55
   languageName: node
   linkType: hard
 

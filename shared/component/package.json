@@ -5,9 +5,6 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name calibur ./src/export.js"
   },
-  "files": [
-    "src"
-  ],
   "main": "./src/export.js",
   "dependencies": {
     "@calibur/http": "workspace:modules/http",
