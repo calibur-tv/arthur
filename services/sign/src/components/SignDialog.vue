@@ -33,7 +33,7 @@
 <script>
 import bus from '@calibur/bus'
 import user from '@calibur/user'
-import { Logo } from '@calibur/component'
+import Logo from './Logo.vue'
 import SignInForm from './SignInForm.vue'
 import SignUpForm from './SignUpForm.vue'
 import ResetPasswordForm from './ResetPasswordForm.vue'

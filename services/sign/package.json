@@ -11,7 +11,6 @@
   "dependencies": {
     "@arthur/shared-css": "workspace:shared/css",
     "@calibur/bus": "workspace:modules/bus",
-    "@calibur/component": "workspace:modules/component",
     "@calibur/http": "workspace:modules/http",
     "@calibur/user": "workspace:modules/user",
     "core-js": "^3.10.1",

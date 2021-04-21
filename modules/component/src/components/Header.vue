@@ -39,7 +39,7 @@
           </li>
         </template>
         <li>
-          <a class="nav-link create-center" href="/">创作中心</a>
+          <a class="nav-link desk-center" href="/desk">我的网盘</a>
         </li>
         <li>
           <button class="create-btn">投稿</button>
@@ -205,7 +205,7 @@ export default {
       text-shadow: 0 2px 10px rgb(0 0 0 / 55%);
     }
 
-    .create-center {
+    .desk-center {
       margin-left: 12px;
     }
 

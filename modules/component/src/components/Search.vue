@@ -120,7 +120,7 @@ export default {
       if (this.suggest.length) {
         return
       }
-      http.get('bangumi/all').then((res) => {
+      http.get('search/bangumi').then((res) => {
         lscache.set(SUGGEST_KEY, res.result, 86400)
         this.suggest = res.result
       })
@@ -187,7 +187,7 @@ export default {
         return
       }
 
-      window.open(`https://fc.calibur.tv/v1/search/mixin?q=${this.word}&type=${this.type}`)
+      window.open(`${window.location.protocol}//${window.location.host}/search?q=${this.word}&type=${this.type}`)
 
       setTimeout(() => {
         this.history.forEach((item, index) => {
@@ -197,7 +197,7 @@ export default {
         })
 
         this.history.unshift({
-          slug: Date.now(),
+          slug: `t-${Date.now()}`,
           type: 'all',
           text: this.word
         })
