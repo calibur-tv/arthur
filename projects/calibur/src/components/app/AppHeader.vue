@@ -104,12 +104,10 @@ export default {
   },
   methods: {
     handleSignIn() {
-      $bus.emit('sign-in')
+      //
     },
     handleLogout() {
-      $api.sign.logout()
-      $cookie.remove('JWT-TOKEN')
-      window.location = '/'
+      //
     }
   }
 }

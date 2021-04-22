@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import http from '@calibur/http'
+import { signApi } from '@calibur/api'
 import Cookies from 'js-cookie'
 
 export default {
@@ -89,12 +89,10 @@ export default {
       this.$refs.form.validate((valid) => {
         if (valid) {
           this.loading = true
-          http
-            .post('sign/login', {
-              body: {
-                access: this.form.access,
-                secret: this.form.secret
-              }
+          signApi
+            .login({
+              access: this.form.access,
+              secret: this.form.secret
             })
             .then((token) => {
               Cookies.set('JWT-TOKEN', token, {

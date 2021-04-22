@@ -1,28 +1,30 @@
+import user from '@calibur/user'
+
 export default {
   beforeMount() {
     if (typeof window === 'undefined') {
       return
     }
 
-    const redirect = () => {
-      if (!this.$store.getters.isMine(this.$route.params.slug)) {
-        this.$router.replace({
-          name: this.$route.name,
-          params: {
-            slug: this.$store.state.user.slug
-          }
-        })
-      }
-    }
-    if (this.$store.state.isAuth) {
-      redirect()
-      return
-    }
-    const canceler = this.$watch('$store.state.isAuth', (val) => {
-      if (val) {
-        redirect()
+    const canceler = user.watch(
+      (info) => {
+        if (!info) {
+          window.location.href = '/'
+          return
+        }
+
+        if (info.slug !== this.$route.params.slug) {
+          this.$router.replace({
+            name: this.$route.name,
+            params: {
+              slug: info.slug
+            }
+          })
+        }
+
         canceler()
-      }
-    })
+      },
+      { immediate: true }
+    )
   }
 }

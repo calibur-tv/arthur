@@ -1,6 +1,6 @@
 import { createStore } from 'vuex'
 import { ListStore } from '@flowlist/vue-listview'
-import * as api from '../api/flow'
+import { flowApi } from '@calibur/api'
 import desk from './desk'
 
 export default createStore({
@@ -48,6 +48,6 @@ export default createStore({
   },
   modules: {
     desk,
-    list: ListStore({ api })
+    list: ListStore({ api: flowApi })
   }
 })

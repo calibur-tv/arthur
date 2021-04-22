@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { deskApi } from '@calibur/api'
 import DeskUploader from './uploader.vue'
 import DeskSize from './size.vue'
 
@@ -37,7 +38,7 @@ export default {
   mounted() {},
   methods: {
     createFolder() {
-      $prompt('请输入文件夹名称', '创建文件夹', {
+      this.$prompt('请输入文件夹名称', '创建文件夹', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })
@@ -45,15 +46,16 @@ export default {
           if (!value) {
             return
           }
-          $api.desk
+
+          deskApi
             .createFolder({
               name: value
             })
             .then((folder) => {
-              $bus.emit('DESK_CREATE_FOLDER', folder)
+              this.$bus.emit('DESK_CREATE_FOLDER', folder)
             })
             .catch((err) => {
-              $toast.error(err.message)
+              this.$toast.error(err.message)
             })
         })
         .catch(() => {})

@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import http from '@calibur/http'
+import { signApi } from '@calibur/api'
 import Cookies from 'js-cookie'
 
 export default {
@@ -198,11 +198,9 @@ export default {
     async getRegisterAuthCode() {
       this.step = 1
       try {
-        await http.post('sign/message', {
-          body: {
-            type: 'sign_up',
-            phone_number: this.form.access
-          }
+        await signApi.sendMessage({
+          type: 'sign_up',
+          phone_number: this.form.access
         })
         this.step = 2
         this.openConfirmModal()
@@ -233,14 +231,12 @@ export default {
         .catch(() => {})
     },
     signUp() {
-      http
-        .post('sign/register', {
-          body: {
-            access: this.form.access,
-            secret: this.form.secret,
-            authCode: this.form.authCode,
-            inviteCode: this.form.inviteCode
-          }
+      signApi
+        .register({
+          access: this.form.access,
+          secret: this.form.secret,
+          authCode: this.form.authCode,
+          inviteCode: this.form.inviteCode
         })
         .then((token) => {
           this.$toast.success('注册成功！')

@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import http from '@calibur/http'
+import { searchApi } from '@calibur/api'
 import lscache from 'lscache'
 
 const HISTORY_KEY = 'search-history-v2'
@@ -120,7 +120,7 @@ export default {
       if (this.suggest.length) {
         return
       }
-      http.get('bangumi/all').then((res) => {
+      searchApi.bangumi().then((res) => {
         lscache.set(SUGGEST_KEY, res.result, 86400)
         this.suggest = res.result
       })

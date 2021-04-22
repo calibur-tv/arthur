@@ -6,8 +6,9 @@
     "build": "vue-cli-service build --target lib --name user src/index.js"
   },
   "dependencies": {
+    "@calibur/api": "workspace:modules/api",
     "@calibur/bus": "workspace:modules/bus",
-    "@calibur/http": "workspace:modules/http",
+    "@calibur/utils": "workspace:modules/utils",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
     "qiankun": "^2.4.0"

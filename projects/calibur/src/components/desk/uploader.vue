@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { deskApi } from '@calibur/api'
 import upload from '@/mixins/upload'
 import uploadRequest from '@/assets/js/upload-request'
 
@@ -64,7 +65,7 @@ export default {
   mounted() {},
   methods: {
     handleError(err, file) {
-      $toast.error(`${file.name} 上传失败，${err.message}`)
+      this.$toast.error(`${file.name} 上传失败，${err.message}`)
     },
     handleSuccess(res, file) {
       if (res.code !== 0) {
@@ -72,14 +73,14 @@ export default {
         return
       }
 
-      $api.desk
+      deskApi
         .moveFile({
           folder_id: this.folderId,
           file_id: res.data.id,
           name: file.name
         })
         .then((item) => {
-          $bus.emit('DESK_UPLOAD_SUCCESS', item)
+          this.$bus.emit('DESK_UPLOAD_SUCCESS', item)
         })
     },
     handleBefore(file) {
@@ -87,7 +88,7 @@ export default {
         this.$store.commit('desk/UPDATE_FOLDER_ID', 0)
       }
       if (file.size > 2147483648) {
-        $toast.error('最大上传 2G 文件')
+        this.$toast.error('最大上传 2G 文件')
         return false
       }
       return true

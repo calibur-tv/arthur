@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import http from '@calibur/http'
+import { cmApi } from '@calibur/api'
 import utils from '@calibur/utils'
 
 export default {
@@ -40,15 +40,14 @@ export default {
       if (this.banners.length) {
         this.loopBanner()
       } else {
-        http.get('cm/image_looper').then((res) => {
+        cmApi.imageLoop().then((res) => {
           this.banners = res.result
           this.loopBanner()
         })
       }
     },
     loopBanner() {
-      // this.banner1 = utils.resize(this.banners[0], { width: 2040 })
-      this.banner1 = 'https://i.loli.net/2020/05/25/RbTGL1ZQfcHVwY3.jpg'
+      this.banner1 = utils.resize(this.banners[0], { width: 2040 })
       this.timer = setInterval(() => {
         if (!this.banners.length) {
           return

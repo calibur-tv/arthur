@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import http from '@calibur/http'
+import { signApi } from '@calibur/api'
 
 export default {
   name: 'ResetPasswordForm',
@@ -105,11 +105,9 @@ export default {
     async getResetAuthCode() {
       this.step = 1
       try {
-        await http.post('sign/message', {
-          body: {
-            type: 'forgot_password',
-            phone_number: this.form.access
-          }
+        await signApi.sendMessage({
+          type: 'forgot_password',
+          phone_number: this.form.access
         })
         this.step = 2
         this.openConfirmModal()
@@ -142,12 +140,10 @@ export default {
     },
     async signReset() {
       try {
-        const res = await http.post('sign/reset_password', {
-          body: {
-            access: this.form.access,
-            authCode: this.form.authCode,
-            secret: this.form.secret
-          }
+        const res = await signApi.resetPassword({
+          access: this.form.access,
+          authCode: this.form.authCode,
+          secret: this.form.secret
         })
         this.$toast.success(res)
         this.showLogin()

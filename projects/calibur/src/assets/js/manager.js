@@ -1,3 +1,4 @@
+import lscache from 'lscache'
 import { isTouchDevice } from './utils'
 
 export default class Manager {
@@ -98,7 +99,7 @@ export default class Manager {
       return result
     }
 
-    result = $cache.get(this._itemCacheKey(id))
+    result = lscache.get(this._itemCacheKey(id))
     if (!result) {
       result = def || this._getDefaultRect()
     }
@@ -117,7 +118,7 @@ export default class Manager {
    */
   setRect(id, rect) {
     this.rectList[id] = rect
-    $cache.set(this._itemCacheKey(id), rect)
+    lscache.set(this._itemCacheKey(id), rect)
   }
 
   /**

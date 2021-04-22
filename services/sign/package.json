@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@arthur/shared-css": "workspace:shared/css",
+    "@calibur/api": "workspace:modules/api",
     "@calibur/bus": "workspace:modules/bus",
     "@calibur/component": "workspace:shared/component",
     "@calibur/http": "workspace:modules/http",

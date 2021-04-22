@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { deskApi } from '@calibur/api'
 import FolderIcon from './icons/folder.vue'
 
 export default {
@@ -47,10 +48,10 @@ export default {
     },
     updateFolder() {
       if (this.item.id <= 0) {
-        $toast.info('不能修改默认文件夹')
+        this.$toast.info('不能修改默认文件夹')
         return
       }
-      $prompt('请输入文件夹名称', '重命名文件夹', {
+      this.$prompt('请输入文件夹名称', '重命名文件夹', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })
@@ -58,7 +59,7 @@ export default {
           if (!value) {
             return
           }
-          $api.desk
+          deskApi
             .updateFolder({
               name: value,
               folder_id: this.item.id
@@ -69,28 +70,28 @@ export default {
               })
             })
             .catch((err) => {
-              $toast.error(err.message)
+              this.$toast.error(err.message)
             })
         })
         .catch(() => {})
     },
     deleteFolder() {
       if (this.item.id <= 0) {
-        $toast.info('不能删除默认文件夹')
+        this.$toast.info('不能删除默认文件夹')
         return
       }
-      $confirm('删除文件夹后里面的文件也会被删除不可恢复，确认吗？', '删除文件夹', {
+      this.$confirm('删除文件夹后里面的文件也会被删除不可恢复，确认吗？', '删除文件夹', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       }).then(() => {
-        $api.desk
+        deskApi
           .deleteFolder({ folder_id: this.item.id })
           .then(() => {
-            $toast.success('删除成功')
+            this.$toast.success('删除成功')
             this.$emit('delete')
           })
           .catch((err) => {
-            $toast.error(err.message)
+            this.$toast.error(err.message)
           })
       })
     }

@@ -43,12 +43,12 @@ export default {
   watch: {},
   created() {},
   mounted() {
-    $bus.on('DESK_UPLOAD_SUCCESS', (file) => {
+    this.$bus.on('DESK_UPLOAD_SUCCESS', (file) => {
       this.$refs.loader.unshift(file)
     })
   },
   beforeUnmount() {
-    $bus.off('DESK_UPLOAD_SUCCESS')
+    this.$bus.off('DESK_UPLOAD_SUCCESS')
   },
   methods: {
     handleUpdate(data, item) {

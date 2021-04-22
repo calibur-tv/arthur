@@ -7,7 +7,7 @@
   },
   "main": "./src/export.js",
   "dependencies": {
-    "@calibur/http": "workspace:modules/http",
+    "@calibur/api": "workspace:modules/api",
     "@calibur/user": "workspace:modules/user",
     "@calibur/utils": "workspace:modules/utils",
     "core-js": "^3.6.5",

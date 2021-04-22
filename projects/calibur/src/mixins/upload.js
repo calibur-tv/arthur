@@ -1,3 +1,5 @@
+import { deskApi } from '@calibur/api'
+
 export default {
   data() {
     return {
@@ -7,19 +9,17 @@ export default {
       getUpTokenTimer: 0
     }
   },
-  computed: {
-    isAuth() {
-      return this.$store.state.isAuth
-    }
-  },
   mounted() {
-    if (this.isAuth) {
-      this.initUpToken()
-    } else {
-      $bus.on('user-signed', () => {
+    this.$user.watch(
+      (user) => {
+        if (!user) {
+          return
+        }
+
         this.initUpToken()
-      })
-    }
+      },
+      { immediate: true }
+    )
   },
   beforeUnmount() {
     this.getUpTokenTimer && clearInterval(this.getUpTokenTimer)
@@ -32,7 +32,7 @@ export default {
       }, 1000 * 60 * 30)
     },
     async getUpToken() {
-      const token = await $api.desk.token()
+      const token = await deskApi.token()
       // extra.name = file.name
       this.uploadExtras.key = token.dir + '${filename}'
       this.uploadExtras.policy = token.policy

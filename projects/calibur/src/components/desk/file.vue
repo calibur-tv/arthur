@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { deskApi } from '@calibur/api'
 import filesize from 'filesize'
 import TxtIcon from './icons/txt.vue'
 import ImageIcon from './icons/image.vue'
@@ -53,23 +54,23 @@ export default {
   },
   methods: {
     deleteFile() {
-      $confirm('删除后不可恢复，确认吗？', '删除文件', {
+      this.$confirm('删除后不可恢复，确认吗？', '删除文件', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       }).then(() => {
-        $api.desk
+        deskApi
           .deleteFile({ file_id: this.item.id })
           .then(() => {
-            $toast.success('删除成功')
+            this.$toast.success('删除成功')
             this.$emit('delete')
           })
           .catch((err) => {
-            $toast.error(err.message)
+            this.$toast.error(err.message)
           })
       })
     },
     renameFile() {
-      $prompt('请输入文件名称', '重命名文件', {
+      this.$prompt('请输入文件名称', '重命名文件', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })
@@ -78,10 +79,10 @@ export default {
             return
           }
           if (value.length > 255) {
-            $toast.error('文件名不能超过255个字符')
+            this.$toast.error('文件名不能超过255个字符')
             return
           }
-          $api.desk
+          deskApi
             .moveFile({
               name: value,
               file_id: this.item.id,
@@ -93,7 +94,7 @@ export default {
               })
             })
             .catch((err) => {
-              $toast.error(err.message)
+              this.$toast.error(err.message)
             })
         })
         .catch(() => {})

@@ -73,7 +73,6 @@ export const parseToken = (cookieStr) => {
 }
 
 export const ENUM_CONST = {
-  ENV: isNode ? 'development' : /calibur.tv/.test(window.location.host) ? 'production' : 'development',
   baseURL: {
     development: 'http://localhost:9000/v1/',
     production: 'https://fc.calibur.tv/v1/'

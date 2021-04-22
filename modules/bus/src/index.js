@@ -5,11 +5,13 @@ const createInstance = () => {
     return mitt()
   }
 
-  if (!window.__calibur_bus__) {
-    window.__calibur_bus__ = mitt()
+  const glob = window.parent || window
+
+  if (!glob.__calibur_bus__) {
+    glob.__calibur_bus__ = mitt()
   }
 
-  return window.__calibur_bus__
+  return glob.__calibur_bus__
 }
 
 export default createInstance()

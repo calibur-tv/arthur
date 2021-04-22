@@ -23,12 +23,12 @@ export default {
     DeskFolder
   },
   mounted() {
-    $bus.on('DESK_CREATE_FOLDER', (folder) => {
+    this.$bus.on('DESK_CREATE_FOLDER', (folder) => {
       this.$refs.loader.unshift(folder)
     })
   },
   beforeUnmount() {
-    $bus.off('DESK_CREATE_FOLDER')
+    this.$bus.off('DESK_CREATE_FOLDER')
   },
   methods: {
     handleUpdate(data, item) {

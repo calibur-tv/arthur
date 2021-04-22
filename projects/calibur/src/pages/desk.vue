@@ -1,6 +1,6 @@
 <template>
   <div id="page-desk">
-    <DeskContainer />
+    <DeskContainer v-if="isAuth" />
   </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
   name: 'PageDesk',
   components: {
     DeskContainer
+  },
+  computed: {
+    isAuth() {
+      return this.$store.state.isAuth
+    }
   }
 }
 </script>

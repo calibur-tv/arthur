@@ -1,3 +1,4 @@
+import utils from '@calibur/utils'
 import {
   supportNativeCache,
   supportNativeFetch,
@@ -31,8 +32,8 @@ import {
  */
 const Http = class {
   constructor(option = {}) {
-    this.baseURL = option.baseURL || ENUM_CONST.baseURL[ENUM_CONST.ENV]
-    this.isDev = ENUM_CONST.ENV === 'development'
+    this.baseURL =
+      option.baseURL || ENUM_CONST.baseURL[utils.isDev ? ENUM_CONST.baseURL.development : ENUM_CONST.baseURL.production]
   }
   /**
    * @desc
@@ -60,25 +61,38 @@ const Http = class {
    * @desc
    * - GET，读取缓存，如果无缓存，则发送接口请求
    * @param {string} url - 同`fetch`的`url`参数
-   * @param {object} [config={}] - 同`fetch`的`config`参数
+   * @param {object} [config1={}] - 同`fetch`的`config.params`
+   * @param {object} [config2={}] - 同`fetch`的`config`参数
    * @returns {Promise<Response>} 值为`response`
    */
-  get(url, config = {}) {
-    if (!config.method) {
-      config.method = 'GET'
+  get(url, config1 = {}, config2) {
+    let config
+    if (config2) {
+      config = {
+        ...config2,
+        params: config1
+      }
+    } else if (config1.params) {
+      config = config1
+    } else {
+      config = {
+        params: config1
+      }
     }
+
+    config.method = 'GET'
 
     if (config.params) {
       url = buildURL(url, config.params)
     }
 
     if (!supportNativeCache) {
-      return this.send(url, config, false)
+      return this.send(url, config)
     }
 
     return new Promise((resolve, reject) => {
       const fallback = () => {
-        this.send(url, config, false).then(resolve).catch(reject)
+        this.send(url, config).then(resolve).catch(reject)
       }
 
       caches
@@ -109,19 +123,34 @@ const Http = class {
 
   /**
    * @desc
-   * - POST，读取缓存，如果无缓存，则发送接口请求
+   * - POST
    * @param {string} url - 同`fetch`的`url`参数
-   * @param {object} [config={}] - 同`fetch`的`config`参数
+   * @param {object} [config1={}] - 同`fetch`的`config.body`
+   * @param {object} [config2={}] - 同`fetch`的`config`参数
    * @returns {Promise<Response>} 值为`response`
    */
-  post(url, config = {}) {
+  post(url, config1 = {}, config2) {
+    let config
+    if (config2) {
+      config = {
+        ...config2,
+        body: config1
+      }
+    } else if (config1.body) {
+      config = config1
+    } else {
+      config = {
+        body: config1
+      }
+    }
+
     config.method = 'POST'
 
     if (config.body && typeof config.body !== 'string') {
       config.body = JSON.stringify(config.body)
     }
 
-    return this.get(url, config)
+    return this.send(url, config)
   }
 
   /**

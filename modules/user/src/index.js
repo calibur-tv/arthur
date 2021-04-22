@@ -1,5 +1,6 @@
 import bus from '@calibur/bus'
-import http from '@calibur/http'
+import { signApi } from '@calibur/api'
+import utils from '@calibur/utils'
 import Cookies from 'js-cookie'
 import { loadMicroApp } from 'qiankun'
 
@@ -42,8 +43,8 @@ const User = class {
         return
       }
 
-      http
-        .post('sign/get_user_info')
+      signApi
+        .current()
         .then((res) => {
           this.info = res
           this.handlers.forEach((callback) => {
@@ -73,7 +74,7 @@ const User = class {
 
   logout() {
     return new Promise((resolve) => {
-      http.post('sign/logout').finally(() => {
+      signApi.logout().finally(() => {
         Cookies.remove(TOKEN_KEY)
         this.handlers.forEach((callback) => {
           callback(null)
@@ -118,7 +119,7 @@ const userInstance = () => {
     document.body.appendChild(el)
     loadMicroApp({
       name: 'sign',
-      entry: http.isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
+      entry: utils.isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
       container: el
     })
   }
