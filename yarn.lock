@@ -3944,6 +3944,7 @@ __metadata:
     "@calibur/component": "workspace:shared/component"
     "@calibur/http": "workspace:modules/http"
     "@calibur/user": "workspace:modules/user"
+    "@calibur/utils": "workspace:modules/utils"
     "@flowlist/vue-listview": ^3.2.10
     "@vue/compiler-sfc": ^3.0.0
     "@vueuse/head": ^0.5.1

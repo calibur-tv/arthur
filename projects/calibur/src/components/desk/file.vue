@@ -27,8 +27,6 @@ import TxtIcon from './icons/txt.vue'
 import ImageIcon from './icons/image.vue'
 import AudioIcon from './icons/audio.vue'
 import VideoIcon from './icons/video.vue'
-import PreviewImage from './preview/image.vue'
-import binder from '@/assets/js/test'
 
 export default {
   name: 'DeskFile',
@@ -100,19 +98,7 @@ export default {
         .catch(() => {})
     },
     handleClick() {
-      binder.open({
-        component: PreviewImage,
-        rect: {
-          id: `preview-img-${this.item.id}`,
-          position: {
-            left: 100,
-            top: 100
-          }
-        },
-        data: {
-          item: this.item
-        }
-      })
+      console.log(this.item)
     }
   }
 }

@@ -1,8 +1,8 @@
 import bus from '@calibur/bus'
 import { signApi } from '@calibur/api'
-import utils from '@calibur/utils'
-import Cookies from 'js-cookie'
+import { isDev } from '@calibur/utils'
 import { loadMicroApp } from 'qiankun'
+import Cookies from 'js-cookie'
 
 const TOKEN_KEY = 'JWT-TOKEN'
 
@@ -119,7 +119,7 @@ const userInstance = () => {
     document.body.appendChild(el)
     loadMicroApp({
       name: 'sign',
-      entry: utils.isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
+      entry: isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
       container: el
     })
   }

@@ -1,4 +1,4 @@
-import utils from '@calibur/utils'
+import { isDev } from '@calibur/utils'
 import {
   supportNativeCache,
   supportNativeFetch,
@@ -32,8 +32,7 @@ import {
  */
 const Http = class {
   constructor(option = {}) {
-    this.baseURL =
-      option.baseURL || ENUM_CONST.baseURL[utils.isDev ? ENUM_CONST.baseURL.development : ENUM_CONST.baseURL.production]
+    this.baseURL = option.baseURL || ENUM_CONST.baseURL[isDev ? 'development' : 'production']
   }
   /**
    * @desc

@@ -2,13 +2,13 @@ import http from '@calibur/http'
 
 export const getRecommendedUsers = () => http.get('user/recommended')
 
-export const settingProfile = (params) => http.post('v1/user/update_info', params)
+export const settingProfile = (params) => http.post('user/update_info', params)
 
 export const settingImage = ({ type, url }) => http.post('user/setting/image', { type, url })
 
-export const getUserInfo = ({ slug }) => http.get('v1/user/show', { slug })
+export const getUserInfo = ({ slug }) => http.get('user/show', { slug })
 
-export const getMailboxTotal = ({ slug }) => http.get('v1/message/total', { slug })
+export const getMailboxTotal = ({ slug }) => http.get('message/total', { slug })
 
 export const feedback = ({ type, desc, ua }) => http.post('user/feedback', { type, desc, ua })
 

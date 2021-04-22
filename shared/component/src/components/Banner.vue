@@ -7,7 +7,7 @@
 
 <script>
 import { cmApi } from '@calibur/api'
-import utils from '@calibur/utils'
+import { resize } from '@calibur/utils'
 
 export default {
   name: 'CaliburBanner',
@@ -47,14 +47,14 @@ export default {
       }
     },
     loopBanner() {
-      this.banner1 = utils.resize(this.banners[0], { width: 2040 })
+      this.banner1 = resize(this.banners[0], { width: 2040 })
       this.timer = setInterval(() => {
         if (!this.banners.length) {
           return
         }
 
         this.index = 1 + this.index === this.banners.length ? 0 : this.index + 1
-        const data = utils.resize(this.banners[this.index], { width: 2040 })
+        const data = resize(this.banners[this.index], { width: 2040 })
         this.toggle ? (this.banner2 = data) : (this.banner1 = data)
         setTimeout(() => {
           this.toggle = !this.toggle

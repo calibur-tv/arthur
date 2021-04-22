@@ -1,5 +1,5 @@
 import http from '@calibur/http'
 
-export const getFolders = () => http.get('v1/desk/folder/list')
+export const getFolders = () => http.get('desk/folder/list')
 
-export const getFolderFiles = ({ folder_id }) => http.get('v1/desk/file/list', { folder_id })
+export const getFolderFiles = ({ folder_id }) => http.get('desk/file/list', { folder_id })

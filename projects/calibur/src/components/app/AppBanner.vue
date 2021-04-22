@@ -1,7 +1,7 @@
 <template>
   <section id="app-banner" :style="{ backgroundImage: `url(${background})` }">
     <div class="v-layout">
-      <img class="logo" :src="$resize('logo-border.png', { width: 220, rule: 2 })" alt="logo" />
+      <img class="logo" :src="$utils.resize('logo-border.png', { width: 220, rule: 2 })" alt="logo" />
       <div class="search-box">
         <a href="https://www.bilibili.com/v/popular/rank/all" class="rank">
           <span>排行榜</span>

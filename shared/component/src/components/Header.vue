@@ -51,7 +51,7 @@
 
 <script>
 import user from '@calibur/user'
-import utils from '@calibur/utils'
+import { resize } from '@calibur/utils'
 import Popover from './Popover.vue'
 import Logo from './Logo.vue'
 
@@ -72,11 +72,6 @@ export default {
       userInfo: null
     }
   },
-  computed: {
-    resize() {
-      return utils.resize
-    }
-  },
   mounted() {
     user.get().then((user) => {
       this.userInfo = user
@@ -86,6 +81,7 @@ export default {
     })
   },
   methods: {
+    resize,
     handleSignIn() {
       user.login()
     },

@@ -24,7 +24,7 @@
             <AppPopover class-name="user-popover">
               <template #trigger>
                 <RouterLink to="/" class="avatar">
-                  <img :src="$resize(user.avatar, { width: 60 })" alt="" />
+                  <img :src="$utils.resize(user.avatar, { width: 60 })" alt="" />
                 </RouterLink>
               </template>
               <template #content>
