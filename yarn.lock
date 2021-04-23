@@ -1458,7 +1458,6 @@ __metadata:
     "@vue/cli-service": ~4.5.12
     "@vue/compiler-sfc": ^3.0.11
     babel-plugin-import: ^1.13.3
-    blueimp-md5: ^2.18.0
     core-js: ^3.11.0
     cross-env: ^7.0.3
     element-plus: ^1.0.2-beta.40
@@ -3567,13 +3566,6 @@ __metadata:
   version: 3.7.2
   resolution: "bluebird@npm:3.7.2"
   checksum: 4f2288662f3d4eadbb82d4daa4a7d7976a28fa3c7eb4102c9b4033b03e5be4574ba123ac52a7c103cde4cb7b2d2afc1dbe41817ca15a29ff21ecd258d0286047
-  languageName: node
-  linkType: hard
-
-"blueimp-md5@npm:^2.18.0":
-  version: 2.18.0
-  resolution: "blueimp-md5@npm:2.18.0"
-  checksum: cc115b7e0f5573a26a3a6af699f98f7d29477bd529ffaee06ba8dcb2b470f88b0e762d09df771bc356fcdcfdb0d1d02cd8529889f32b03c7d3baf42817c46d67
   languageName: node
   linkType: hard
 

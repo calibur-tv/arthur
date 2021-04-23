@@ -4,7 +4,7 @@ import user from '@calibur/user'
 export default {
   data() {
     return {
-      uploadAccept: ['image/*', 'video/*', 'audio/*', 'txt'].join(', '),
+      uploadAccept: ['image/*', '.mp4', '.mp3', '.txt'].join(', '),
       uploadExtras: {},
       uploadAction: '',
       getUpTokenTimer: 0
