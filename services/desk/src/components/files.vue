@@ -18,7 +18,7 @@
         />
       </template>
       <template #nothing>
-        <img src="../../assets/img/nothing.png" alt="" />
+        <img src="../assets/nothing.png" alt="" />
       </template>
     </list-view>
   </div>
@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     folderId() {
-      return this.$store.state.desk.folderId
+      return this.$store.state.folderId
     }
   },
   watch: {},

@@ -13,9 +13,13 @@
 </template>
 
 <script>
+import { ElBreadcrumb, ElBreadcrumbItem } from 'element-plus'
 export default {
   name: 'DeskBreadcrumb',
-  components: {},
+  components: {
+    ElBreadcrumb,
+    ElBreadcrumbItem
+  },
   data() {
     return {}
   },
@@ -28,7 +32,7 @@ export default {
       return field.result
     },
     folderId() {
-      return this.$store.state.desk.folderId
+      return this.$store.state.folderId
     },
     selected() {
       if (this.folderId === -1) {
@@ -46,7 +50,7 @@ export default {
       if (this.folderId === -1) {
         return
       }
-      this.$store.commit('desk/UPDATE_FOLDER_ID', -1)
+      this.$store.commit('UPDATE_FOLDER_ID', -1)
     }
   }
 }

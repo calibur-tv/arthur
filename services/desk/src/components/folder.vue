@@ -15,13 +15,14 @@
     </div>
     <div class="size">-</div>
     <div class="time">
-      {{ item.updated_at ? $utils.formatTime(item.updated_at, 'ymdhm') : '-' }}
+      {{ item.updated_at ? formatTime(item.updated_at, 'ymdhm') : '-' }}
     </div>
   </div>
 </template>
 
 <script>
 import { deskApi } from '@calibur/api'
+import { formatTime } from '@calibur/utils'
 import FolderIcon from './icons/folder.vue'
 
 export default {
@@ -43,8 +44,9 @@ export default {
   created() {},
   mounted() {},
   methods: {
+    formatTime,
     getFiles() {
-      this.$store.commit('desk/UPDATE_FOLDER_ID', this.item.id)
+      this.$store.commit('UPDATE_FOLDER_ID', this.item.id)
     },
     updateFolder() {
       if (this.item.id <= 0) {

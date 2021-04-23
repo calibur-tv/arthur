@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { ElButton } from 'element-plus'
 import { deskApi } from '@calibur/api'
 import DeskUploader from './uploader.vue'
 import DeskSize from './size.vue'
@@ -21,6 +22,7 @@ import DeskSize from './size.vue'
 export default {
   name: 'DeskNav',
   components: {
+    ElButton,
     DeskSize,
     DeskUploader
   },
@@ -30,7 +32,7 @@ export default {
   },
   computed: {
     folderId() {
-      return this.$store.state.desk.folderId
+      return this.$store.state.folderId
     }
   },
   watch: {},

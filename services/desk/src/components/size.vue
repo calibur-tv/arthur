@@ -7,29 +7,44 @@
 </template>
 
 <script>
+import { ElProgress } from 'element-plus'
 import filesize from 'filesize'
+import user from '@calibur/user'
 
 export default {
   name: 'DeskSize',
-  components: {},
+  components: {
+    ElProgress
+  },
   props: {},
   data() {
-    return {}
+    return {
+      user: null
+    }
   },
   computed: {
-    user() {
-      return this.$store.state.user
-    },
     percent() {
+      if (!this.user) {
+        return 0
+      }
+
       return ((this.user.desk_use_space / this.user.desk_max_space) * 100) | 0
     },
     size() {
+      if (!this.user) {
+        return 0
+      }
+
       return `${filesize(this.user.desk_use_space)} / ${filesize(this.user.desk_max_space)}`
     }
   },
   watch: {},
   created() {},
-  mounted() {},
+  mounted() {
+    user.get((info) => {
+      this.user = info
+    })
+  },
   methods: {}
 }
 </script>

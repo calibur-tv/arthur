@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     folderId() {
-      return this.$store.state.desk.folderId
+      return this.$store.state.folderId
     }
   }
 }

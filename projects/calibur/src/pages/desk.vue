@@ -1,21 +1,23 @@
 <template>
   <div id="page-desk">
-    <DeskContainer v-if="isAuth" />
+    <div id="_calibur_desk_service" />
   </div>
 </template>
 
 <script>
-import DeskContainer from '@/components/desk/container.vue'
+import { isDev } from '@calibur/utils'
+import { loadMicroApp } from 'qiankun'
+import mustSign from '@/mixins/mustSign'
 
 export default {
   name: 'PageDesk',
-  components: {
-    DeskContainer
-  },
-  computed: {
-    isAuth() {
-      return this.$store.state.isAuth
-    }
+  mixins: [mustSign],
+  mounted() {
+    loadMicroApp({
+      name: 'desk',
+      entry: isDev ? '//localhost:7104' : 'https://web.calibur.tv/desk',
+      container: '#_calibur_desk_service'
+    })
   }
 }
 </script>

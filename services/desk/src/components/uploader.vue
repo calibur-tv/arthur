@@ -37,15 +37,20 @@
 </template>
 
 <script>
+import { ElUpload, ElButton, ElDrawer, ElProgress } from 'element-plus'
 import { deskApi } from '@calibur/api'
-import upload from '@/mixins/upload'
-import uploadRequest from '@/assets/js/upload-request'
+import upload from '../utils/upload'
+import request from '../utils/request'
 
 export default {
   name: 'DeskUploader',
-  components: {},
-  props: {},
   mixins: [upload],
+  components: {
+    ElUpload,
+    ElButton,
+    ElDrawer,
+    ElProgress
+  },
   data() {
     return {
       openProgressDrawer: false,
@@ -54,10 +59,10 @@ export default {
   },
   computed: {
     uploadRequest() {
-      return uploadRequest
+      return request
     },
     folderId() {
-      return this.$store.state.desk.folderId
+      return this.$store.state.folderId
     }
   },
   watch: {},
@@ -85,7 +90,7 @@ export default {
     },
     handleBefore(file) {
       if (this.folderId === -1) {
-        this.$store.commit('desk/UPDATE_FOLDER_ID', 0)
+        this.$store.commit('UPDATE_FOLDER_ID', 0)
       }
       if (file.size > 2147483648) {
         this.$toast.error('最大上传 2G 文件')

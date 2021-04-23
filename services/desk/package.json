@@ -1,24 +1,28 @@
 {
-  "name": "@calibur/sign",
+  "name": "@calibur/desk",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=production vue-cli-service serve",
     "build": "cross-env RUN_TYPE=build vue-cli-service build --modern",
-    "upload": "ossutil cp -r ./dist oss://calibur-arthur/sign/ -f",
+    "upload": "ossutil cp -r ./dist oss://calibur-arthur/desk/ -f",
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
     "@arthur/shared-css": "workspace:shared/css",
     "@calibur/api": "workspace:modules/api",
     "@calibur/bus": "workspace:modules/bus",
-    "@calibur/component": "workspace:shared/component",
     "@calibur/http": "workspace:modules/http",
     "@calibur/user": "workspace:modules/user",
+    "@calibur/utils": "workspace:modules/utils",
+    "@flowlist/vue-listview": "^3.2.10",
+    "blueimp-md5": "^2.18.0",
     "core-js": "^3.11.0",
     "element-plus": "^1.0.2-beta.40",
-    "js-cookie": "^2.2.1",
-    "vue": "^3.0.11"
+    "file2md5": "^1.3.0",
+    "filesize": "^6.3.0",
+    "vue": "^3.0.11",
+    "vuex": "4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",

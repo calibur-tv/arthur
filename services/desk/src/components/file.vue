@@ -15,13 +15,14 @@
     </div>
     <div class="size" v-text="fileSize" />
     <div class="time">
-      {{ item.updated_at ? $utils.formatTime(item.updated_at, 'ymdhm') : '-' }}
+      {{ item.updated_at ? formatTime(item.updated_at, 'ymdhm') : '-' }}
     </div>
   </div>
 </template>
 
 <script>
 import { deskApi } from '@calibur/api'
+import { formatTime } from '@calibur/utils'
 import filesize from 'filesize'
 import TxtIcon from './icons/txt.vue'
 import ImageIcon from './icons/image.vue'
@@ -44,13 +45,14 @@ export default {
   },
   computed: {
     folderId() {
-      return this.$store.state.desk.folderId
+      return this.$store.state.folderId
     },
     fileSize() {
       return filesize(this.item.meta.size)
     }
   },
   methods: {
+    formatTime,
     deleteFile() {
       this.$confirm('删除后不可恢复，确认吗？', '删除文件', {
         confirmButtonText: '确定',
