@@ -3,7 +3,7 @@
     <div class="main">
       <div class="name">
         <component :is="item.meta.mimeType.split('/').shift() + '-icon'" />
-        <span v-html="item.name || item.meta.filename.split('/').pop()" class="fade-link" @click="handleClick" />
+        <span v-html="item.name" class="fade-link" @click="handleClick" />
       </div>
       <div v-if="item.id" class="tool">
         <i class="el-icon-more" />
@@ -14,9 +14,7 @@
       </div>
     </div>
     <div class="size" v-text="fileSize" />
-    <div class="time">
-      {{ item.updated_at ? formatTime(item.updated_at, 'ymdhm') : '-' }}
-    </div>
+    <div class="time" v-text="formatTime(item.created_at, 'ymdhm')" />
   </div>
 </template>
 

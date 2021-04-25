@@ -1,4 +1,5 @@
 import file2md5 from 'file2md5'
+import http from '@calibur/http'
 
 function getError(action, option, xhr) {
   let msg
@@ -35,7 +36,19 @@ export default async function upload(option) {
     return
   }
 
-  const md5 = await file2md5(option.file)
+  const hash = await file2md5(option.file)
+  const name =
+    option.file.folder_id + '-' + option.file.name.split('.')[0].slice(0, 100) + '.' + option.file.type.split('/').pop()
+  const data = await http.post('desk/preload', {
+    hash,
+    name,
+    size: option.file.size
+  })
+  if (data) {
+    option.onSuccess(data)
+    return
+  }
+
   const xhr = new XMLHttpRequest()
   const action = option.action
 
@@ -56,7 +69,6 @@ export default async function upload(option) {
     })
   }
 
-  const name = md5 + '.' + option.file.type.split('/').pop()
   formData.append(option.filename, option.file, name)
   formData.append('name', name)
 

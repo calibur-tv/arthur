@@ -38,7 +38,6 @@
 
 <script>
 import { ElUpload, ElButton, ElDrawer, ElProgress } from 'element-plus'
-import { deskApi } from '@calibur/api'
 import upload from '../utils/upload'
 import request from '../utils/request'
 
@@ -70,6 +69,10 @@ export default {
   mounted() {},
   methods: {
     handleError(err, file) {
+      if (err.status < 200 || err.status >= 300) {
+        return
+      }
+
       this.$toast.error(`${file.name} 上传失败，${err.message}`)
     },
     handleSuccess(res, file) {
@@ -78,15 +81,7 @@ export default {
         return
       }
 
-      deskApi
-        .moveFile({
-          folder_id: this.folderId,
-          file_id: res.data.id,
-          name: file.name
-        })
-        .then((item) => {
-          this.$bus.emit('DESK_UPLOAD_SUCCESS', item)
-        })
+      this.$bus.emit('DESK_UPLOAD_SUCCESS', res.data)
     },
     handleBefore(file) {
       if (this.folderId === -1) {
@@ -96,6 +91,7 @@ export default {
         this.$toast.error('最大上传 2G 文件')
         return false
       }
+      file.folder_id = this.folderId
       return true
     },
     removeFile(file) {

@@ -1437,7 +1437,7 @@ __metadata:
     install: ^0.13.0
     lscache: ^1.3.0
     sass: ^1.32.8
-    sass-loader: 10
+    sass-loader: 10.1.1
     style-resources-loader: ^1.4.1
     vue: ^3.0.11
   languageName: unknown
@@ -2053,12 +2053,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitejs/plugin-vue@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@vitejs/plugin-vue@npm:1.2.1"
+"@vitejs/plugin-vue@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@vitejs/plugin-vue@npm:1.2.2"
   peerDependencies:
     "@vue/compiler-sfc": ^3.0.6
-  checksum: 4ced3f9d73518e812f6f39619641019d5b4e424d19f9fdee5c8e0e65591a8fa0d4f0612a6ead77b655611f7ece45a3e8ae93bc9a427fdac40d77d40f6e3433de
+  checksum: 0efe1b6d03e9b6f10e71ec157426742566aff8a00bca2d6d0ce04328694922a600eb34f0f5af4b723c3c132ed353a634735946c515683adcc93b736a6dc3d531
   languageName: node
   linkType: hard
 
@@ -3167,7 +3167,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "arthur@workspace:."
   dependencies:
-    "@vitejs/plugin-vue": ^1.2.1
+    "@vitejs/plugin-vue": ^1.2.2
     "@vue/cli-plugin-babel": ~4.5.12
     "@vue/cli-plugin-eslint": ~4.5.12
     "@vue/cli-plugin-pwa": ~4.5.12
@@ -3178,11 +3178,11 @@ __metadata:
     "@vue/eslint-config-prettier": ^6.0.0
     babel-eslint: ^10.1.0
     cross-env: ^7.0.3
-    eslint: ^7.23.0
-    eslint-plugin-prettier: ^3.3.1
-    eslint-plugin-vue: ^7.8.0
+    eslint: ^7.25.0
+    eslint-plugin-prettier: ^3.4.0
+    eslint-plugin-vue: ^7.9.0
     less: ^4.1.1
-    less-loader: ^8.0.0
+    less-loader: ^8.1.1
     lint-staged: ^10.5.4
     mitt: ^2.1.0
     prettier: ^2.2.1
@@ -3929,9 +3929,9 @@ __metadata:
     lscache: ^1.3.0
     normalize.css: ^8.0.1
     qiankun: ^2.4.0
-    vite: ^2.1.5
+    vite: ^2.2.2
     vite-plugin-pwa: ^0.7.2
-    vite-plugin-style-import: ^0.9.2
+    vite-plugin-style-import: ^0.10.0
     vite-ssg: ^0.9.2
     vue: ^3.0.11
     vue-router: 4.0.6
@@ -5828,9 +5828,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "eslint-plugin-prettier@npm:3.3.1"
+"eslint-plugin-prettier@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "eslint-plugin-prettier@npm:3.4.0"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
@@ -5839,13 +5839,13 @@ __metadata:
   peerDependenciesMeta:
     eslint-config-prettier:
       optional: true
-  checksum: cf35b0f0e9ef30782fe82913db92f6874181723d77f0c4613f9d69c87069f73d0dc420ef850ebc844613c00a8e87eb9762a36b7d028334c5c7b091763118347b
+  checksum: 322be1af8c7a6b7f1c718d912090722b65da072fda05bbc0a9d94523e6c3dfda49a7f62fd411126f1909c12bbc63e827ee6459163b2ce3458adb292541decf66
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:^7.8.0":
-  version: 7.8.0
-  resolution: "eslint-plugin-vue@npm:7.8.0"
+"eslint-plugin-vue@npm:^7.9.0":
+  version: 7.9.0
+  resolution: "eslint-plugin-vue@npm:7.9.0"
   dependencies:
     eslint-utils: ^2.1.0
     natural-compare: ^1.4.0
@@ -5853,7 +5853,7 @@ __metadata:
     vue-eslint-parser: ^7.6.0
   peerDependencies:
     eslint: ^6.2.0 || ^7.0.0
-  checksum: 387788fdb0e34f291dc547f1e006d7f0fa2b6ab63bab03858307f2f7b25bd6a08efec9ee39e5c3607e66c9d386a9aead7b3346036d75f285f002fcc4d4723aed
+  checksum: 1773e6a9bfd43ace9548323cfc16e7ed8bd9728ac62b9a6b71bebc3ea1c8b6dd8f48931f07557d96c8ce0e7d70ae13871d3deb3c83874796ff4ca85f2560ce5f
   languageName: node
   linkType: hard
 
@@ -5900,9 +5900,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^7.23.0":
-  version: 7.23.0
-  resolution: "eslint@npm:7.23.0"
+"eslint@npm:^7.25.0":
+  version: 7.25.0
+  resolution: "eslint@npm:7.25.0"
   dependencies:
     "@babel/code-frame": 7.12.11
     "@eslint/eslintrc": ^0.4.0
@@ -5943,7 +5943,7 @@ __metadata:
     v8-compile-cache: ^2.0.3
   bin:
     eslint: bin/eslint.js
-  checksum: f444869506eb0b53fdc6f6f6508b9f5daed51034af0289e6b201f996e7f2d06134f765ef598568269d2a0575dc9da5d3308bd2716f795b789d92e7febb654aab
+  checksum: 6e1782e2264ebf987504746ee82e996bf0ef2c29a2eaea869b54cb8aa1eaf10945b1d563618515e65ac934ca626f3609282127773f45868ad4a98744458a3c62
   languageName: node
   linkType: hard
 
@@ -8457,15 +8457,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"less-loader@npm:^8.0.0":
-  version: 8.0.0
-  resolution: "less-loader@npm:8.0.0"
+"less-loader@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "less-loader@npm:8.1.1"
   dependencies:
     klona: ^2.0.4
   peerDependencies:
     less: ^3.5.0 || ^4.0.0
     webpack: ^5.0.0
-  checksum: 3f1bdb06cbbfc2bb41a00758e3a73e882a851bbc672fb5fc5ca1cb4099233c6ebd82a366da351dac126f1e27e7109179b250d133441167668df1e4e5e3ac9ca8
+  checksum: ec465dc8b153282a7f1014f925b71f4e6586af8ed3bb3b2533d471793855822e4236d2f3536cefbc1c132c19d08f7b0bf01bded5b87f2c694f865f13f6957cb5
   languageName: node
   linkType: hard
 
@@ -11635,7 +11635,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"sass-loader@npm:10, sass-loader@npm:^10.1.1":
+"sass-loader@npm:10.1.1, sass-loader@npm:^10.1.1":
   version: 10.1.1
   resolution: "sass-loader@npm:10.1.1"
   dependencies:
@@ -11953,8 +11953,8 @@ fsevents@~2.3.1:
     qiankun: ^2.4.0
     throttle-debounce: ^3.0.1
     v-switcher: ^3.0.5
-    vite: ^2.1.5
-    vite-plugin-style-import: ^0.9.2
+    vite: ^2.2.2
+    vite-plugin-style-import: ^0.10.0
     vite-ssg: ^0.9.2
   languageName: unknown
   linkType: soft
@@ -13469,9 +13469,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"vite-plugin-style-import@npm:^0.9.2":
-  version: 0.9.2
-  resolution: "vite-plugin-style-import@npm:0.9.2"
+"vite-plugin-style-import@npm:^0.10.0":
+  version: 0.10.0
+  resolution: "vite-plugin-style-import@npm:0.10.0"
   dependencies:
     "@rollup/pluginutils": ^4.1.0
     change-case: ^4.1.2
@@ -13480,7 +13480,7 @@ fsevents@~2.3.1:
     magic-string: ^0.25.7
   peerDependencies:
     vite: ">=2.0.0"
-  checksum: 964d945607a02ea800e4f7431c6a6cfbd3ba70c6cb0e7193369b946a790c4e4b9c207f053e545f3e29e4bd236d8d52facb324072fd07d7d4a8efec2d23cbaf80
+  checksum: 167befe37dd28d7db70001c1a3e4f978a948ac16b6f74400235d1cdd0e1df9f36fc9505ee2326c47456bc1ba3f45cb0553be1963bbe1731542afd71c554d09e8
   languageName: node
   linkType: hard
 
@@ -13507,9 +13507,9 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"vite@npm:^2.1.5":
-  version: 2.1.5
-  resolution: "vite@npm:2.1.5"
+"vite@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "vite@npm:2.2.2"
   dependencies:
     esbuild: ^0.9.3
     fsevents: ~2.3.1
@@ -13521,7 +13521,7 @@ fsevents@~2.3.1:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 6e56aa6654e776d9561195a8b8b5abeacd7d06d74ec3cdd58fdcac4cadd1f5c01664d782667eaec0dc1d49d88ec91d0f71d45d50c02ff5e22559760bff75ab5a
+  checksum: 003efc445d217ee33dc27ec5a3a383fd100273305cf0d01f7d77601d3b7d265772ae4cb53f0227ad703fb906b8273ae558093e959f249cee89b2dc801a319d57
   languageName: node
   linkType: hard
 
