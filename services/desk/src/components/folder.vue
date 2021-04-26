@@ -191,6 +191,9 @@ export default {
           color: $color-main;
           font-size: 12px;
           width: 100%;
+          background-color: transparent;
+          border: none;
+          outline: none;
 
           &:hover {
             background: #f6faff;

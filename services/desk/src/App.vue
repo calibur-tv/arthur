@@ -33,6 +33,22 @@ export default {
 </script>
 
 <style lang="scss">
+.calibur_desk_service {
+  width: 100%;
+  height: 100%;
+
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  #sub-app {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 .desk-container {
   width: 100%;
   height: 100%;
@@ -43,6 +59,10 @@ export default {
 
   * {
     box-sizing: border-box;
+  }
+
+  button {
+    cursor: pointer;
   }
 
   > * {

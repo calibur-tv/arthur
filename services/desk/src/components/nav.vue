@@ -1,11 +1,10 @@
 <template>
   <div class="desk-nav">
     <div>
-      <desk-uploader />
-      &nbsp;&nbsp;
-      <el-button v-if="folderId === -1" size="small" icon="el-icon-folder-add" @click="createFolder">
+      <el-button plain type="primary" size="small" icon="el-icon-folder-add" @click="createFolder">
         新建文件夹
       </el-button>
+      <desk-uploader />
     </div>
     <div>
       <desk-size />
@@ -40,7 +39,7 @@ export default {
   mounted() {},
   methods: {
     createFolder() {
-      this.$prompt('请输入文件夹名称', '创建文件夹', {
+      this.$prompt('请输入文件夹名称（只能创建在根目录下）', '创建文件夹', {
         confirmButtonText: '确定',
         cancelButtonText: '取消'
       })

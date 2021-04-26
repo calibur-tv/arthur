@@ -3,7 +3,7 @@
     <div class="main">
       <div class="name">
         <component :is="item.meta.mimeType.split('/').shift() + '-icon'" />
-        <span v-html="item.name" class="fade-link" @click="handleClick" />
+        <span v-text="item.name" class="fade-link" @click="handleClick" />
       </div>
       <div v-if="item.id" class="tool">
         <i class="el-icon-more" />
@@ -47,6 +47,9 @@ export default {
     },
     fileSize() {
       return filesize(this.item.meta.size)
+    },
+    fileName() {
+      return decodeURIComponent(this.item.name)
     }
   },
   methods: {
@@ -98,7 +101,7 @@ export default {
         .catch(() => {})
     },
     handleClick() {
-      console.log(this.item)
+      window.open(this.item.link)
     }
   }
 }
@@ -193,6 +196,9 @@ export default {
           color: $color-main;
           font-size: 12px;
           width: 100%;
+          background-color: transparent;
+          border: none;
+          outline: none;
 
           &:hover {
             background: #f6faff;

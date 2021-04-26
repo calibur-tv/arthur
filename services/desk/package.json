@@ -16,10 +16,12 @@
     "@calibur/user": "workspace:modules/user",
     "@calibur/utils": "workspace:modules/utils",
     "@flowlist/vue-listview": "^3.2.10",
+    "blueimp-md5": "^2.18.0",
     "core-js": "^3.11.0",
     "element-plus": "^1.0.2-beta.40",
     "file2md5": "^1.3.0",
     "filesize": "^6.3.0",
+    "mime": "^2.5.2",
     "vue": "^3.0.11",
     "vuex": "4.0.0"
   },

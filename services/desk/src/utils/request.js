@@ -1,5 +1,7 @@
+import md5 from 'blueimp-md5'
 import file2md5 from 'file2md5'
 import http from '@calibur/http'
+import mime from 'mime'
 
 function getError(action, option, xhr) {
   let msg
@@ -36,16 +38,24 @@ export default async function upload(option) {
     return
   }
 
+  const file = option.file
   const hash = await file2md5(option.file)
-  const name =
-    option.file.folder_id + '-' + option.file.name.split('.')[0].slice(0, 100) + '.' + option.file.type.split('/').pop()
+  const name = file.folder_id + '-' + md5(file.name) + '.' + mime.getExtension(file.type)
   const data = await http.post('desk/preload', {
     hash,
     name,
-    size: option.file.size
+    size: file.size
   })
+
   if (data) {
-    option.onSuccess(data)
+    option.onProgress({
+      percent: 100
+    })
+
+    option.onSuccess({
+      code: 0,
+      data
+    })
     return
   }
 
@@ -69,7 +79,7 @@ export default async function upload(option) {
     })
   }
 
-  formData.append(option.filename, option.file, name)
+  formData.append(option.filename, file, name)
   formData.append('name', name)
 
   xhr.onerror = function error() {
