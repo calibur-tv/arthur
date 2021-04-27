@@ -16,7 +16,6 @@
     "shared/*"
   ],
   "devDependencies": {
-    "@vue/cli-service": "~4.5.12",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
@@ -32,7 +31,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,vue}": [
-      "vue-cli-service lint --fix",
+      "npm run lint",
       "git add"
     ]
   }
