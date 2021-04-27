@@ -9,12 +9,12 @@
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
-    "@arthur/shared-css": "workspace:shared/css",
-    "@calibur/api": "workspace:modules/api",
-    "@calibur/bus": "workspace:modules/bus",
-    "@calibur/component": "workspace:shared/component",
-    "@calibur/http": "workspace:modules/http",
-    "@calibur/user": "workspace:modules/user",
+    "@calibur/shared-css": "^0.0.0",
+    "@calibur/api": "^0.1.1",
+    "@calibur/bus": "^0.1.1",
+    "@calibur/component": "^0.1.0",
+    "@calibur/http": "^0.2.0",
+    "@calibur/user": "^0.1.4",
     "core-js": "^3.11.0",
     "element-plus": "^1.0.2-beta.40",
     "js-cookie": "^2.2.1",

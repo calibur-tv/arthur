@@ -6,7 +6,7 @@
     "build": "vue-cli-service build --target lib --name http src/index.js"
   },
   "dependencies": {
-    "@calibur/utils": "workspace:modules/utils",
+    "@calibur/utils": "^0.1.1",
     "core-js": "^3.11.0"
   },
   "devDependencies": {

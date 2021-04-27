@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { ElForm, ElFormItem, ElButton, ElInput, ElMessage, ElMessageBox } from 'element-plus'
-import '@arthur/shared-css/theme.scss'
+import '@calibur/shared-css/theme.scss'
 import App from './App.vue'
 
 let instance

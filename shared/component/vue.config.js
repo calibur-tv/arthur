@@ -19,9 +19,6 @@ const addStyleResource = (rule) => {
 
 module.exports = {
   configureWebpack: {
-    output: {
-      libraryExport: 'default'
-    },
     plugins: [new webpack.BannerPlugin(banner)]
   },
   chainWebpack: (config) => {

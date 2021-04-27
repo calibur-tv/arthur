@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ListView } from '@flowlist/vue-listview'
 import bus from '@calibur/bus'
-import '@arthur/shared-css/theme.scss'
+import '@calibur/shared-css/theme.scss'
 import store from './utils/store'
 import App from './App.vue'
 
