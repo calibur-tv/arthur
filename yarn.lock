@@ -1291,7 +1291,6 @@ __metadata:
   dependencies:
     "@arthur/shared-css": "workspace:shared/css"
     "@calibur/bus": "workspace:modules/bus"
-    "@calibur/component": "workspace:modules/component"
     "@calibur/http": "workspace:modules/http"
     "@calibur/user": "workspace:modules/user"
     "@vue/cli-plugin-babel": ~4.5.12
