@@ -1,15 +1,17 @@
 <template>
-  <div class="header-wrap">
-    <Header />
-  </div>
-  <div class="banner-wrap">
-    <Banner />
-  </div>
-  <div class="logo-wrap">
-    <Logo shadow />
-  </div>
-  <div class="search-wrap">
-    <Search />
+  <div>
+    <div class="header-wrap">
+      <Header />
+    </div>
+    <div class="banner-wrap">
+      <Banner />
+    </div>
+    <div class="logo-wrap">
+      <Logo shadow />
+    </div>
+    <div class="search-wrap">
+      <Search />
+    </div>
   </div>
 </template>
 
