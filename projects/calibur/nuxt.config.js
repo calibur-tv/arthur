@@ -69,6 +69,6 @@ export default {
   build: {
     corejs: 3,
     extractCSS: true,
-    publicPath: isDev ? '/_nuxt/' : 'https://www.calibur.tv/'
+    publicPath: isDev ? '/_nuxt/' : 'https://fs.calibur.tv/'
   }
 }
