@@ -6,25 +6,22 @@ export default {
       return
     }
 
-    const canceler = user.watch(
-      (info) => {
-        if (!info) {
-          window.location.href = '/'
-          return
-        }
+    const canceler = user.watch((info) => {
+      if (!info) {
+        window.location.href = '/'
+        return
+      }
 
-        if (info.slug !== this.$route.params.slug) {
-          this.$router.replace({
-            name: this.$route.name,
-            params: {
-              slug: info.slug
-            }
-          })
-        }
+      if (info.slug !== this.$route.params.slug) {
+        this.$router.replace({
+          name: this.$route.name,
+          params: {
+            slug: info.slug
+          }
+        })
+      }
 
-        canceler()
-      },
-      { immediate: true }
-    )
+      canceler()
+    })
   }
 }

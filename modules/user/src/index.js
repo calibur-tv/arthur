@@ -88,7 +88,7 @@ const User = class {
 
   watch(callback, options = {}) {
     if (typeof callback === 'function') {
-      if (this.checked && options.immediate) {
+      if (this.checked && options.immediate !== false) {
         callback(this.info)
       }
 

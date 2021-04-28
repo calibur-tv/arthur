@@ -41,7 +41,7 @@ export default {
   watch: {},
   created() {},
   mounted() {
-    user.get((info) => {
+    user.watch((info) => {
       this.user = info
     })
   },

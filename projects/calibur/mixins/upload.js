@@ -10,16 +10,13 @@ export default {
     }
   },
   mounted() {
-    this.$user.watch(
-      (user) => {
-        if (!user) {
-          return
-        }
+    this.$user.watch((user) => {
+      if (!user) {
+        return
+      }
 
-        this.initUpToken()
-      },
-      { immediate: true }
-    )
+      this.initUpToken()
+    })
   },
   beforeUnmount() {
     this.getUpTokenTimer && clearInterval(this.getUpTokenTimer)
