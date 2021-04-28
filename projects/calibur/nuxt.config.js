@@ -60,8 +60,40 @@ export default {
       description: ''
     },
     workbox: {
-      workboxURL: 'https://www.calibur.tv/workbox-514/workbox-sw.js',
-      offline: false
+      workboxURL: 'https://fs.calibur.tv/workbox-514/workbox-sw.js',
+      config: {
+        modulePathPrefix: 'https://fs.calibur.tv/workbox-514/'
+      },
+      offline: false,
+      cachingExtensions: '@/plugins/workbox-range-request.js',
+      runtimeCaching: [
+        {
+          urlPattern: 'https://fs.calibur.tv/',
+          handler: 'CacheFirst',
+          method: 'GET',
+          strategyPlugins: []
+        },
+        {
+          urlPattern: 'https://www.calibur.tv/',
+          handler: 'StaleWhileRevalidate',
+          method: 'GET',
+          strategyPlugins: []
+        },
+        {
+          urlPattern: 'https://web.calibur.tv/',
+          handler: 'CacheFirst',
+          method: 'GET',
+          strategyPlugins: [
+            {
+              use: 'Expiration',
+              config: {
+                maxEntries: 100,
+                maxAgeSeconds: 86400
+              }
+            }
+          ]
+        }
+      ]
     }
   },
 

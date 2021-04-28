@@ -21,6 +21,7 @@ module.exports = {
     $alert: true,
     $confirm: true,
     $cache: true,
-    $manager: true
+    $manager: true,
+    workbox: true
   }
 }
