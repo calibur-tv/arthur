@@ -15,7 +15,7 @@ export default {
   mounted() {
     loadMicroApp({
       name: 'desk',
-      entry: isDev ? '//localhost:7104' : 'https://web.calibur.tv/desk',
+      entry: isDev ? '//localhost:7104' : 'https://www.calibur.tv/mfe/desk',
       container: '#_calibur_desk_service'
     })
   }

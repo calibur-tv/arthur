@@ -15,7 +15,7 @@ module.exports = (conf) => {
   const name = conf.name.split('/').pop()
 
   return {
-    publicPath: isBuild ? `//web.calibur.tv/${name}/` : '/',
+    publicPath: isBuild ? `//www.calibur.tv/mfe/${name}/` : `//localhost:${conf.port}/`,
     devServer: {
       port: conf.port || 3000,
       headers: {
@@ -33,6 +33,18 @@ module.exports = (conf) => {
     chainWebpack: (config) => {
       const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
       types.forEach((type) => addStyleResource(config.module.rule('scss').oneOf(type)))
+
+      config.module
+        .rule('fonts')
+        .use('url-loader')
+        .tap((options) => {
+          if (!isBuild) {
+            return options
+          }
+
+          options.fallback.options.publicPath = `//www.calibur.tv/mfe/${name}/`
+          return options
+        })
     }
   }
 }

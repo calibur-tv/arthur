@@ -5,12 +5,6 @@ __metadata:
   version: 4
   cacheKey: 7
 
-"@arthur/shared-css@workspace:shared/css":
-  version: 0.0.0-use.local
-  resolution: "@arthur/shared-css@workspace:shared/css"
-  languageName: unknown
-  linkType: soft
-
 "@babel/code-frame@npm:7.12.11":
   version: 7.12.11
   resolution: "@babel/code-frame@npm:7.12.11"
@@ -1750,10 +1744,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calibur/desk@workspace:services/desk"
   dependencies:
-    "@arthur/shared-css": "workspace:shared/css"
     "@calibur/api": "workspace:modules/api"
     "@calibur/bus": "workspace:modules/bus"
     "@calibur/http": "workspace:modules/http"
+    "@calibur/shared-css": "workspace:shared/css"
     "@calibur/user": "workspace:modules/user"
     "@calibur/utils": "workspace:modules/utils"
     "@flowlist/vue-listview": ^3.2.10
@@ -1784,9 +1778,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@calibur/shared-dependencies@workspace:shared/dependencies":
+"@calibur/shared-css@workspace:shared/css":
   version: 0.0.0-use.local
-  resolution: "@calibur/shared-dependencies@workspace:shared/dependencies"
+  resolution: "@calibur/shared-css@workspace:shared/css"
   languageName: unknown
   linkType: soft
 
@@ -1794,11 +1788,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@calibur/sign@workspace:services/sign"
   dependencies:
-    "@arthur/shared-css": "workspace:shared/css"
     "@calibur/api": "workspace:modules/api"
     "@calibur/bus": "workspace:modules/bus"
     "@calibur/component": "workspace:shared/component"
     "@calibur/http": "workspace:modules/http"
+    "@calibur/shared-css": "workspace:shared/css"
     "@calibur/user": "workspace:modules/user"
     "@vue/cli-plugin-babel": ~4.5.12
     "@vue/cli-service": ~4.5.12
@@ -3816,15 +3810,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "arthur@workspace:."
   dependencies:
-    "@vue/cli-service": ~4.5.12
     "@vue/eslint-config-prettier": ^6.0.0
     babel-eslint: ^10.1.0
     cross-env: ^7.0.3
     eslint: ^7.25.0
     eslint-plugin-prettier: ^3.4.0
     eslint-plugin-vue: ^7.9.0
+    fibers: ^5.0.0
     lint-staged: ^10.5.4
     prettier: ^2.2.1
+    sass: ^1.32.11
+    sass-loader: 10
+    style-resources-loader: ^1.4.1
     yorkie: ^2.0.0
   languageName: unknown
   linkType: soft

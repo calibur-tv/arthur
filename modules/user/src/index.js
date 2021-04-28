@@ -119,7 +119,7 @@ const userInstance = () => {
     document.body.appendChild(el)
     loadMicroApp({
       name: 'sign',
-      entry: isDev ? '//localhost:7103' : 'https://web.calibur.tv/sign',
+      entry: isDev ? '//localhost:7103' : 'https://www.calibur.tv/mfe/sign',
       container: el
     })
   }

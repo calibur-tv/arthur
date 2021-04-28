@@ -5,15 +5,15 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=production vue-cli-service serve",
     "build": "cross-env RUN_TYPE=build vue-cli-service build --modern",
-    "upload": "ossutil cp -r ./dist oss://calibur-arthur/sign/ -f",
+    "upload": "ossutil cp -r ./dist oss://calibur-file/mfe/sign/ -f",
     "deploy": "npm run build && npm run upload"
   },
   "dependencies": {
-    "@arthur/shared-css": "workspace:shared/css",
     "@calibur/api": "workspace:modules/api",
     "@calibur/bus": "workspace:modules/bus",
     "@calibur/component": "workspace:shared/component",
     "@calibur/http": "workspace:modules/http",
+    "@calibur/shared-css": "workspace:shared/css",
     "@calibur/user": "workspace:modules/user",
     "core-js": "^3.11.0",
     "element-plus": "^1.0.2-beta.40",
