@@ -1,6 +1,6 @@
 <template>
   <div id="page-desk">
-    <div id="_calibur_desk_service" />
+    <div id="__calibur_mfe_desk" />
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     loadMicroApp({
       name: 'desk',
       entry: isDev ? '//localhost:7104' : 'https://www.calibur.tv/mfe/desk',
-      container: '#_calibur_desk_service'
+      container: '#__calibur_mfe_desk'
     })
   }
 }

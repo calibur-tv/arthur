@@ -114,7 +114,7 @@ const userInstance = () => {
     glob.__calibur_user__ = new User()
 
     const el = document.createElement('div')
-    const id = '#_calibur_sign_service'
+    const id = '__calibur_mfe_sign'
     el.setAttribute('id', id)
     document.body.appendChild(el)
     loadMicroApp({
