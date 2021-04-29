@@ -3,7 +3,7 @@
     <div class="main">
       <div class="name">
         <component :is="item.meta.mimeType.split('/').shift() + '-icon'" />
-        <span v-text="item.name" class="fade-link" @click="handleClick" />
+        <span class="fade-link" @click="handleClick" v-text="item.name" />
       </div>
       <div v-if="item.id" class="tool">
         <i class="el-icon-more" />

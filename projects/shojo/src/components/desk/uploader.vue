@@ -16,8 +16,8 @@
       <el-button size="small" type="primary" icon="el-icon-upload">点击上传</el-button>
     </el-upload>
     <el-drawer
-      title="我是标题"
       v-model="openProgressDrawer"
+      title="我是标题"
       direction="rtl"
       :append-to-body="true"
       :before-close="clearPendingList"
@@ -43,8 +43,8 @@ import uploadRequest from '@/assets/js/upload-request'
 export default {
   name: 'DeskUploader',
   components: {},
-  props: {},
   mixins: [upload],
+  props: {},
   data() {
     return {
       openProgressDrawer: false,

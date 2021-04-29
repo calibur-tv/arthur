@@ -3,7 +3,7 @@
     <div class="main">
       <div class="name">
         <folder-icon />
-        <span v-html="item.name" class="fade-link" @click="getFiles" />
+        <span class="fade-link" @click="getFiles" v-html="item.name" />
       </div>
       <div v-if="item.id" class="tool">
         <i class="el-icon-more" />

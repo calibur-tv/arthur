@@ -1,5 +1,5 @@
 <template>
-  <div v-if="canRender" :style="wrapStyle" @click="handleClick" :class="{ 'curtain--moving': drag }" class="curtain">
+  <div v-if="canRender" :style="wrapStyle" :class="{ 'curtain--moving': drag }" class="curtain" @click="handleClick">
     <div class="curtain__header">
       <div class="curtain__header__drag" :data-id="id" />
     </div>

@@ -21,14 +21,14 @@
           <div class="file-info">
             <i class="el-icon-document" />
             <div class="file-name" v-text="item.name" />
-            <span class="file-delete" @click="removeFile(item)" v-if="item.status === 'uploading'">
+            <span v-if="item.status === 'uploading'" class="file-delete" @click="removeFile(item)">
               <i class="el-icon-delete" />
             </span>
           </div>
           <el-progress :percentage="item.percentage" :stroke-width="5" />
         </div>
       </template>
-      <div class="empty" v-else>没有正在上传的文件</div>
+      <div v-else class="empty">没有正在上传的文件</div>
       <template #reference>
         <el-badge :value="waitingCount" :hidden="!waitingCount">
           <el-button size="small" icon="el-icon-upload" circle />
@@ -46,7 +46,6 @@ import request from '../utils/request'
 
 export default {
   name: 'DeskUploader',
-  mixins: [upload],
   components: {
     ElUpload,
     ElButton,
@@ -54,6 +53,7 @@ export default {
     ElPopover,
     ElProgress
   },
+  mixins: [upload],
   data() {
     return {
       openProgressDrawer: false,
