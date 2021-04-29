@@ -39,7 +39,7 @@
           </li>
         </template>
         <li>
-          <a class="nav-link desk-center" href="/desk">我的云盘</a>
+          <a class="nav-link desk-center" href="/desk">云存储</a>
         </li>
         <li>
           <button class="create-btn">投稿</button>

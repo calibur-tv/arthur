@@ -7,9 +7,12 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
-  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/prettier'],
+  extends: ['plugin:vue/vue3-recommended', 'eslint:recommended', '@vue/prettier'],
   plugins: ['prettier'],
-  rules: {},
+  rules: {
+    'vue/no-deprecated-v-on-native-modifier': 'off',
+    'vue/no-deprecated-slot-attribute': 'off'
+  },
   globals: {
     $api: true,
     $bus: true,

@@ -1862,6 +1862,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@flowlist/js-core@npm:^1.6.5":
+  version: 1.6.5
+  resolution: "@flowlist/js-core@npm:1.6.5"
+  checksum: 062f941abd3fe1164eb759cf5f242e8052991b78689774f026b185aae80add60abdbb40c320316413738e7f09992c872ae06e2df875b9501ead84bff887ef635
+  languageName: node
+  linkType: hard
+
+"@flowlist/vue-listview@npm:2":
+  version: 2.2.7
+  resolution: "@flowlist/vue-listview@npm:2.2.7"
+  dependencies:
+    "@flowlist/js-core": ^1.6.5
+  checksum: e28d161de612bc9bebcab03b3849143c96c99321aebe24cd87a3c59dc78778ccf447cb02c8c964885321ddf542448485ae62452ee91b442b0d30cda7f2a3d772
+  languageName: node
+  linkType: hard
+
 "@flowlist/vue-listview@npm:^3.2.10":
   version: 3.2.10
   resolution: "@flowlist/vue-listview@npm:3.2.10"
@@ -3899,6 +3915,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"async-validator@npm:~1.8.1":
+  version: 1.8.5
+  resolution: "async-validator@npm:1.8.5"
+  dependencies:
+    babel-runtime: 6.x
+  checksum: 7f8c02794a69f95ee2d549d62e7c2a9bf74a2a84412f3befceb42caa1cc3d13f3700ed13d5b0fccfa6cea72751840fdd64f4ba311d4292f324834ae8a3938525
+  languageName: node
+  linkType: hard
+
 "async@npm:^2.6.2":
   version: 2.6.3
   resolution: "async@npm:2.6.3"
@@ -3982,6 +4007,13 @@ __metadata:
   peerDependencies:
     eslint: ">= 4.12.1"
   checksum: c872bb9476e62557918b1f4ddfe864b1477cc5b0b31aa6049af5ffa94feae133c7e9d3e9b1d09eb516a811e9cf569b9f9eb2bc7b980d47d3960857a51ffe7b41
+  languageName: node
+  linkType: hard
+
+"babel-helper-vue-jsx-merge-props@npm:^2.0.0":
+  version: 2.0.3
+  resolution: "babel-helper-vue-jsx-merge-props@npm:2.0.3"
+  checksum: bfee8918726b00c3edda201a53955f5b57937e61194ef6c32de6cd75a9a2092c137343871ef56e430fedcba17c5e52901f4ddb03202686573a86eb0a3e73962c
   languageName: node
   linkType: hard
 
@@ -4088,6 +4120,16 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 538ab98e3062fb4ef4eae09587292513c03917902fe6d8c90b49001b26d41ffc3cd2da34b3b999b12e501cde1233e356af9f33f898c623720c94c6d9022d998c
+  languageName: node
+  linkType: hard
+
+"babel-runtime@npm:6.x":
+  version: 6.26.0
+  resolution: "babel-runtime@npm:6.26.0"
+  dependencies:
+    core-js: ^2.4.0
+    regenerator-runtime: ^0.11.0
+  checksum: 5010bf1d81e484d9c6a5b4e4c32564a0dc180c2dc5a65f999729c3cb63b9c6e805d3d10c19a4ccc2112bce084e39e51e52daf5c21df0141ce8e6e37727af2e0b
   languageName: node
   linkType: hard
 
@@ -4603,18 +4645,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "calibur@workspace:projects/calibur"
   dependencies:
+    "@calibur/api": "workspace:modules/api"
     "@calibur/component": "workspace:shared/component"
+    "@calibur/shared-css": "workspace:shared/css"
     "@calibur/user": "workspace:modules/user"
     "@calibur/utils": "workspace:modules/utils"
+    "@flowlist/vue-listview": 2
     "@nuxtjs/pwa": ^3.3.5
     "@nuxtjs/style-resources": ^1.0.0
     core-js: ^3.9.1
+    element-ui: ^2.15.1
     fibers: ^5.0.0
     normalize.css: ^8.0.1
     nuxt: ^2.15.3
     qiankun: ^2.4.1
     sass: ^1.32.11
     sass-loader: 10
+    v-switcher: 1.1.2
     vue: ^2.6.12
     vue-template-compiler: ^2.6.12
   languageName: unknown
@@ -5453,7 +5500,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:^2.6.5":
+"core-js@npm:^2.4.0, core-js@npm:^2.6.5":
   version: 2.6.12
   resolution: "core-js@npm:2.6.12"
   checksum: b865823ce9cb5bc63336856440f6525e4996bb91af30660081e82bf447d177f36104f0986906a34ea0c9c03cb8b3d960380848a478e2621dac30c9b8198d28da
@@ -6058,7 +6105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"deepmerge@npm:^1.5.2":
+"deepmerge@npm:^1.2.0, deepmerge@npm:^1.5.2":
   version: 1.5.2
   resolution: "deepmerge@npm:1.5.2"
   checksum: 5c44bd09ed12abe023d0358208dfc4cc4ec85287891bcbb8659a43faeb44a87c65d0c5b892bd99e32e837614adf4b591a07bf1ef76e3b0d04c8461500cf55d17
@@ -6523,6 +6570,22 @@ __metadata:
   peerDependencies:
     vue: ^3.0.9
   checksum: ec773b69b1acec8ed4c452b15edaadcfa7f9cde46e338ae2e35ebf8adb7f9e9ccf68a92a036aca2524115426b4060d80099bf64ffa524eb90cd522443f680a10
+  languageName: node
+  linkType: hard
+
+"element-ui@npm:^2.15.1":
+  version: 2.15.1
+  resolution: "element-ui@npm:2.15.1"
+  dependencies:
+    async-validator: ~1.8.1
+    babel-helper-vue-jsx-merge-props: ^2.0.0
+    deepmerge: ^1.2.0
+    normalize-wheel: ^1.0.1
+    resize-observer-polyfill: ^1.5.0
+    throttle-debounce: ^1.0.1
+  peerDependencies:
+    vue: ^2.5.17
+  checksum: 271ec7fd2576d28fdeb7cb747b1a23623a9678a32aed97e7a6c2a586239ad665e297e1e453e771b55921573a6f361564bfb211e372992d7ad2ecfa106c661935
   languageName: node
   linkType: hard
 
@@ -12942,6 +13005,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"regenerator-runtime@npm:^0.11.0":
+  version: 0.11.1
+  resolution: "regenerator-runtime@npm:0.11.1"
+  checksum: d98d44b9f5c9c3c670dcb615c5f5374931f937f3075dc8338126f45231643aa8c47ed2bfdef6ae593e311be54ca02d25d943971ca86a3dc1fa99068c2e1b88b2
+  languageName: node
+  linkType: hard
+
 "regenerator-runtime@npm:^0.13.4":
   version: 0.13.7
   resolution: "regenerator-runtime@npm:0.13.7"
@@ -13145,7 +13215,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"resize-observer-polyfill@npm:^1.5.1":
+"resize-observer-polyfill@npm:^1.5.0, resize-observer-polyfill@npm:^1.5.1":
   version: 1.5.1
   resolution: "resize-observer-polyfill@npm:1.5.1"
   checksum: ba14bfaf584eda299eafd6a06233a65c76586bc2bab3cdfdd1edd25fc6479f4270788ddd082e65390049b3ed542558f02bdf1f123bd912624de5b11d48857ac8
@@ -14724,6 +14794,13 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"throttle-debounce@npm:^1.0.1":
+  version: 1.1.0
+  resolution: "throttle-debounce@npm:1.1.0"
+  checksum: da5606369375ec5884fac5ad3114694eecb4cd433bba19c7ac9193aa94dd32ee5fd5df0b26a75636d382d1e9b0f075e63dc8ab06c2a2f73eb5424482abaa6738
+  languageName: node
+  linkType: hard
+
 "throttle-debounce@npm:^3.0.1":
   version: 3.0.1
   resolution: "throttle-debounce@npm:3.0.1"
@@ -15352,6 +15429,15 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
+"v-switcher@npm:1.1.2":
+  version: 1.1.2
+  resolution: "v-switcher@npm:1.1.2"
+  dependencies:
+    vue: ^2.6.11
+  checksum: a7dde740058ada02b02aaefb3c5d39d60b5bb3e5241e93c516543c82c8d8dbd48fdf99771170b501f3b76f528d134123e2c21cba0680c304c589fff29910567f
+  languageName: node
+  linkType: hard
+
 "v-switcher@npm:^3.0.5":
   version: 3.0.5
   resolution: "v-switcher@npm:3.0.5"
@@ -15615,7 +15701,7 @@ fsevents@~2.3.1:
   languageName: node
   linkType: hard
 
-"vue@npm:^2.6.12":
+"vue@npm:^2.6.11, vue@npm:^2.6.12":
   version: 2.6.12
   resolution: "vue@npm:2.6.12"
   checksum: 92ed547e55a4b27a2a45aa9ab7ff5999f891dc9754562a37226dd190b323d9f99daec892dd8bd39786e404e6e065d808e165b1a0c127ce8d45fd1bde79ec7312

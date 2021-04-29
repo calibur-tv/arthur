@@ -11,14 +11,19 @@
     "deploy": "npm run generate && npm run upload"
   },
   "dependencies": {
+    "@calibur/api": "workspace:modules/api",
     "@calibur/component": "workspace:shared/component",
+    "@calibur/shared-css": "workspace:shared/css",
     "@calibur/user": "workspace:modules/user",
     "@calibur/utils": "workspace:modules/utils",
+    "@flowlist/vue-listview": "2",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
+    "element-ui": "^2.15.1",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.15.3",
     "qiankun": "^2.4.1",
+    "v-switcher": "1.1.2",
     "vue": "^2.6.12"
   },
   "devDependencies": {
