@@ -15,7 +15,7 @@
     "@calibur/http": "workspace:modules/http",
     "@calibur/shared-css": "workspace:shared/css",
     "@calibur/user": "workspace:modules/user",
-    "core-js": "^3.11.0",
+    "core-js": "^3.11.1",
     "element-plus": "^1.0.2-beta.40",
     "js-cookie": "^2.2.1",
     "vue": "^3.0.11"

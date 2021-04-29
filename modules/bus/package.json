@@ -6,7 +6,7 @@
     "build": "vue-cli-service build --target lib --name bus src/index.js"
   },
   "dependencies": {
-    "core-js": "^3.11.0",
+    "core-js": "^3.11.1",
     "mitt": "^2.1.0"
   },
   "devDependencies": {

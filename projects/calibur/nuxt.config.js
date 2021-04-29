@@ -1,3 +1,4 @@
+import script from './script'
 const isDev = process.env.NODE_ENV === 'development'
 
 export default {
@@ -11,6 +12,12 @@ export default {
       { name: 'renderer', content: 'webkit|ie-comp|ie-stand' },
       { name: 'force-rendering', content: 'webkit' },
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge,chrome=1' }
+    ],
+    script: [
+      {
+        innerHTML: script.redirect,
+        type: 'text/javascript'
+      }
     ],
     __dangerouslyDisableSanitizers: ['script']
   },

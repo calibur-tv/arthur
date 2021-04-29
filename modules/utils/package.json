@@ -6,7 +6,7 @@
     "build": "vue-cli-service build --target lib --name utils src/index.js"
   },
   "dependencies": {
-    "core-js": "^3.11.0"
+    "core-js": "^3.11.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.12",
