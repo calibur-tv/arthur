@@ -1775,6 +1775,7 @@ __metadata:
     "@vue/cli-plugin-babel": ~4.5.12
     "@vue/cli-service": ~4.5.12
     core-js: ^3.11.1
+    whatwg-fetch: ^3.6.2
   languageName: unknown
   linkType: soft
 
@@ -16052,6 +16053,13 @@ fsevents@~2.3.1:
   dependencies:
     iconv-lite: 0.4.24
   checksum: 44e4276ad2c770d1eb8c5a49294b863c581ef4bc78a10ac6a73a7eba00b377bc53ae0501d7ffce29a2c051b6af5ebbbd135f1da7d8eb98097af2cf12f7b2c984
+  languageName: node
+  linkType: hard
+
+"whatwg-fetch@npm:^3.6.2":
+  version: 3.6.2
+  resolution: "whatwg-fetch@npm:3.6.2"
+  checksum: eaa370015f81fbf7fc69d5410a13c2200d3342fa783397e9a7e64215498276459993c05e826ed736d28a8abe4e7cc3f97e9b2ffadbc58129a55f443abdfea494
   languageName: node
   linkType: hard
 

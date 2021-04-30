@@ -1,6 +1,13 @@
 import http from '@calibur/http'
 
-export const current = () => http.post('sign/get_user_info')
+export const current = () =>
+  http.post(
+    'sign/get_user_info',
+    {},
+    {
+      prefetch: true
+    }
+  )
 
 export const bindPhone = ({ slug, phone, password, authCode }) =>
   http.post('sign/bind_phone', {

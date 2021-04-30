@@ -18,13 +18,6 @@ export const isDate = (val) => toString.call(val) === '[object Date]'
  */
 export const supportNativeCache = isNode ? false : typeof window.caches !== 'undefined'
 
-/**
- * @desc
- * - 检测是否支持`window.fetch`
- * @type {boolean}
- */
-export const supportNativeFetch = isNode ? false : typeof window.fetch === 'function'
-
 export const requestIdleCallback = isNode
   ? null
   : window.requestIdleCallback ||
