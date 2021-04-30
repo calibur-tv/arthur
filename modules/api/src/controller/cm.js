@@ -5,6 +5,6 @@ export const imageLoop = () =>
     'cm/image_looper',
     {},
     {
-      prefetch: true
+      preload: true
     }
   )

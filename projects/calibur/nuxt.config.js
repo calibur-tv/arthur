@@ -1,4 +1,3 @@
-import script from './script'
 const isDev = process.env.NODE_ENV === 'development'
 
 export default {
@@ -7,19 +6,7 @@ export default {
   target: isDev ? '' : 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'calibur | 天下漫友是一家',
-    meta: [
-      { name: 'renderer', content: 'webkit|ie-comp|ie-stand' },
-      { name: 'force-rendering', content: 'webkit' },
-      { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge,chrome=1' }
-    ],
-    script: [
-      {
-        innerHTML: script.redirect,
-        type: 'text/javascript'
-      }
-    ],
-    __dangerouslyDisableSanitizers: ['script']
+    title: 'calibur | 天下漫友是一家'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

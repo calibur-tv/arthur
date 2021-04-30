@@ -2,6 +2,8 @@ import 'whatwg-fetch'
 import { isDev } from '@calibur/utils'
 import { supportNativeCache, requestIdleCallback, combineURL, parseToken, ENUM_CONST, buildURL } from './utils'
 
+const PREFETCH_TABLE = 'request-prefetch'
+
 const Http = class {
   constructor(option = {}) {
     this.baseURL = option.baseURL || ENUM_CONST.baseURL[isDev ? 'development' : 'production']
@@ -9,46 +11,24 @@ const Http = class {
 
   /**
    * @desc
-   * - 发送接口请求，并填充缓存
-   * - 目前缓存在被消费一次后就会失效
-   * @param {string|Request} request - 同`fetch`的`url`参数
-   * @param {object} [config={}] - 同`fetch`的`config`参数
-   * @returns {Promise<Response>} 值为`response`
-   */
-  set(request, config = {}) {
-    return new Promise((resolve, reject) => {
-      if (!supportNativeCache) {
-        return reject(new Error('not support CacheStorage API'))
-      }
-
-      if (!config.method) {
-        config.method = 'GET'
-      }
-
-      this._send(request, config, true).then(resolve).catch(reject)
-    })
-  }
-
-  /**
-   * @desc
    * - GET，读取缓存，如果无缓存，则发送接口请求
    * @param {string} url - 同`fetch`的`url`参数
-   * @param {object} [config1={}] - 同`fetch`的`config.params`
-   * @param {object} [config2={}] - 同`fetch`的`config`参数
+   * @param {object} [params={}] - 同`fetch`的`config.params`
+   * @param {object} [option={}] - 同`fetch`的`config`参数
    * @returns {Promise<Response>} 值为`response`
    */
-  get(url, config1 = {}, config2) {
+  get(url, params = {}, option) {
     let config
-    if (config2) {
+    if (option) {
       config = {
-        ...config2,
-        params: config1
+        ...option,
+        params: params
       }
-    } else if (config1.params) {
-      config = config1
+    } else if (params.params) {
+      config = params
     } else {
       config = {
-        params: config1
+        params: params
       }
     }
 
@@ -57,43 +37,8 @@ const Http = class {
     if (config.params) {
       url = buildURL(url, config.params)
     }
+    url = combineURL(this.baseURL, url)
 
-    return this._wrap(url, config)
-  }
-
-  /**
-   * @desc
-   * - POST
-   * @param {string} url - 同`fetch`的`url`参数
-   * @param {object} [config1={}] - 同`fetch`的`config.body`
-   * @param {object} [config2={}] - 同`fetch`的`config`参数
-   * @returns {Promise<Response>} 值为`response`
-   */
-  post(url, config1 = {}, config2) {
-    let config
-    if (config2) {
-      config = {
-        ...config2,
-        body: config1
-      }
-    } else if (config1.body) {
-      config = config1
-    } else {
-      config = {
-        body: config1
-      }
-    }
-
-    config.method = 'POST'
-
-    if (config.body && typeof config.body !== 'string') {
-      config.body = JSON.stringify(config.body)
-    }
-
-    return this._wrap(url, config)
-  }
-
-  _wrap(url, config) {
     if (!supportNativeCache) {
       return this._send(url, config)
     }
@@ -105,24 +50,53 @@ const Http = class {
 
       caches
         .match(url)
-        .then((response) => {
-          if (!response) {
+        .then((resp) => {
+          if (!resp || !resp.url) {
             // 没有命中缓存，使用线上数据
             fallback()
             return
           }
-          // 删除缓存，只使用一次
-          caches.delete(url)
-          response.json().then((body) => {
-            if (body.code) {
-              reject(body)
-            } else {
-              resolve(body.data)
-            }
-          })
+
+          this._resetPreload(url, config)
+          this._resetPrefetch(url, config, resp, true)
+          this._formatResponse(resp, resolve, reject)
         })
         .catch(fallback) // 调用缓存 match 接口失败，直接发请求
     })
+  }
+
+  /**
+   * @desc
+   * - POST
+   * @param {string} url - 同`fetch`的`url`参数
+   * @param {object} [data={}] - 同`fetch`的`config.body`
+   * @param {object} [option={}] - 同`fetch`的`config`参数
+   * @returns {Promise<Response>} 值为`response`
+   */
+  post(url, data = {}, option) {
+    let config
+    if (option) {
+      config = {
+        ...option,
+        body: data
+      }
+    } else if (data.body) {
+      config = data
+    } else {
+      config = {
+        body: data
+      }
+    }
+
+    config.method = 'POST'
+
+    if (config.body && typeof config.body !== 'string') {
+      config.body = JSON.stringify(config.body)
+    }
+
+    url = combineURL(this.baseURL, url)
+
+    return this._send(url, config)
   }
 
   /**
@@ -161,11 +135,9 @@ const Http = class {
    * - 发送请求的方法
    * @param {string} url - 同`fetch`的`url`参数
    * @param {object} [config={}] - 同`fetch`的`config`参数
-   * @param {boolean} [cacheable=false] - 是否种下缓存
    * @returns {Promise<unknown>}
    */
-  _send(url, config, cacheable) {
-    url = combineURL(this.baseURL, url)
+  _send(url, config) {
     return new Promise((resolve, reject) => {
       config.headers = config.headers || {}
       config.headers['Content-Type'] = 'application/json'
@@ -182,32 +154,47 @@ const Http = class {
             return
           }
 
-          if (config.prefetch && config.method === 'GET') {
-            caches.open(window.location.pathname).then((cache) => {
-              cache.put(new Request(url, config), new Response())
-            })
-          }
-
-          if (!supportNativeCache || !cacheable) {
+          if (!supportNativeCache || config.method !== 'GET') {
             return response
           }
 
-          caches.open(url).then((cache) => {
-            cache.put(url, response)
-          })
+          this._resetPreload(url, config)
+          this._resetPrefetch(url, config, response)
 
           return response.clone()
         })
-        .then((resp) => {
-          resp.json().then((body) => {
-            if (body.code) {
-              reject(body)
-            } else {
-              resolve(body.data)
-            }
-          })
-        })
+        .then((resp) => this._formatResponse(resp, resolve, reject))
         .catch(reject)
+    })
+  }
+
+  _formatResponse(resp, resolve, reject) {
+    resp.json().then((body) => {
+      if (body.code) {
+        reject(body)
+      } else {
+        resolve(body.data)
+      }
+    })
+  }
+
+  _resetPreload(url, config) {
+    if (!config.preload) {
+      return
+    }
+
+    caches.open(window.location.pathname).then((cache) => {
+      cache.put(new Request(url, config), new Response())
+    })
+  }
+
+  _resetPrefetch(url, config, response, remove) {
+    if (!config.prefetch) {
+      return
+    }
+
+    caches.open(PREFETCH_TABLE).then((cache) => {
+      remove ? cache.delete(url) : cache.put(url, response)
     })
   }
 }

@@ -5,7 +5,7 @@ export const current = () =>
     'sign/get_user_info',
     {},
     {
-      prefetch: true
+      preload: true
     }
   )
 

@@ -3,23 +3,23 @@ const baiduPush = `(function(){var bp=document.createElement('script');var curPr
 const redirect = `if (window.location.host.split('.').length === 2) {window.location.href="https://www." + window.location.href.split('://')[1]}`
 const prefetch = `
 if ('serviceWorker' in navigator) {
-  caches.open(window.location.pathname).then((cache) => {
+  console.log('check serviceWorker in navigator')
+  const cacheName = window.location.pathname
+  caches.open(cacheName).then((cache) => {
     cache.keys().then((keys) => {
-      keys.forEach((req) => {
-        const config = {
-          headers: {}
-        }
-        config.headers['Content-Type'] = 'application/json'
-        config.credentials = 'omit'
-        fetch(req, config)
-          .then(res => {
-            if (!res.ok) {
-              return
-            }
-            caches.open(req).then((cache) => {
-              cache.put(req, res)
-            })
+      keys.forEach((request) => {
+        const req = new Request(request.url, {
+          ...request,
+          mode: 'cors'
+        })
+        fetch(req).then(res => {
+          if (!res.ok) {
+            return
+          }
+          caches.open(cacheName).then((cache) => {
+            cache.put(req.url, res)
           })
+        })
       })
     })
   })
