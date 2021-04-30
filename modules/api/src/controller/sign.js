@@ -1,7 +1,7 @@
 import http from '@calibur/http'
 
 export const current = () =>
-  http.post(
+  http.get(
     'sign/get_user_info',
     {},
     {

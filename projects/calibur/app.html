@@ -12,11 +12,30 @@
   <script>
     if ('serviceWorker' in navigator) {
       const cacheName = window.location.pathname
+      const parseToken = () => {
+        if (!document.cookie) {
+          return ''
+        }
+
+        let token = ''
+        document.cookie.split('; ').forEach((item) => {
+          if (item.startsWith('JWT-TOKEN=')) {
+            token = item.split('JWT-TOKEN=')[1]
+          }
+        })
+        return token
+      }
+      const token = parseToken()
       caches.open(cacheName).then((cache) => {
         cache.keys().then((keys) => {
           keys.forEach((request) => {
+            const headers = {}
+            if (token) {
+              headers.Authorization = `Bearer ${token}`
+            }
             const req = new Request(request.url, {
               ...request,
+              headers,
               mode: 'cors'
             })
             fetch(req).then(res => {
