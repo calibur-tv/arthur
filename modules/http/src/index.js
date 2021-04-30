@@ -182,9 +182,9 @@ const Http = class {
             return
           }
 
-          if (config.prefetch) {
+          if (config.prefetch && config.method === 'GET') {
             caches.open(window.location.pathname).then((cache) => {
-              cache.put(url, new Response())
+              cache.put(new Request(url, config), new Response())
             })
           }
 
