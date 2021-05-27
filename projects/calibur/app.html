@@ -5,51 +5,53 @@
   <meta name="renderer" content="webkit|ie-comp|ie-stand">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <script>
-    if (window.location.host.split('.').length === 2) {
-      window.location.href = "https://www." + window.location.href.split('://')[1]
-    }
+    // if (window.location.host.split('.').length === 2) {
+    //   window.location.href = "https://www." + window.location.href.split('://')[1]
+    // }
   </script>
   <script>
-    if ('serviceWorker' in navigator) {
-      const cacheName = window.location.pathname
-      const parseToken = () => {
-        if (!document.cookie) {
-          return ''
-        }
-
-        let token = ''
-        document.cookie.split('; ').forEach((item) => {
-          if (item.startsWith('JWT-TOKEN=')) {
-            token = item.split('JWT-TOKEN=')[1]
+    (function () {
+      if ('serviceWorker' in navigator) {
+        var _preloadCacheName = _preloadCacheName || window.location.pathname
+        const parseToken = () => {
+          if (!document.cookie) {
+            return ''
           }
-        })
-        return token
-      }
-      const token = parseToken()
-      caches.open(cacheName).then((cache) => {
-        cache.keys().then((keys) => {
-          keys.forEach((request) => {
-            const headers = {}
-            if (token) {
-              headers.Authorization = `Bearer ${token}`
+
+          let token = ''
+          document.cookie.split('; ').forEach((item) => {
+            if (item.startsWith('JWT-TOKEN=')) {
+              token = item.split('JWT-TOKEN=')[1]
             }
-            const req = new Request(request.url, {
-              ...request,
-              headers,
-              mode: 'cors'
-            })
-            fetch(req).then(res => {
-              if (!res.ok) {
-                return
+          })
+          return token
+        }
+        const token = parseToken()
+        caches.open(_preloadCacheName).then((cache) => {
+          cache.keys().then((keys) => {
+            keys.forEach((request) => {
+              const headers = {}
+              if (token) {
+                headers.Authorization = `Bearer ${token}`
               }
-              caches.open(cacheName).then((cache) => {
-                cache.put(req.url, res)
+              const req = new Request(request.url, {
+                ...request,
+                headers,
+                mode: 'cors'
+              })
+              fetch(req).then(res => {
+                if (!res.ok) {
+                  return
+                }
+                caches.open(_preloadCacheName).then((cache) => {
+                  cache.put(req.url, res)
+                })
               })
             })
           })
         })
-      })
-    }
+      }
+    })()
   </script>
   {{ HEAD }}
 </head>

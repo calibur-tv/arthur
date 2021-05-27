@@ -1,17 +1,26 @@
 {
   "name": "@calibur/http",
   "version": "0.2.0",
-  "main": "./src/index.js",
+  "main": "./dist/http.umd.js",
+  "module": "./dist/http.es.js",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "require": "./dist/http.umd.js"
+    }
+  },
   "scripts": {
-    "build": "vue-cli-service build --target lib --name http src/index.js"
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.1.0",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "vite": "^2.3.3"
   },
   "dependencies": {
     "@calibur/utils": "workspace:modules/utils",
-    "core-js": "^3.11.1",
-    "whatwg-fetch": "^3.6.2"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.12",
-    "@vue/cli-service": "~4.5.12"
+    "isomorphic-fetch": "^3.0.0"
   }
 }

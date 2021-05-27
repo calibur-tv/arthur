@@ -1,4 +1,4 @@
-import 'whatwg-fetch'
+import 'isomorphic-fetch'
 import { isDev } from '@calibur/utils'
 import { supportNativeCache, requestIdleCallback, combineURL, parseToken, ENUM_CONST, buildURL } from './utils'
 

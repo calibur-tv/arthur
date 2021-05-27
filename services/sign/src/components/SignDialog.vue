@@ -58,6 +58,7 @@ export default {
   mounted() {
     this.isGuest = !user.isLogin
     bus.on('sign-in', () => {
+      console.log('showLogin')
       this.showLogin()
     })
     bus.on('sign-up', () => {

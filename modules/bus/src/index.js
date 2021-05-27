@@ -5,7 +5,7 @@ const createInstance = () => {
     return mitt()
   }
 
-  const glob = window.parent || window
+  const glob = window.top || window.parent || window
 
   if (!glob.__calibur_bus__) {
     glob.__calibur_bus__ = mitt()

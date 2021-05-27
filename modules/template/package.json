@@ -1,12 +1,12 @@
 {
-  "name": "@calibur/user",
-  "version": "0.1.4",
-  "main": "./dist/user.umd.js",
-  "module": "./dist/user.es.js",
+  "name": "template",
+  "version": "0.1.1",
+  "main": "./dist/template.umd.js",
+  "module": "./dist/template.es.js",
   "exports": {
     ".": {
-      "import": "./src/index.js",
-      "require": "./dist/user.umd.js"
+      "import": "./dist/template.es.js",
+      "require": "./dist/template.umd.js"
     }
   },
   "scripts": {
@@ -21,9 +21,7 @@
   },
   "dependencies": {
     "@calibur/api": "workspace:modules/api",
-    "@calibur/bus": "workspace:modules/bus",
-    "@calibur/utils": "workspace:modules/utils",
-    "js-cookie": "^2.2.1",
-    "qiankun": "^2.4.2"
+    "@calibur/http": "workspace:modules/http",
+    "@calibur/utils": "workspace:modules/utils"
   }
 }

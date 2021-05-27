@@ -17,10 +17,6 @@ const User = class {
     this.handlers = new Set()
   }
 
-  login() {
-    bus.emit('sign-in')
-  }
-
   get() {
     return new Promise((resolve, reject) => {
       if (this.info || this.checked) {
@@ -72,20 +68,6 @@ const User = class {
     })
   }
 
-  logout() {
-    return new Promise((resolve) => {
-      signApi.logout().finally(() => {
-        Cookies.remove(TOKEN_KEY)
-        this.handlers.forEach((callback) => {
-          callback(null)
-        })
-        this.info = null
-        this.checked = false
-        resolve()
-      })
-    })
-  }
-
   watch(callback, options = {}) {
     if (typeof callback === 'function') {
       if (this.checked && options.immediate !== false) {
@@ -101,6 +83,24 @@ const User = class {
 
     return () => {}
   }
+
+  login() {
+    bus.emit('sign-in')
+  }
+
+  logout() {
+    return new Promise((resolve) => {
+      signApi.logout().finally(() => {
+        Cookies.remove(TOKEN_KEY)
+        this.handlers.forEach((callback) => {
+          callback(null)
+        })
+        this.info = null
+        this.checked = false
+        resolve()
+      })
+    })
+  }
 }
 
 const userInstance = () => {
@@ -108,7 +108,7 @@ const userInstance = () => {
     return new User()
   }
 
-  const glob = window.parent || window
+  const glob = window.top || window.parent || window
 
   if (!glob.__calibur_user__) {
     glob.__calibur_user__ = new User()
